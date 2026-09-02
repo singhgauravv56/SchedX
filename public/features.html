@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Features - SchedX Smart Timetable Generator">
+  <title>Features | SchedX</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/generate" class="nav-link">Generate</a>
+        <a href="/features" class="nav-link active">Features</a>
+        <a href="/#about" class="nav-link">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section features-section">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow subtle">Features</span>
+          <h2>Everything you need to build an organized timetable</h2>
+        </div>
+
+        <div class="feature-grid">
+          <!-- Smart Timetable Generation -->
+          <article class="feature-card" onclick="window.location='/generate'" style="cursor: pointer;">
+            <div class="feature-icon">⚡</div>
+            <h3>Smart Timetable Generation</h3>
+            <p>Automatically creates a timetable from user inputs.</p>
+            <span class="feature-link">Go to Generate →</span>
+          </article>
+
+          <!-- Teacher Availability -->
+          <article class="feature-card" onclick="window.location='/teacher-availability'" style="cursor: pointer;">
+            <div class="feature-icon">👩‍🏫</div>
+            <h3>Teacher Availability</h3>
+            <p>Checks whether a teacher is available during a selected time.</p>
+            <span class="feature-link">Manage Availability →</span>
+          </article>
+
+          <!-- Room Availability -->
+          <article class="feature-card" onclick="showModal('Room Availability', 'Displays information about classroom and laboratory availability, capacity, and occupancy status. Ensures proper room allocation without conflicts.')" style="cursor: pointer;">
+            <div class="feature-icon">🏫</div>
+            <h3>Room Availability</h3>
+            <p>Checks whether classrooms and laboratories are already occupied.</p>
+            <span class="feature-link">View Rooms →</span>
+          </article>
+
+          <!-- Student Capacity -->
+          <article class="feature-card" onclick="showModal('Student Capacity', 'Ensures that the selected room has sufficient capacity to accommodate the number of students. Prevents overcrowding and maintains proper learning environment.')" style="cursor: pointer;">
+            <div class="feature-icon">👥</div>
+            <h3>Student Capacity</h3>
+            <p>Ensures the selected room can accommodate the number of students.</p>
+            <span class="feature-link">Learn More →</span>
+          </article>
+
+          <!-- Conflict Prevention -->
+          <article class="feature-card" onclick="showModal('Conflict Prevention', 'Automatically prevents scheduling conflicts including teacher double-bookings, class overlaps, and room double-assignments. Ensures a valid and conflict-free timetable.')" style="cursor: pointer;">
+            <div class="feature-icon">🛡️</div>
+            <h3>Conflict Prevention</h3>
+            <p>Prevents teacher, class and room conflicts.</p>
+            <span class="feature-link">Details →</span>
+          </article>
+
+          <!-- Teacher-Course Matching -->
+          <article class="feature-card" onclick="showModal('Teacher-Course Matching', 'Only assigns teachers to courses they are qualified to teach. Ensures proper course-teacher alignment based on specialization and qualifications.')" style="cursor: pointer;">
+            <div class="feature-icon">✅</div>
+            <h3>Teacher-Course Matching</h3>
+            <p>Only assigns teachers to courses they can teach.</p>
+            <span class="feature-link">Learn More →</span>
+          </article>
+
+          <!-- Teacher Information -->
+          <article class="feature-card" onclick="window.location='/teacher-info'" style="cursor: pointer;">
+            <div class="feature-icon">📋</div>
+            <h3>Teacher Information</h3>
+            <p>Manage and store teacher details, specialization, and availability.</p>
+            <span class="feature-link">Manage Teachers →</span>
+          </article>
+
+          <!-- Database Storage -->
+          <article class="feature-card" onclick="showModal('Database Storage', 'SchedX stores all data in MySQL including teachers, courses, classes, rooms, time slots, availability, and generated timetables. Ensures data persistence and integrity.')" style="cursor: pointer;">
+            <div class="feature-icon">🗃️</div>
+            <h3>Database Storage</h3>
+            <p>Stores input and timetable information in MySQL.</p>
+            <span class="feature-link">Data Info →</span>
+          </article>
+
+          <!-- Persistent Timetable -->
+          <article class="feature-card" onclick="showModal('Persistent Timetable', 'Your generated timetable is saved to MySQL and remains available even after you refresh the browser or close the application. Your work is always saved.')" style="cursor: pointer;">
+            <div class="feature-icon">🔁</div>
+            <h3>Persistent Timetable</h3>
+            <p>Timetable remains available after refreshing the website.</p>
+            <span class="feature-link">Learn More →</span>
+          </article>
+
+          <!-- Easy Input / Feedback -->
+          <article class="feature-card" onclick="window.location='mailto:schedx24x7@gmail.com?subject=SchedX%20Feedback'" style="cursor: pointer;">
+            <div class="feature-icon">📧</div>
+            <h3>Easy Input / Feedback</h3>
+            <p>Submit feedback and suggestions to improve SchedX.</p>
+            <span class="feature-link">Send Feedback →</span>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="about">
+    <div class="container footer-grid">
+      <div class="footer-section footer-brand">
+        <h3>SchedX</h3>
+        <p>SchedX is a smart timetable generation platform designed to simplify timetable creation and reduce scheduling conflicts.</p>
+      </div>
+
+      <div class="footer-section footer-explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/#about">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section footer-contact">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:schedx24x7@gmail.com">schedx24x7@gmail.com</a></p>
+        <p>
+          <a href="https://www.instagram.com/studyroom.online07?igsi=YXltbm1neDV3dWxn" 
+             class="instagram-link" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="Open Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5zm3.5-10.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z"/>
+              <circle cx="18.5" cy="5.5" r="1"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 SchedX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal for feature details -->
+  <div id="modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalBody"></p>
+      <button class="btn btn-primary" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function showModal(title, body) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalBody').textContent = body;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+  </script>
+
+  <script src="/script.js"></script>
+</body>
+</html>
