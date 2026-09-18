@@ -6,3 +6,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.log
+.DS_Store
+
+# Archive and prototype backup folders
+GitHub/
+SIH25091_Smart_Timetable_*
