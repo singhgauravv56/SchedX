@@ -38,43 +38,24 @@
 
         <section class="form-section">
           <h2>Generate Timetable</h2>
-          <p class="section-description">Fill in all the information below to generate a timetable. All data will be saved to MySQL.</p>
+          <p class="section-description">Fill in all the information below to generate a timetable. All data will be saved to Supabase.</p>
 
           <form id="timetableForm" class="form-grid">
             <div class="form-group">
-              <label for="teacherName">Teacher Name <span class="required">*</span></label>
-              <input type="text" id="teacherName" placeholder="e.g., Dr. Rahul Kumar" required>
+              <label for="teacherCount">Number of Teachers <span class="required">*</span></label>
+              <input type="number" id="teacherCount" min="1" max="50" step="1" placeholder="e.g., 3" required>
+              <small class="form-help">Enter the number of teachers to dynamically create teacher fields.</small>
             </div>
 
-            <div class="form-group">
-              <label for="teacherSpec">Teacher Specialization</label>
-              <input type="text" id="teacherSpec" placeholder="e.g., Database Systems">
-            </div>
+            <div class="teacher-fields" id="teacherFields" aria-live="polite"></div>
 
             <div class="form-group">
-              <label for="department">Department <span class="required">*</span></label>
-              <input type="text" id="department" placeholder="e.g., CSE, Humanities, Management" required>
+              <label for="subjectCount">Number of Subjects <span class="required">*</span></label>
+              <input type="number" id="subjectCount" min="1" max="50" step="1" placeholder="e.g., 3" required>
+              <small class="form-help">Note: Number of subjects cannot be greater than number of teachers.</small>
             </div>
 
-            <div class="form-group">
-              <label for="courseName">Subject / Course <span class="required">*</span></label>
-              <input type="text" id="courseName" placeholder="e.g., DBMS, Operating Systems" required>
-            </div>
-
-            <div class="form-group">
-              <label for="className">Class Name <span class="required">*</span></label>
-              <input type="text" id="className" placeholder="e.g., BCA, CSE, B.Tech" required>
-            </div>
-
-            <div class="form-group">
-              <label for="section">Section <span class="required">*</span></label>
-              <input type="text" id="section" placeholder="e.g., A, B, C" value="A" required>
-            </div>
-
-            <div class="form-group">
-              <label for="studentCount">Number of Students <span class="required">*</span></label>
-              <input type="number" id="studentCount" min="1" placeholder="e.g., 40" required>
-            </div>
+            <div class="teacher-fields" id="subjectFields" aria-live="polite"></div>
 
             <div class="form-group">
               <label for="roomType">Room Type <span class="required">*</span></label>
@@ -82,6 +63,7 @@
                 <option value="">-- Select Room Type --</option>
                 <option value="Classroom">Classroom</option>
                 <option value="Laboratory">Laboratory</option>
+                <option value="Both">Both (Classroom & Laboratory)</option>
               </select>
             </div>
 
@@ -109,30 +91,35 @@
           <div id="message" class="message hidden"></div>
         </section>
 
+        <!-- GENERATED TIMETABLE SECTION -->
         <section class="timetable-section" id="timetableSection" style="display: none;">
           <div class="timetable-header">
             <h2>Generated Timetable</h2>
             <div class="timetable-actions">
-              <button id="refreshBtn" class="btn btn-secondary">↻ Refresh</button>
-              <button id="clearBtn" class="btn btn-danger">Clear Timetable</button>
+              <button id="refreshBtn" class="btn btn-secondary" type="button">↻ Refresh</button>
+              <button id="clearBtn" class="btn btn-danger" type="button">Clear Timetable</button>
             </div>
           </div>
 
           <div class="timetable-container">
-            <table class="timetable" id="timetableTable">
+            <table class="timetable">
               <thead>
                 <tr>
                   <th>Day</th>
-                  <th>Time</th>
+                  <th>Time Slot</th>
                   <th>Class</th>
                   <th>Section</th>
-                  <th>Course</th>
+                  <th>Subject</th>
                   <th>Teacher</th>
                   <th>Room</th>
-                  <th>Type</th>
+                  <th>Room Type</th>
                 </tr>
               </thead>
-              <tbody id="timetableBody"></tbody>
+              <tbody id="timetableBody">
+                <tr>
+                  <td colspan="8" class="no-data">No timetable generated yet.</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </section>

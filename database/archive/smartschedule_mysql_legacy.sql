@@ -1,14 +1,18 @@
+-- ==============================================================================
+-- LEGACY MYSQL SCHEMA ARCHIVE - DO NOT USE IN PRODUCTION
+-- This file is retained solely for historical reference.
+-- SchedX has migrated to Supabase PostgreSQL (see database/supabase_schema.sql).
+-- ==============================================================================
+
 CREATE DATABASE IF NOT EXISTS smartschedule CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE smartschedule;
 
--- Departments table
 CREATE TABLE IF NOT EXISTS departments (
   department_id INT AUTO_INCREMENT PRIMARY KEY,
   department_name VARCHAR(100) NOT NULL UNIQUE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Teachers table
 CREATE TABLE IF NOT EXISTS teachers (
   teacher_id INT AUTO_INCREMENT PRIMARY KEY,
   teacher_name VARCHAR(120) NOT NULL,
@@ -19,7 +23,6 @@ CREATE TABLE IF NOT EXISTS teachers (
   FOREIGN KEY(department_id) REFERENCES departments(department_id) ON DELETE SET NULL
 );
 
--- Courses table
 CREATE TABLE IF NOT EXISTS courses (
   course_id INT AUTO_INCREMENT PRIMARY KEY,
   course_name VARCHAR(120) NOT NULL,
@@ -29,7 +32,6 @@ CREATE TABLE IF NOT EXISTS courses (
   FOREIGN KEY(department_id) REFERENCES departments(department_id) ON DELETE SET NULL
 );
 
--- Classes table
 CREATE TABLE IF NOT EXISTS classes (
   class_id INT AUTO_INCREMENT PRIMARY KEY,
   class_name VARCHAR(60) NOT NULL,
@@ -40,7 +42,6 @@ CREATE TABLE IF NOT EXISTS classes (
   FOREIGN KEY(department_id) REFERENCES departments(department_id) ON DELETE SET NULL
 );
 
--- Rooms table
 CREATE TABLE IF NOT EXISTS rooms (
   room_id INT AUTO_INCREMENT PRIMARY KEY,
   room_name VARCHAR(60) NOT NULL UNIQUE,
@@ -49,13 +50,11 @@ CREATE TABLE IF NOT EXISTS rooms (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Working days table
 CREATE TABLE IF NOT EXISTS working_days (
   working_day_id INT AUTO_INCREMENT PRIMARY KEY,
   day_name VARCHAR(15) NOT NULL UNIQUE
 );
 
--- Time slots table
 CREATE TABLE IF NOT EXISTS time_slots (
   slot_id INT AUTO_INCREMENT PRIMARY KEY,
   start_time TIME NOT NULL,
@@ -63,7 +62,6 @@ CREATE TABLE IF NOT EXISTS time_slots (
   UNIQUE KEY uq_time (start_time,end_time)
 );
 
--- Teacher-Course relationship table
 CREATE TABLE IF NOT EXISTS teacher_courses (
   teacher_course_id INT AUTO_INCREMENT PRIMARY KEY,
   teacher_id INT NOT NULL,
@@ -73,7 +71,6 @@ CREATE TABLE IF NOT EXISTS teacher_courses (
   UNIQUE KEY uq_teacher_course (teacher_id, course_id)
 );
 
--- Timetable table
 CREATE TABLE IF NOT EXISTS timetable (
   timetable_id INT AUTO_INCREMENT PRIMARY KEY,
   day VARCHAR(15) NOT NULL,
@@ -92,7 +89,3 @@ CREATE TABLE IF NOT EXISTS timetable (
   UNIQUE KEY uq_class_time(day,slot_id,class_id),
   UNIQUE KEY uq_room_time(day,slot_id,room_id)
 );
-
--- Insert default working days (Monday to Sunday)
-INSERT IGNORE INTO working_days(day_name) VALUES
-('Monday'),('Tuesday'),('Wednesday'),('Thursday'),('Friday'),('Saturday'),('Sunday');

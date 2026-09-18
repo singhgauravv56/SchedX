@@ -13,94 +13,70 @@
     .info-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 40px;
+      gap: 30px;
+      margin-top: 30px;
     }
     .teacher-form-box,
     .teacher-list-box {
-      background: white;
+      background: #ffffff;
       padding: 30px;
       border-radius: 12px;
-      border: 1px solid #e0e0e0;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
-    .teacher-form-box h3,
-    .teacher-list-box h3 {
-      margin-bottom: 20px;
-      color: #2c3e50;
+    .teacher-list-box {
+      max-height: 600px;
+      overflow-y: auto;
     }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #2c3e50;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
+    .teacher-card-item {
+      background: #f8fafc;
       border-radius: 8px;
-      font-size: 14px;
-    }
-    .teacher-list-item {
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 8px;
+      padding: 16px;
       margin-bottom: 12px;
-      border-left: 4px solid #4b63d4;
+      border-left: 4px solid #4f46e5;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .teacher-details {
-      flex: 1;
-    }
-    .teacher-details strong {
+    .teacher-card-details strong {
       display: block;
-      margin-bottom: 5px;
-      color: #2c3e50;
+      color: #1e293b;
+      font-size: 1rem;
+      margin-bottom: 4px;
     }
-    .teacher-details small {
-      color: #666;
-      font-size: 12px;
+    .teacher-card-details small {
+      color: #64748b;
+      font-size: 13px;
     }
     .teacher-actions {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
-    .teacher-actions button {
+    .btn-small {
       padding: 6px 12px;
       font-size: 12px;
-      border: none;
       border-radius: 6px;
       cursor: pointer;
-      background: #e0e0e0;
-      color: #333;
+      border: 1px solid #cbd5e1;
     }
-    .teacher-actions button:hover {
-      background: #d0d0d0;
+    .btn-edit {
+      background: #f1f5f9;
+      color: #1e293b;
     }
-    .courses-input {
-      font-size: 12px;
-      color: #666;
+    .btn-edit:hover {
+      background: #e2e8f0;
+    }
+    .btn-delete {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fecaca;
+    }
+    .btn-delete:hover {
+      background: #fecaca;
     }
     @media (max-width: 768px) {
       .info-layout {
         grid-template-columns: 1fr;
-      }
-      .teacher-list-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .teacher-actions {
-        margin-top: 10px;
-        width: 100%;
-      }
-      .teacher-actions button {
-        flex: 1;
       }
     }
   </style>
@@ -120,7 +96,7 @@
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-link">Home</a>
         <a href="/generate" class="nav-link">Generate</a>
-        <a href="/features" class="nav-link">Features</a>
+        <a href="/features" class="nav-link active">Features</a>
         <a href="/#about" class="nav-link">About Us</a>
       </nav>
     </div>
@@ -131,59 +107,59 @@
       <div class="container">
         <div class="section-heading">
           <span class="eyebrow subtle">Feature</span>
-          <h2>Teacher Information Management</h2>
-          <p class="section-description">Add and manage teacher details including name, specialization, and subjects they teach.</p>
+          <h2>Teacher Profiles & Information</h2>
+          <p class="section-description">Manage faculty records, specializations, and working days stored directly in Supabase PostgreSQL.</p>
         </div>
 
         <div class="info-layout">
-          <!-- Add Teacher Form -->
+          <!-- Form Section -->
           <div class="teacher-form-box">
-            <h3>Add New Teacher</h3>
-            <form id="teacherForm" onsubmit="addTeacher(event)">
+            <h3 id="formTitle" style="margin-bottom: 20px; color: #1e293b;">Add New Teacher</h3>
+            <form id="teacherProfileForm">
+              <input type="hidden" id="editTeacherId" value="">
+
               <div class="form-group">
-                <label for="name">Teacher Name <span class="required">*</span></label>
-                <input type="text" id="name" placeholder="e.g., Dr. Rahul Sharma" required>
+                <label for="teacherNameInput">Teacher Name <span class="required">*</span></label>
+                <input type="text" id="teacherNameInput" placeholder="e.g., Prof. Rajesh Kumar" required>
               </div>
 
               <div class="form-group">
-                <label for="specialization">Specialization <span class="required">*</span></label>
-                <input type="text" id="specialization" placeholder="e.g., Database Systems" required>
+                <label for="teacherSpecInput">Specialization / Department</label>
+                <input type="text" id="teacherSpecInput" placeholder="e.g., Computer Networks, Mathematics">
               </div>
 
               <div class="form-group">
-                <label for="workingDays">Working Days Per Week <span class="required">*</span></label>
-                <input type="number" id="workingDays" min="1" max="7" value="5" required>
+                <label for="teacherCourseInput">Course / Subject Taught</label>
+                <input type="text" id="teacherCourseInput" placeholder="e.g., Data Structures & Algorithms">
+                <small class="form-help">Optionally link a primary subject to this teacher.</small>
               </div>
 
               <div class="form-group">
-                <label for="startTime">Start Time <span class="required">*</span></label>
-                <input type="time" id="startTime" value="09:00" required>
+                <label for="workingDaysInput">Working Days Per Week</label>
+                <input type="number" id="workingDaysInput" min="1" max="7" value="5" required>
               </div>
 
-              <div class="form-group">
-                <label for="endTime">End Time <span class="required">*</span></label>
-                <input type="time" id="endTime" value="17:00" required>
+              <div class="form-actions" style="margin-top: 25px;">
+                <button type="submit" class="btn btn-primary" id="saveTeacherBtn">Save to Supabase</button>
+                <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display: none;" onclick="resetTeacherForm()">Cancel</button>
               </div>
-
-              <div class="form-group">
-                <label for="courses">Subjects They Teach (comma-separated)</label>
-                <input type="text" id="courses" placeholder="e.g., DBMS, OOP, Web Development">
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="width: 100%;">Add Teacher</button>
             </form>
 
-            <div id="formMessage" class="message hidden" style="margin-top: 15px;"></div>
+            <div id="profileMessage" class="message hidden" style="margin-top: 15px;"></div>
           </div>
 
-          <!-- Teacher List -->
+          <!-- List Section -->
           <div class="teacher-list-box">
-            <h3>Saved Teachers</h3>
-            <div id="teachersList" style="min-height: 300px;">
-              <p style="color: #999; text-align: center; padding: 40px 0;">No teachers added yet. Add a teacher using the form on the left.</p>
+            <div class="timetable-header" style="margin-bottom: 15px;">
+              <h3>Saved Faculty (Supabase)</h3>
+              <button class="btn btn-secondary" type="button" onclick="loadTeacherProfiles()">↻ Refresh</button>
+            </div>
+            <div id="teacherProfilesContainer">
+              <p class="no-data">Loading teacher profiles from Supabase...</p>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   </main>
@@ -229,82 +205,138 @@
   </footer>
 
   <script>
-    let teachers = JSON.parse(localStorage.getItem('schedx_teachers')) || [];
+    let teacherCache = [];
 
-    function addTeacher(event) {
-      event.preventDefault();
+    function resetTeacherForm() {
+      document.getElementById('teacherProfileForm').reset();
+      document.getElementById('editTeacherId').value = '';
+      document.getElementById('formTitle').textContent = 'Add New Teacher';
+      document.getElementById('saveTeacherBtn').textContent = 'Save to Supabase';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+      document.getElementById('workingDaysInput').value = '5';
+    }
 
-      const name = document.getElementById('name').value.trim();
-      const specialization = document.getElementById('specialization').value.trim();
-      const workingDays = parseInt(document.getElementById('workingDays').value);
-      const startTime = document.getElementById('startTime').value;
-      const endTime = document.getElementById('endTime').value;
-      const courses = document.getElementById('courses').value.trim();
+    async function loadTeacherProfiles() {
+      const container = document.getElementById('teacherProfilesContainer');
+      try {
+        const response = await fetch('/api/teachers');
+        const teachers = await response.json();
 
-      if (!name || !specialization) {
-        showMessage('Please fill in all required fields', false);
+        if (!response.ok) throw new Error(teachers.error || 'Failed to load teachers');
+
+        teacherCache = teachers || [];
+
+        if (!teacherCache.length) {
+          container.innerHTML = '<p class="no-data">No teachers added yet. Fill the form on the left to add a teacher.</p>';
+          return;
+        }
+
+        container.innerHTML = teacherCache.map((t) => `
+          <div class="teacher-card-item">
+            <div class="teacher-card-details">
+              <strong>${t.teacher_name}</strong>
+              <small>${t.specialization || 'General Faculty'} • ${t.working_days_per_week || 5} days/week</small>
+            </div>
+            <div class="teacher-actions">
+              <button type="button" class="btn-small btn-edit" onclick="editTeacher(${t.teacher_id})">Edit</button>
+              <button type="button" class="btn-small btn-delete" onclick="deleteTeacher(${t.teacher_id}, '${t.teacher_name.replace(/'/g, "\\'")}')">Delete</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        container.innerHTML = `<p class="no-data" style="color: #ef4444;">Unable to load teachers from Supabase: ${err.message}</p>`;
+      }
+    }
+
+    function editTeacher(id) {
+      const teacher = teacherCache.find((t) => Number(t.teacher_id) === Number(id));
+      if (!teacher) return;
+
+      document.getElementById('editTeacherId').value = teacher.teacher_id;
+      document.getElementById('teacherNameInput').value = teacher.teacher_name;
+      document.getElementById('teacherSpecInput').value = teacher.specialization || '';
+      document.getElementById('workingDaysInput').value = teacher.working_days_per_week || 5;
+
+      document.getElementById('formTitle').textContent = 'Edit Teacher Profile';
+      document.getElementById('saveTeacherBtn').textContent = 'Update Profile';
+      document.getElementById('cancelEditBtn').style.display = 'inline-block';
+      document.getElementById('teacherNameInput').focus();
+    }
+
+    async function deleteTeacher(id, name) {
+      if (!confirm(`Are you sure you want to delete ${name}?`)) return;
+
+      try {
+        const res = await fetch(`/api/teachers/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to delete');
+
+        showMessage('✓ Teacher deleted successfully.', 'success');
+        await loadTeacherProfiles();
+      } catch (err) {
+        showMessage(`Error: ${err.message}`, 'error');
+      }
+    }
+
+    function showMessage(text, type) {
+      const msg = document.getElementById('profileMessage');
+      msg.textContent = text;
+      msg.className = `message show ${type}`;
+    }
+
+    document.getElementById('teacherProfileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const editId = document.getElementById('editTeacherId').value;
+      const name = document.getElementById('teacherNameInput').value.trim();
+      const spec = document.getElementById('teacherSpecInput').value.trim();
+      const course = document.getElementById('teacherCourseInput').value.trim();
+      const workingDays = parseInt(document.getElementById('workingDaysInput').value, 10) || 5;
+
+      if (!name) {
+        showMessage('Please enter the teacher name.', 'error');
         return;
       }
 
-      const teacher = {
-        id: Date.now(),
-        name,
-        specialization,
-        workingDays,
-        startTime,
-        endTime,
-        courses: courses ? courses.split(',').map(c => c.trim()) : []
+      const payload = {
+        teacher_name: name,
+        specialization: spec,
+        working_days_per_week: workingDays
       };
 
-      teachers.push(teacher);
-      localStorage.setItem('schedx_teachers', JSON.stringify(teachers));
+      try {
+        const url = editId ? `/api/teachers/${editId}` : '/api/teachers';
+        const method = editId ? 'PUT' : 'POST';
 
-      showMessage(`Teacher "${name}" added successfully!`, true);
-      document.getElementById('teacherForm').reset();
-      displayTeachers();
-    }
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
 
-    function deleteTeacher(id) {
-      teachers = teachers.filter(t => t.id !== id);
-      localStorage.setItem('schedx_teachers', JSON.stringify(teachers));
-      displayTeachers();
-    }
+        if (!res.ok) throw new Error(result.error || 'Failed to save teacher');
 
-    function displayTeachers() {
-      const list = document.getElementById('teachersList');
-      if (teachers.length === 0) {
-        list.innerHTML = '<p style="color: #999; text-align: center; padding: 40px 0;">No teachers added yet. Add a teacher using the form on the left.</p>';
-        return;
+        // If a course was entered, ensure it exists in courses table
+        if (course) {
+          await fetch('/api/courses', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ course_name: course })
+          });
+        }
+
+        showMessage(editId ? '✓ Teacher profile updated in Supabase.' : '✓ Teacher profile saved to Supabase.', 'success');
+        resetTeacherForm();
+        await loadTeacherProfiles();
+      } catch (err) {
+        showMessage(`Error: ${err.message}`, 'error');
       }
+    });
 
-      list.innerHTML = teachers.map(teacher => `
-        <div class="teacher-list-item">
-          <div class="teacher-details">
-            <strong>${teacher.name}</strong>
-            <small>${teacher.specialization} • ${teacher.workingDays} days/week • ${teacher.startTime}-${teacher.endTime}</small>
-            ${teacher.courses.length > 0 ? `<small class="courses-input">Teaches: ${teacher.courses.join(', ')}</small>` : ''}
-          </div>
-          <div class="teacher-actions">
-            <button type="button" onclick="deleteTeacher(${teacher.id})">Delete</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function showMessage(text, isSuccess) {
-      const msg = document.getElementById('formMessage');
-      msg.textContent = text;
-      msg.className = 'message ' + (isSuccess ? '' : 'error');
-      msg.classList.remove('hidden');
-      
-      setTimeout(() => {
-        msg.classList.add('hidden');
-      }, 3000);
-    }
-
-    displayTeachers();
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTeacherProfiles();
+    });
   </script>
-
   <script src="/script.js"></script>
 </body>
 </html>

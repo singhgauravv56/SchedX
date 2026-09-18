@@ -1,3 +1,9 @@
+-- ==============================================================================
+-- LEGACY MYSQL SCHEMA ARCHIVE - DO NOT USE IN PRODUCTION
+-- This file is retained solely for historical reference.
+-- SchedX has migrated to Supabase PostgreSQL (see database/supabase_schema.sql).
+-- ==============================================================================
+
 CREATE DATABASE IF NOT EXISTS smart_timetable CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE smart_timetable;
 
@@ -77,28 +83,3 @@ CREATE TABLE IF NOT EXISTS timetable (
   UNIQUE KEY uq_class_day_slot (day, slot_id, class_id),
   UNIQUE KEY uq_room_day_slot (day, slot_id, room_id)
 );
-
-INSERT INTO rooms (room_name, room_type, capacity) VALUES
-('Room-101', 'Classroom', 60),
-('Room-102', 'Classroom', 80),
-('Room-201', 'Laboratory', 40),
-('Room-202', 'Laboratory', 50)
-ON DUPLICATE KEY UPDATE room_name = VALUES(room_name);
-
-INSERT INTO time_slots (day, start_time, end_time) VALUES
-('Monday', '09:00:00', '10:00:00'),
-('Monday', '10:00:00', '11:00:00'),
-('Monday', '11:00:00', '12:00:00'),
-('Tuesday', '09:00:00', '10:00:00'),
-('Tuesday', '10:00:00', '11:00:00'),
-('Tuesday', '11:00:00', '12:00:00'),
-('Wednesday', '09:00:00', '10:00:00'),
-('Wednesday', '10:00:00', '11:00:00'),
-('Wednesday', '11:00:00', '12:00:00'),
-('Thursday', '09:00:00', '10:00:00'),
-('Thursday', '10:00:00', '11:00:00'),
-('Thursday', '11:00:00', '12:00:00'),
-('Friday', '09:00:00', '10:00:00'),
-('Friday', '10:00:00', '11:00:00'),
-('Friday', '11:00:00', '12:00:00')
-ON DUPLICATE KEY UPDATE start_time = VALUES(start_time);

@@ -6,6 +6,51 @@
   <meta name="description" content="Features - SchedX Smart Timetable Generator">
   <title>Features | SchedX</title>
   <link rel="stylesheet" href="/style.css">
+  <style>
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-card {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .modal-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #1e293b;
+    }
+    .modal-card p {
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .modal-close-btn {
+      background: #4f46e5;
+      color: #ffffff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .modal-close-btn:hover {
+      background: #4338ca;
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -37,89 +82,98 @@
         </div>
 
         <div class="feature-grid">
-          <!-- Smart Timetable Generation -->
+          <!-- 1. Smart Timetable Generation -->
           <article class="feature-card" onclick="window.location='/generate'" style="cursor: pointer;">
             <div class="feature-icon">⚡</div>
             <h3>Smart Timetable Generation</h3>
-            <p>Automatically creates a timetable from user inputs.</p>
+            <p>Automatically creates a conflict-free timetable from user inputs and teacher availability.</p>
             <span class="feature-link">Go to Generate →</span>
           </article>
 
-          <!-- Teacher Availability -->
+          <!-- 2. Teacher Availability -->
           <article class="feature-card" onclick="window.location='/teacher-availability'" style="cursor: pointer;">
             <div class="feature-icon">👩‍🏫</div>
             <h3>Teacher Availability</h3>
-            <p>Checks whether a teacher is available during a selected time.</p>
+            <p>Checks whether a teacher is available during selected time slots and persists to Supabase.</p>
             <span class="feature-link">Manage Availability →</span>
           </article>
 
-          <!-- Room Availability -->
-          <article class="feature-card" onclick="showModal('Room Availability', 'Displays information about classroom and laboratory availability, capacity, and occupancy status. Ensures proper room allocation without conflicts.')" style="cursor: pointer;">
-            <div class="feature-icon">🏫</div>
-            <h3>Room Availability</h3>
-            <p>Checks whether classrooms and laboratories are already occupied.</p>
-            <span class="feature-link">View Rooms →</span>
-          </article>
-
-          <!-- Student Capacity -->
-          <article class="feature-card" onclick="showModal('Student Capacity', 'Ensures that the selected room has sufficient capacity to accommodate the number of students. Prevents overcrowding and maintains proper learning environment.')" style="cursor: pointer;">
-            <div class="feature-icon">👥</div>
-            <h3>Student Capacity</h3>
-            <p>Ensures the selected room can accommodate the number of students.</p>
-            <span class="feature-link">Learn More →</span>
-          </article>
-
-          <!-- Conflict Prevention -->
-          <article class="feature-card" onclick="showModal('Conflict Prevention', 'Automatically prevents scheduling conflicts including teacher double-bookings, class overlaps, and room double-assignments. Ensures a valid and conflict-free timetable.')" style="cursor: pointer;">
-            <div class="feature-icon">🛡️</div>
-            <h3>Conflict Prevention</h3>
-            <p>Prevents teacher, class and room conflicts.</p>
-            <span class="feature-link">Details →</span>
-          </article>
-
-          <!-- Teacher-Course Matching -->
-          <article class="feature-card" onclick="showModal('Teacher-Course Matching', 'Only assigns teachers to courses they are qualified to teach. Ensures proper course-teacher alignment based on specialization and qualifications.')" style="cursor: pointer;">
-            <div class="feature-icon">✅</div>
-            <h3>Teacher-Course Matching</h3>
-            <p>Only assigns teachers to courses they can teach.</p>
-            <span class="feature-link">Learn More →</span>
-          </article>
-
-          <!-- Teacher Information -->
+          <!-- 3. Teacher Information -->
           <article class="feature-card" onclick="window.location='/teacher-info'" style="cursor: pointer;">
             <div class="feature-icon">📋</div>
             <h3>Teacher Information</h3>
-            <p>Manage and store teacher details, specialization, and availability.</p>
+            <p>Manage and store teacher profiles, courses, specializations, and working days.</p>
             <span class="feature-link">Manage Teachers →</span>
           </article>
 
-          <!-- Database Storage -->
-          <article class="feature-card" onclick="showModal('Database Storage', 'SchedX stores all data in MySQL including teachers, courses, classes, rooms, time slots, availability, and generated timetables. Ensures data persistence and integrity.')" style="cursor: pointer;">
+          <!-- 4. Room Availability & Management -->
+          <article class="feature-card" onclick="window.location='/rooms'" style="cursor: pointer;">
+            <div class="feature-icon">🏫</div>
+            <h3>Room Availability</h3>
+            <p>Tracks classrooms and laboratories to prevent room double-booking during time slots.</p>
+            <span class="feature-link">View Rooms →</span>
+          </article>
+
+          <!-- 5. Student Capacity Checking -->
+          <article class="feature-card" onclick="showFeatureModal('Student Capacity Validation', 'SchedX ensures every assigned classroom or laboratory has enough student capacity for the enrolled class size, preventing overcrowded rooms.')" style="cursor: pointer;">
+            <div class="feature-icon">👥</div>
+            <h3>Student Capacity</h3>
+            <p>Validates class student count against room capacity before assigning slots.</p>
+            <span class="feature-link">Details →</span>
+          </article>
+
+          <!-- 6. Teacher-Course Matching -->
+          <article class="feature-card" onclick="showFeatureModal('Teacher-Course Matching', 'Teachers are only scheduled for subjects they are qualified to teach. The system maintains teacher-course qualification mappings.')" style="cursor: pointer;">
+            <div class="feature-icon">🎯</div>
+            <h3>Teacher-Course Matching</h3>
+            <p>Ensures teachers are only assigned to courses they are qualified to teach.</p>
+            <span class="feature-link">Details →</span>
+          </article>
+
+          <!-- 7. Conflict Prevention -->
+          <article class="feature-card" onclick="showFeatureModal('3-Way Conflict Prevention', 'Automatically enforces strict uniqueness: no teacher in two classes at once, no room assigned to two classes at once, and no class in two subjects at once.')" style="cursor: pointer;">
+            <div class="feature-icon">🛡️</div>
+            <h3>Conflict Prevention</h3>
+            <p>Guarantees zero overlapping teachers, classes, or rooms in any time period.</p>
+            <span class="feature-link">Details →</span>
+          </article>
+
+          <!-- 8. Database Storage -->
+          <article class="feature-card" onclick="showFeatureModal('Supabase PostgreSQL Cloud Storage', 'All teachers, courses, classes, rooms, slots, availability, and generated timetables are securely stored in Supabase PostgreSQL cloud database.')" style="cursor: pointer;">
             <div class="feature-icon">🗃️</div>
             <h3>Database Storage</h3>
-            <p>Stores input and timetable information in MySQL.</p>
-            <span class="feature-link">Data Info →</span>
+            <p>Reliable cloud persistence with Supabase PostgreSQL without local database dependencies.</p>
+            <span class="feature-link">Details →</span>
           </article>
 
-          <!-- Persistent Timetable -->
-          <article class="feature-card" onclick="showModal('Persistent Timetable', 'Your generated timetable is saved to MySQL and remains available even after you refresh the browser or close the application. Your work is always saved.')" style="cursor: pointer;">
-            <div class="feature-icon">🔁</div>
+          <!-- 9. Persistent Timetable -->
+          <article class="feature-card" onclick="showFeatureModal('Persistent Timetable', 'Generated timetables persist in Supabase cloud database. Refreshing or reopening the browser instantly loads your existing schedule.')" style="cursor: pointer;">
+            <div class="feature-icon">💾</div>
             <h3>Persistent Timetable</h3>
-            <p>Timetable remains available after refreshing the website.</p>
-            <span class="feature-link">Learn More →</span>
+            <p>Retains your schedule across browser reloads directly from Supabase.</p>
+            <span class="feature-link">Details →</span>
           </article>
 
-          <!-- Easy Input / Feedback -->
+          <!-- 10. Easy Input / Feedback -->
           <article class="feature-card" onclick="window.location='mailto:schedx24x7@gmail.com?subject=SchedX%20Feedback'" style="cursor: pointer;">
             <div class="feature-icon">📧</div>
             <h3>Easy Input / Feedback</h3>
-            <p>Submit feedback and suggestions to improve SchedX.</p>
+            <p>Send suggestions and feedback directly to the SchedX team.</p>
             <span class="feature-link">Send Feedback →</span>
           </article>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- MODAL FOR FEATURE DETAILS -->
+  <div id="featureModal" class="modal-overlay" onclick="closeFeatureModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <h3 id="modalTitle">Feature</h3>
+      <p id="modalDescription">Details</p>
+      <button type="button" class="modal-close-btn" onclick="closeFeatureModal()">Close</button>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="site-footer" id="about">
@@ -161,35 +215,17 @@
     </div>
   </footer>
 
-  <!-- Modal for feature details -->
-  <div id="modal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <h2 id="modalTitle"></h2>
-      <p id="modalBody"></p>
-      <button class="btn btn-primary" onclick="closeModal()">Close</button>
-    </div>
-  </div>
-
   <script>
-    function showModal(title, body) {
+    function showFeatureModal(title, desc) {
       document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalBody').textContent = body;
-      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('modalDescription').textContent = desc;
+      document.getElementById('featureModal').classList.add('active');
     }
 
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
+    function closeFeatureModal() {
+      document.getElementById('featureModal').classList.remove('active');
     }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('modal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    };
   </script>
-
   <script src="/script.js"></script>
 </body>
 </html>

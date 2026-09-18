@@ -13,92 +13,86 @@
     .availability-steps {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .availability-step {
-      background: #f8f9fa;
-      padding: 30px;
-      border-radius: 12px;
-      border: 1px solid #e0e0e0;
-    }
-    .availability-step h3 {
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-    .availability-step p {
-      color: #666;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .teacher-form {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      border: 1px solid #e0e0e0;
+      gap: 30px;
       margin-bottom: 30px;
     }
-    .form-group {
-      margin-bottom: 20px;
+    .availability-step {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #2c3e50;
+    .availability-step h3 {
+      margin-bottom: 10px;
+      color: #1e293b;
+      font-size: 1.1rem;
     }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+    .availability-step p {
+      color: #64748b;
       font-size: 14px;
+      line-height: 1.5;
     }
-    .teacher-list {
-      background: white;
+    .teacher-form-card {
+      background: #ffffff;
       padding: 30px;
       border-radius: 12px;
-      border: 1px solid #e0e0e0;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
     .teacher-item {
-      background: #f8f9fa;
+      background: #f8fafc;
       padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      border-left: 4px solid #4b63d4;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 4px solid #4f46e5;
     }
-    .teacher-name {
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #2c3e50;
+    .teacher-name-header {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1e293b;
+      font-size: 1rem;
     }
     .availability-checkboxes {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 10px;
-      margin-top: 10px;
-      font-size: 13px;
+      margin-top: 12px;
     }
     .checkbox-item {
       display: flex;
       align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 13px;
     }
     .checkbox-item input {
       width: auto;
-      margin-right: 8px;
+      margin: 0;
       cursor: pointer;
     }
-    .checkbox-item label {
-      margin-bottom: 0;
-      cursor: pointer;
-      font-weight: 400;
+    .saved-availability-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    .saved-availability-table th,
+    .saved-availability-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .saved-availability-table th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: #334155;
     }
     @media (max-width: 768px) {
       .availability-steps {
-        grid-template-columns: 1fr;
-      }
-      .availability-checkboxes {
         grid-template-columns: 1fr;
       }
     }
@@ -119,7 +113,7 @@
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-link">Home</a>
         <a href="/generate" class="nav-link">Generate</a>
-        <a href="/features" class="nav-link">Features</a>
+        <a href="/features" class="nav-link active">Features</a>
         <a href="/#about" class="nav-link">About Us</a>
       </nav>
     </div>
@@ -131,38 +125,66 @@
         <div class="section-heading">
           <span class="eyebrow subtle">Feature</span>
           <h2>Teacher Availability Management</h2>
-          <p class="section-description">Set up teacher availability for better timetable generation. Define working days and time slots for each teacher.</p>
+          <p class="section-description">Configure teacher availability stored persistently in Supabase cloud database to generate conflict-free schedules.</p>
         </div>
 
         <div class="availability-steps">
           <div class="availability-step">
-            <h3>Step 1: Add Teachers</h3>
-            <p>Enter the number of teachers you want to add availability for. The form will dynamically create input fields for each teacher.</p>
+            <h3>Step 1: Specify Teachers</h3>
+            <p>Select the number of teachers to configure. Dynamic form fields will be generated for teacher profiles and time slots.</p>
           </div>
           <div class="availability-step">
-            <h3>Step 2: Set Availability</h3>
-            <p>For each teacher, select which days and time slots they are available. This information will be used by the timetable generator.</p>
+            <h3>Step 2: Select Available Slots</h3>
+            <p>Check the available days and 1-hour time slots. Saving stores this directly in Supabase table <code>teacher_availability</code>.</p>
           </div>
         </div>
 
-        <!-- Teacher Count Form -->
-        <div class="teacher-form">
-          <h3>How many teachers do you want to add?</h3>
-          <div class="form-group" style="max-width: 300px;">
-            <label for="teacherCount">Number of Teachers:</label>
-            <input type="number" id="teacherCount" min="1" max="50" value="1" placeholder="Enter number">
-            <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="generateTeacherForms()">Generate Forms</button>
+        <!-- Setup Form Card -->
+        <div class="teacher-form-card">
+          <h3 style="margin-bottom: 15px;">Configure Teacher Availability</h3>
+          <div class="form-group" style="max-width: 320px;">
+            <label for="teacherCountInput">Number of Teachers:</label>
+            <input type="number" id="teacherCountInput" min="1" max="20" value="1" placeholder="Enter count">
+            <button class="btn btn-secondary" style="margin-top: 12px; width: 100%;" type="button" onclick="renderDynamicForms()">Set Up Forms</button>
+          </div>
+
+          <div id="dynamicTeachersContainer" style="display: none; margin-top: 25px;">
+            <div id="dynamicTeacherList"></div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 15px;" type="button" id="saveAvailabilityBtn" onclick="saveTeacherAvailability()">Save Availability to Supabase</button>
+          </div>
+
+          <div id="availMessage" class="message hidden" style="margin-top: 15px;"></div>
+        </div>
+
+        <!-- Saved Availability Section (Loaded from Supabase) -->
+        <div class="teacher-form-card">
+          <div class="timetable-header">
+            <div>
+              <h3>Saved Teacher Availability (Supabase)</h3>
+              <p class="section-description">Active availability rules retrieved from Supabase PostgreSQL database.</p>
+            </div>
+            <button class="btn btn-secondary" type="button" onclick="loadSavedAvailability()">↻ Refresh List</button>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="saved-availability-table">
+              <thead>
+                <tr>
+                  <th>Teacher</th>
+                  <th>Day</th>
+                  <th>Time Slot</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="savedAvailBody">
+                <tr>
+                  <td colspan="4" class="no-data">Loading saved availability from Supabase...</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- Dynamic Teacher Forms -->
-        <div id="teachersContainer" class="teacher-list" style="display: none;">
-          <h3 style="margin-bottom: 20px;">Teacher Availability Setup</h3>
-          <div id="dynamicTeachers"></div>
-          <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="saveAvailability()">Save Availability</button>
-        </div>
-
-        <div id="availabilityMessage" class="message hidden" style="margin-top: 20px;"></div>
       </div>
     </section>
   </main>
@@ -194,7 +216,7 @@
              rel="noopener noreferrer" 
              aria-label="Open Instagram">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5zm3.5-10.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 22.5zm3.5-10.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z"/>
               <circle cx="18.5" cy="5.5" r="1"/>
             </svg>
           </a>
@@ -210,88 +232,146 @@
   <script>
     const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     const TIME_SLOTS = [
-      '09:00–10:00', '10:00–11:00', '11:00–12:00',
-      '13:00–14:00', '14:00–15:00', '15:00–16:00'
+      '09:00-10:00',
+      '10:00-11:00',
+      '11:00-12:00',
+      '13:00-14:00',
+      '14:00-15:00',
+      '15:00-16:00'
     ];
 
-    function generateTeacherForms() {
-      const count = parseInt(document.getElementById('teacherCount').value) || 1;
-      const container = document.getElementById('dynamicTeachers');
+    function renderDynamicForms() {
+      const count = parseInt(document.getElementById('teacherCountInput').value, 10) || 1;
+      const container = document.getElementById('dynamicTeacherList');
       container.innerHTML = '';
 
       for (let i = 1; i <= count; i++) {
-        const teacherDiv = document.createElement('div');
-        teacherDiv.className = 'teacher-item';
-        let checkboxesHTML = '';
-        
-        DAYS.forEach(day => {
-          TIME_SLOTS.forEach(slot => {
-            checkboxesHTML += `
+        const item = document.createElement('div');
+        item.className = 'teacher-item';
+
+        let checkboxes = '';
+        DAYS.forEach((day) => {
+          TIME_SLOTS.forEach((slot) => {
+            const id = `slot_t${i}_${day}_${slot.replace(':', '').replace('-', '_')}`;
+            checkboxes += `
               <div class="checkbox-item">
-                <input type="checkbox" id="t${i}_${day}_${slot}" value="${day}|${slot}">
-                <label for="t${i}_${day}_${slot}">${day} ${slot}</label>
+                <input type="checkbox" id="${id}" data-teacher-idx="${i}" data-day="${day}" data-slot="${slot}" checked>
+                <label for="${id}">${day.slice(0, 3)} ${slot}</label>
               </div>
             `;
           });
         });
 
-        teacherDiv.innerHTML = `
-          <div class="teacher-name">Teacher ${i}</div>
+        item.innerHTML = `
+          <div class="teacher-name-header">Teacher ${i} Configuration</div>
           <div class="form-group">
-            <label for="teacherName${i}">Name:</label>
-            <input type="text" id="teacherName${i}" placeholder="e.g., Dr. Rahul Sharma" required>
+            <label for="tName_${i}">Teacher Name <span class="required">*</span></label>
+            <input type="text" id="tName_${i}" placeholder="e.g., Dr. Alan Turing" required>
           </div>
           <div class="form-group">
-            <label for="teacherSpec${i}">Specialization:</label>
-            <input type="text" id="teacherSpec${i}" placeholder="e.g., Database Systems">
+            <label for="tSpec_${i}">Specialization</label>
+            <input type="text" id="tSpec_${i}" placeholder="e.g., Algorithms & Systems">
           </div>
           <div>
-            <strong style="display: block; margin-bottom: 15px;">Select Available Time Slots:</strong>
-            <div class="availability-checkboxes">${checkboxesHTML}</div>
+            <strong style="font-size: 13px; color: #334155; display: block; margin-bottom: 8px;">Select Available Slots:</strong>
+            <div class="availability-checkboxes">${checkboxes}</div>
           </div>
         `;
-        
-        container.appendChild(teacherDiv);
+        container.appendChild(item);
       }
 
-      document.getElementById('teachersContainer').style.display = 'block';
+      document.getElementById('dynamicTeachersContainer').style.display = 'block';
     }
 
-    function saveAvailability() {
-      const count = parseInt(document.getElementById('teacherCount').value) || 1;
-      const teachers = [];
-      const msg = document.getElementById('availabilityMessage');
+    async function saveTeacherAvailability() {
+      const count = parseInt(document.getElementById('teacherCountInput').value, 10) || 1;
+      const payload = [];
+      const msg = document.getElementById('availMessage');
+      const btn = document.getElementById('saveAvailabilityBtn');
 
       for (let i = 1; i <= count; i++) {
-        const name = document.getElementById(`teacherName${i}`).value;
-        const spec = document.getElementById(`teacherSpec${i}`).value;
-        
-        if (!name.trim()) {
-          msg.textContent = `Please enter name for Teacher ${i}`;
-          msg.classList.remove('hidden');
+        const nameInput = document.getElementById(`tName_${i}`);
+        const specInput = document.getElementById(`tSpec_${i}`);
+        const name = nameInput ? nameInput.value.trim() : '';
+        const spec = specInput ? specInput.value.trim() : '';
+
+        if (!name) {
+          msg.textContent = `Please enter a name for Teacher ${i}.`;
+          msg.className = 'message show error';
           return;
         }
 
-        const availability = [];
-        DAYS.forEach(day => {
-          TIME_SLOTS.forEach(slot => {
-            const checkbox = document.getElementById(`t${i}_${day}_${slot}`);
-            if (checkbox && checkbox.checked) {
-              availability.push(`${day} ${slot}`);
-            }
-          });
+        const checkedSlots = [];
+        document.querySelectorAll(`[data-teacher-idx="${i}"]:checked`).forEach((cb) => {
+          checkedSlots.push(`${cb.dataset.day}|${cb.dataset.slot}`);
         });
 
-        teachers.push({ name, specialization: spec, availability });
+        payload.push({
+          teacher_name: name,
+          specialization: spec,
+          availability: checkedSlots
+        });
       }
 
-      msg.innerHTML = `<span style="color: green;">✓ Availability saved for ${teachers.length} teacher(s). This information will be used when generating timetables.</span>`;
-      msg.classList.remove('hidden');
-      
-      console.log('Saved teachers:', teachers);
-    }
-  </script>
+      btn.disabled = true;
+      btn.textContent = 'Saving to Supabase...';
 
+      try {
+        const response = await fetch('/api/teacher-availability', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ teachers: payload })
+        });
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Failed to save availability');
+        }
+
+        msg.textContent = '✓ Teacher availability saved successfully to Supabase!';
+        msg.className = 'message show success';
+
+        await loadSavedAvailability();
+      } catch (err) {
+        msg.textContent = `Error: ${err.message}`;
+        msg.className = 'message show error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Save Availability to Supabase';
+      }
+    }
+
+    async function loadSavedAvailability() {
+      const tbody = document.getElementById('savedAvailBody');
+      try {
+        const response = await fetch('/api/teacher-availability');
+        const list = await response.json();
+
+        if (!response.ok) throw new Error(list.error || 'Failed to load');
+
+        if (!list || list.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="4" class="no-data">No availability records saved yet. Configure teachers above to save.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = list.map((item) => `
+          <tr>
+            <td><strong>${item.teacher_name}</strong></td>
+            <td>${item.day}</td>
+            <td>${item.start_time ? item.start_time.slice(0, 5) : ''} - ${item.end_time ? item.end_time.slice(0, 5) : ''}</td>
+            <td><span class="status-badge status-available">Available</span></td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="4" class="no-data" style="color: #ef4444;">Unable to load from Supabase: ${err.message}</td></tr>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDynamicForms();
+      loadSavedAvailability();
+    });
+  </script>
   <script src="/script.js"></script>
 </body>
 </html>
