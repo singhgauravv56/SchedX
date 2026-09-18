@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teacher Availability - SchedX Smart Timetable Generator">
+  <title>Teacher Availability | SchedX</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .teacher-availability-section {
+      padding: 60px 0;
+    }
+    .availability-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .availability-step {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+    }
+    .availability-step h3 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .availability-step p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .teacher-form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .teacher-list {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+    }
+    .teacher-item {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border-left: 4px solid #4b63d4;
+    }
+    .teacher-name {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    .availability-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+    }
+    .checkbox-item input {
+      width: auto;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+    .checkbox-item label {
+      margin-bottom: 0;
+      cursor: pointer;
+      font-weight: 400;
+    }
+    @media (max-width: 768px) {
+      .availability-steps {
+        grid-template-columns: 1fr;
+      }
+      .availability-checkboxes {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/generate" class="nav-link">Generate</a>
+        <a href="/features" class="nav-link">Features</a>
+        <a href="/#about" class="nav-link">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="teacher-availability-section section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow subtle">Feature</span>
+          <h2>Teacher Availability Management</h2>
+          <p class="section-description">Set up teacher availability for better timetable generation. Define working days and time slots for each teacher.</p>
+        </div>
+
+        <div class="availability-steps">
+          <div class="availability-step">
+            <h3>Step 1: Add Teachers</h3>
+            <p>Enter the number of teachers you want to add availability for. The form will dynamically create input fields for each teacher.</p>
+          </div>
+          <div class="availability-step">
+            <h3>Step 2: Set Availability</h3>
+            <p>For each teacher, select which days and time slots they are available. This information will be used by the timetable generator.</p>
+          </div>
+        </div>
+
+        <!-- Teacher Count Form -->
+        <div class="teacher-form">
+          <h3>How many teachers do you want to add?</h3>
+          <div class="form-group" style="max-width: 300px;">
+            <label for="teacherCount">Number of Teachers:</label>
+            <input type="number" id="teacherCount" min="1" max="50" value="1" placeholder="Enter number">
+            <button class="btn btn-primary" style="margin-top: 15px; width: 100%;" onclick="generateTeacherForms()">Generate Forms</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Teacher Forms -->
+        <div id="teachersContainer" class="teacher-list" style="display: none;">
+          <h3 style="margin-bottom: 20px;">Teacher Availability Setup</h3>
+          <div id="dynamicTeachers"></div>
+          <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="saveAvailability()">Save Availability</button>
+        </div>
+
+        <div id="availabilityMessage" class="message hidden" style="margin-top: 20px;"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="about">
+    <div class="container footer-grid">
+      <div class="footer-section footer-brand">
+        <h3>SchedX</h3>
+        <p>SchedX is a smart timetable generation platform designed to simplify timetable creation and reduce scheduling conflicts.</p>
+      </div>
+
+      <div class="footer-section footer-explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/#about">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section footer-contact">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:schedx24x7@gmail.com">schedx24x7@gmail.com</a></p>
+        <p>
+          <a href="https://www.instagram.com/studyroom.online07?igsi=YXltbm1neDV3dWxn" 
+             class="instagram-link" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="Open Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5zm3.5-10.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z"/>
+              <circle cx="18.5" cy="5.5" r="1"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 SchedX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const TIME_SLOTS = [
+      '09:00–10:00', '10:00–11:00', '11:00–12:00',
+      '13:00–14:00', '14:00–15:00', '15:00–16:00'
+    ];
+
+    function generateTeacherForms() {
+      const count = parseInt(document.getElementById('teacherCount').value) || 1;
+      const container = document.getElementById('dynamicTeachers');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= count; i++) {
+        const teacherDiv = document.createElement('div');
+        teacherDiv.className = 'teacher-item';
+        let checkboxesHTML = '';
+        
+        DAYS.forEach(day => {
+          TIME_SLOTS.forEach(slot => {
+            checkboxesHTML += `
+              <div class="checkbox-item">
+                <input type="checkbox" id="t${i}_${day}_${slot}" value="${day}|${slot}">
+                <label for="t${i}_${day}_${slot}">${day} ${slot}</label>
+              </div>
+            `;
+          });
+        });
+
+        teacherDiv.innerHTML = `
+          <div class="teacher-name">Teacher ${i}</div>
+          <div class="form-group">
+            <label for="teacherName${i}">Name:</label>
+            <input type="text" id="teacherName${i}" placeholder="e.g., Dr. Rahul Sharma" required>
+          </div>
+          <div class="form-group">
+            <label for="teacherSpec${i}">Specialization:</label>
+            <input type="text" id="teacherSpec${i}" placeholder="e.g., Database Systems">
+          </div>
+          <div>
+            <strong style="display: block; margin-bottom: 15px;">Select Available Time Slots:</strong>
+            <div class="availability-checkboxes">${checkboxesHTML}</div>
+          </div>
+        `;
+        
+        container.appendChild(teacherDiv);
+      }
+
+      document.getElementById('teachersContainer').style.display = 'block';
+    }
+
+    function saveAvailability() {
+      const count = parseInt(document.getElementById('teacherCount').value) || 1;
+      const teachers = [];
+      const msg = document.getElementById('availabilityMessage');
+
+      for (let i = 1; i <= count; i++) {
+        const name = document.getElementById(`teacherName${i}`).value;
+        const spec = document.getElementById(`teacherSpec${i}`).value;
+        
+        if (!name.trim()) {
+          msg.textContent = `Please enter name for Teacher ${i}`;
+          msg.classList.remove('hidden');
+          return;
+        }
+
+        const availability = [];
+        DAYS.forEach(day => {
+          TIME_SLOTS.forEach(slot => {
+            const checkbox = document.getElementById(`t${i}_${day}_${slot}`);
+            if (checkbox && checkbox.checked) {
+              availability.push(`${day} ${slot}`);
+            }
+          });
+        });
+
+        teachers.push({ name, specialization: spec, availability });
+      }
+
+      msg.innerHTML = `<span style="color: green;">✓ Availability saved for ${teachers.length} teacher(s). This information will be used when generating timetables.</span>`;
+      msg.classList.remove('hidden');
+      
+      console.log('Saved teachers:', teachers);
+    }
+  </script>
+
+  <script src="/script.js"></script>
+</body>
+</html>

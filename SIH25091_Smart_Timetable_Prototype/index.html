@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartSchedule AI — SIH25091 Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span>🎓</span><div><b>SmartSchedule</b><small>SIH25091 Prototype</small></div></div>
+    <nav>
+      <button class="nav active" data-page="dashboard">▦ Dashboard</button>
+      <button class="nav" data-page="courses">📚 Courses</button>
+      <button class="nav" data-page="teachers">👨‍🏫 Teachers</button>
+      <button class="nav" data-page="rooms">🏫 Rooms</button>
+      <button class="nav" data-page="constraints">⚙ Constraints</button>
+      <button class="nav" data-page="timetable">🗓 Timetable</button>
+      <button class="nav" data-page="assistant">✨ AI Assistant</button>
+    </nav>
+    <div class="side-note">
+      <b>Prototype</b>
+      <p>AI/optimization-style scheduling demo for the SIH25091 problem statement.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">SMART AUTOMATION</span>
+        <h1 id="pageTitle">AI Timetable Dashboard</h1>
+      </div>
+      <div class="top-actions">
+        <span class="status-dot">● System Ready</span>
+        <button class="avatar">A</button>
+      </div>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div>
+          <span class="pill">NEP 2020 • Multidisciplinary</span>
+          <h2>Generate conflict-free academic schedules.</h2>
+          <p>Configure academic resources, apply hard and soft constraints, then generate an optimized timetable.</p>
+          <button class="primary" id="generateHero">⚡ Generate Timetable</button>
+        </div>
+        <div class="hero-orbit"><div>AI</div><span>Constraints</span><span>Resources</span><span>Optimization</span></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span>Courses</span><b id="courseCount">8</b><small>Across departments</small></div>
+        <div class="stat"><span>Teachers</span><b id="teacherCount">6</b><small>Available faculty</small></div>
+        <div class="stat"><span>Rooms</span><b id="roomCount">5</b><small>Classrooms & labs</small></div>
+        <div class="stat"><span>Conflicts</span><b class="good" id="conflictCount">0</b><small>After optimization</small></div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <div class="card-head"><div><h3>Optimization score</h3><p>Based on hard constraints + preferences</p></div><b class="score" id="score">96.8%</b></div>
+          <div class="progress"><span id="progress"></span></div>
+          <div class="mini-row"><span>Hard constraints <b>100%</b></span><span>Soft preferences <b>92%</b></span></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h3>Schedule health</h3><p>Current generated solution</p></div><span class="badge success">Healthy</span></div>
+          <ul class="checks">
+            <li>✓ No teacher collisions</li><li>✓ No room collisions</li><li>✓ Room capacity satisfied</li><li>✓ Multidisciplinary electives supported</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><h3>Recent activity</h3><p>Latest scheduling actions</p></div></div>
+        <div class="activity"><div><span>⚡</span><div><b>Timetable optimized</b><small>Generated 0 conflicts across 40 slots.</small></div><time>Just now</time></div>
+        <div class="activity"><span>✓</span><div><b>Constraint validation completed</b><small>All hard constraints passed.</small></div><time>2 min ago</time></div></div>
+      </div>
+    </section>
+
+    <section id="courses" class="page">
+      <div class="section-head"><div><h2>Courses</h2><p>Manage major, minor, elective and multidisciplinary courses.</p></div><button class="primary" onclick="addItem('course')">+ Add Course</button></div>
+      <div class="card table-card"><table><thead><tr><th>Course</th><th>Department</th><th>Type</th><th>Credits</th><th>Students</th></tr></thead><tbody id="courseTable"></tbody></table></div>
+    </section>
+
+    <section id="teachers" class="page">
+      <div class="section-head"><div><h2>Teachers</h2><p>Faculty availability and workload inputs.</p></div><button class="primary" onclick="addItem('teacher')">+ Add Teacher</button></div>
+      <div class="card table-card"><table><thead><tr><th>Name</th><th>Department</th><th>Specialization</th><th>Availability</th></tr></thead><tbody id="teacherTable"></tbody></table></div>
+    </section>
+
+    <section id="rooms" class="page">
+      <div class="section-head"><div><h2>Rooms</h2><p>Classroom capacity and facility constraints.</p></div><button class="primary" onclick="addItem('room')">+ Add Room</button></div>
+      <div class="card table-card"><table><thead><tr><th>Room</th><th>Type</th><th>Capacity</th><th>Facilities</th></tr></thead><tbody id="roomTable"></tbody></table></div>
+    </section>
+
+    <section id="constraints" class="page">
+      <div class="section-head"><div><h2>Constraints</h2><p>Hard rules cannot be violated; soft rules are optimization preferences.</p></div><button class="primary" id="saveConstraints">Save Settings</button></div>
+      <div class="grid two">
+        <div class="card"><h3>Hard constraints</h3><p class="muted">Must always be satisfied.</p>
+          <label class="switch-row"><span>No teacher collision</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>No room collision</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>Room capacity ≥ class size</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>Lab course requires lab room</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>Student course collision prevention</span><input type="checkbox" checked></label>
+        </div>
+        <div class="card"><h3>Soft preferences</h3><p class="muted">Used to improve the schedule score.</p>
+          <label class="switch-row"><span>Respect teacher preferences</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>Avoid 3 consecutive lectures</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>Prefer morning labs</span><input type="checkbox"></label>
+          <label class="switch-row"><span>Balance faculty workload</span><input type="checkbox" checked></label>
+          <label class="switch-row"><span>Minimize student gaps</span><input type="checkbox" checked></label>
+        </div>
+      </div>
+      <div class="card callout"><b>Prototype logic:</b> The Generate action uses a deterministic scheduling simulation to demonstrate the workflow. Replace this module with Google OR-Tools, a CSP solver, or a genetic algorithm for a production/SIH implementation.</div>
+    </section>
+
+    <section id="timetable" class="page">
+      <div class="section-head"><div><h2>Generated Timetable</h2><p>CSE • Semester 5 • Section A</p></div><div><button class="secondary" id="regen">↻ Regenerate</button> <button class="primary" id="exportBtn">↓ Export</button></div></div>
+      <div class="card timetable-card"><div class="legend"><span>🟦 Major</span><span>🟪 Minor</span><span>🟩 Multidisciplinary</span><span>🟨 Lab</span></div><div class="timetable" id="timetableGrid"></div></div>
+    </section>
+
+    <section id="assistant" class="page">
+      <div class="section-head"><div><h2>AI Assistant</h2><p>Ask about the generated timetable.</p></div></div>
+      <div class="chat card">
+        <div id="messages" class="messages">
+          <div class="msg bot"><b>SmartSchedule AI</b><p>Hi! Ask me things like “When is DBMS?”, “Do I have a free period on Tuesday?” or “Why was this timetable selected?”</p></div>
+        </div>
+        <div class="quick"><button onclick="ask('When is DBMS?')">When is DBMS?</button><button onclick="ask('Do I have a free period on Tuesday?')">Free period Tuesday?</button><button onclick="ask('Why is the score high?')">Why is the score high?</button></div>
+        <div class="chat-input"><input id="chatInput" placeholder="Ask about your timetable..."><button class="primary" id="sendBtn">Send</button></div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

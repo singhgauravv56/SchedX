@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage room availability for SchedX timetable generation">
+  <title>Room Availability | SchedX</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/generate" class="nav-link">Generate</a>
+        <a href="/features" class="nav-link active">Features</a>
+        <a href="/#about" class="nav-link">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section rooms-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow subtle">Room Management</span>
+          <h1>Room Availability</h1>
+          <p class="section-description">Manage classrooms and laboratories stored in Supabase PostgreSQL for timetable scheduling.</p>
+        </div>
+
+        <section class="form-section">
+          <div class="timetable-header">
+            <div>
+              <h2>Rooms</h2>
+              <p class="section-description">Keep room details and student capacities up to date.</p>
+            </div>
+            <button id="addRoomButton" class="btn btn-primary" type="button">+ Add Room</button>
+          </div>
+          <div id="roomMessage" class="message" role="status" aria-live="polite"></div>
+          <form id="roomForm" class="form-grid" hidden>
+            <div class="form-group">
+              <label for="roomNumber">Room Number / Room Name <span class="required">*</span></label>
+              <input id="roomNumber" name="room_number" type="text" placeholder="e.g., Room-101 or Lab-201" required>
+            </div>
+            <div class="form-group">
+              <label for="roomType">Room Type <span class="required">*</span></label>
+              <select id="roomType" name="room_type" required>
+                <option value="Classroom">Classroom</option>
+                <option value="Laboratory">Laboratory</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="roomCapacity">Capacity (Students) <span class="required">*</span></label>
+              <input id="roomCapacity" name="capacity" type="number" min="1" value="40" required>
+            </div>
+            <div class="form-actions">
+              <button id="roomSubmit" class="btn btn-primary" type="submit">Add Room</button>
+              <button id="roomCancel" class="btn btn-secondary" type="button">Cancel</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="timetable-section">
+          <div class="timetable-container">
+            <table class="timetable">
+              <thead>
+                <tr>
+                  <th>Room Name</th>
+                  <th>Type</th>
+                  <th>Capacity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="roomsBody">
+                <tr><td colspan="4" class="no-data">Loading rooms from Supabase...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="about">
+    <div class="container footer-grid">
+      <div class="footer-section footer-brand">
+        <h3>SchedX</h3>
+        <p>SchedX is a smart timetable generation platform designed to simplify timetable creation and reduce scheduling conflicts.</p>
+      </div>
+
+      <div class="footer-section footer-explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/#about">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section footer-contact">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:schedx24x7@gmail.com">schedx24x7@gmail.com</a></p>
+        <p>
+          <a href="https://www.instagram.com/studyroom.online07?igsi=YXltbm1neDV3dWxn" 
+             class="instagram-link" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="Open Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5zm3.5-10.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z"/>
+              <circle cx="18.5" cy="5.5" r="1"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 SchedX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

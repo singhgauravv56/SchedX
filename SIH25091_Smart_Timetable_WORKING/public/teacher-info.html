@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teacher Information - SchedX Smart Timetable Generator">
+  <title>Teacher Information | SchedX</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .teacher-info-section {
+      padding: 60px 0;
+    }
+    .info-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .teacher-form-box,
+    .teacher-list-box {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .teacher-list-box {
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .teacher-card-item {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 4px solid #4f46e5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .teacher-card-details strong {
+      display: block;
+      color: #1e293b;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .teacher-card-details small {
+      color: #64748b;
+      font-size: 13px;
+    }
+    .teacher-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-small {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-edit {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .btn-edit:hover {
+      background: #e2e8f0;
+    }
+    .btn-delete {
+      background: #fee2e2;
+      color: #b91c1c;
+      border-color: #fecaca;
+    }
+    .btn-delete:hover {
+      background: #fecaca;
+    }
+    @media (max-width: 768px) {
+      .info-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/generate" class="nav-link">Generate</a>
+        <a href="/features" class="nav-link active">Features</a>
+        <a href="/#about" class="nav-link">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="teacher-info-section section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow subtle">Feature</span>
+          <h2>Teacher Profiles & Information</h2>
+          <p class="section-description">Manage faculty records, specializations, and working days stored directly in Supabase PostgreSQL.</p>
+        </div>
+
+        <div class="info-layout">
+          <!-- Form Section -->
+          <div class="teacher-form-box">
+            <h3 id="formTitle" style="margin-bottom: 20px; color: #1e293b;">Add New Teacher</h3>
+            <form id="teacherProfileForm">
+              <input type="hidden" id="editTeacherId" value="">
+
+              <div class="form-group">
+                <label for="teacherNameInput">Teacher Name <span class="required">*</span></label>
+                <input type="text" id="teacherNameInput" placeholder="e.g., Prof. Rajesh Kumar" required>
+              </div>
+
+              <div class="form-group">
+                <label for="teacherSpecInput">Specialization / Department</label>
+                <input type="text" id="teacherSpecInput" placeholder="e.g., Computer Networks, Mathematics">
+              </div>
+
+              <div class="form-group">
+                <label for="teacherCourseInput">Course / Subject Taught</label>
+                <input type="text" id="teacherCourseInput" placeholder="e.g., Data Structures & Algorithms">
+                <small class="form-help">Optionally link a primary subject to this teacher.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="workingDaysInput">Working Days Per Week</label>
+                <input type="number" id="workingDaysInput" min="1" max="7" value="5" required>
+              </div>
+
+              <div class="form-actions" style="margin-top: 25px;">
+                <button type="submit" class="btn btn-primary" id="saveTeacherBtn">Save to Supabase</button>
+                <button type="button" class="btn btn-secondary" id="cancelEditBtn" style="display: none;" onclick="resetTeacherForm()">Cancel</button>
+              </div>
+            </form>
+
+            <div id="profileMessage" class="message hidden" style="margin-top: 15px;"></div>
+          </div>
+
+          <!-- List Section -->
+          <div class="teacher-list-box">
+            <div class="timetable-header" style="margin-bottom: 15px;">
+              <h3>Saved Faculty (Supabase)</h3>
+              <button class="btn btn-secondary" type="button" onclick="loadTeacherProfiles()">↻ Refresh</button>
+            </div>
+            <div id="teacherProfilesContainer">
+              <p class="no-data">Loading teacher profiles from Supabase...</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="about">
+    <div class="container footer-grid">
+      <div class="footer-section footer-brand">
+        <h3>SchedX</h3>
+        <p>SchedX is a smart timetable generation platform designed to simplify timetable creation and reduce scheduling conflicts.</p>
+      </div>
+
+      <div class="footer-section footer-explore">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/#about">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section footer-contact">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:schedx24x7@gmail.com">schedx24x7@gmail.com</a></p>
+        <p>
+          <a href="https://www.instagram.com/studyroom.online07?igsi=YXltbm1neDV3dWxn" 
+             class="instagram-link" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             aria-label="Open Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5C6.201 22.5 1.5 17.799 1.5 12S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5zm3.5-10.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0z"/>
+              <circle cx="18.5" cy="5.5" r="1"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 SchedX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    let teacherCache = [];
+
+    function resetTeacherForm() {
+      document.getElementById('teacherProfileForm').reset();
+      document.getElementById('editTeacherId').value = '';
+      document.getElementById('formTitle').textContent = 'Add New Teacher';
+      document.getElementById('saveTeacherBtn').textContent = 'Save to Supabase';
+      document.getElementById('cancelEditBtn').style.display = 'none';
+      document.getElementById('workingDaysInput').value = '5';
+    }
+
+    async function loadTeacherProfiles() {
+      const container = document.getElementById('teacherProfilesContainer');
+      try {
+        const response = await fetch('/api/teachers');
+        const teachers = await response.json();
+
+        if (!response.ok) throw new Error(teachers.error || 'Failed to load teachers');
+
+        teacherCache = teachers || [];
+
+        if (!teacherCache.length) {
+          container.innerHTML = '<p class="no-data">No teachers added yet. Fill the form on the left to add a teacher.</p>';
+          return;
+        }
+
+        container.innerHTML = teacherCache.map((t) => `
+          <div class="teacher-card-item">
+            <div class="teacher-card-details">
+              <strong>${t.teacher_name}</strong>
+              <small>${t.specialization || 'General Faculty'} • ${t.working_days_per_week || 5} days/week</small>
+            </div>
+            <div class="teacher-actions">
+              <button type="button" class="btn-small btn-edit" onclick="editTeacher(${t.teacher_id})">Edit</button>
+              <button type="button" class="btn-small btn-delete" onclick="deleteTeacher(${t.teacher_id}, '${t.teacher_name.replace(/'/g, "\\'")}')">Delete</button>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        container.innerHTML = `<p class="no-data" style="color: #ef4444;">Unable to load teachers from Supabase: ${err.message}</p>`;
+      }
+    }
+
+    function editTeacher(id) {
+      const teacher = teacherCache.find((t) => Number(t.teacher_id) === Number(id));
+      if (!teacher) return;
+
+      document.getElementById('editTeacherId').value = teacher.teacher_id;
+      document.getElementById('teacherNameInput').value = teacher.teacher_name;
+      document.getElementById('teacherSpecInput').value = teacher.specialization || '';
+      document.getElementById('workingDaysInput').value = teacher.working_days_per_week || 5;
+
+      document.getElementById('formTitle').textContent = 'Edit Teacher Profile';
+      document.getElementById('saveTeacherBtn').textContent = 'Update Profile';
+      document.getElementById('cancelEditBtn').style.display = 'inline-block';
+      document.getElementById('teacherNameInput').focus();
+    }
+
+    async function deleteTeacher(id, name) {
+      if (!confirm(`Are you sure you want to delete ${name}?`)) return;
+
+      try {
+        const res = await fetch(`/api/teachers/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to delete');
+
+        showMessage('✓ Teacher deleted successfully.', 'success');
+        await loadTeacherProfiles();
+      } catch (err) {
+        showMessage(`Error: ${err.message}`, 'error');
+      }
+    }
+
+    function showMessage(text, type) {
+      const msg = document.getElementById('profileMessage');
+      msg.textContent = text;
+      msg.className = `message show ${type}`;
+    }
+
+    document.getElementById('teacherProfileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const editId = document.getElementById('editTeacherId').value;
+      const name = document.getElementById('teacherNameInput').value.trim();
+      const spec = document.getElementById('teacherSpecInput').value.trim();
+      const course = document.getElementById('teacherCourseInput').value.trim();
+      const workingDays = parseInt(document.getElementById('workingDaysInput').value, 10) || 5;
+
+      if (!name) {
+        showMessage('Please enter the teacher name.', 'error');
+        return;
+      }
+
+      const payload = {
+        teacher_name: name,
+        specialization: spec,
+        working_days_per_week: workingDays
+      };
+
+      try {
+        const url = editId ? `/api/teachers/${editId}` : '/api/teachers';
+        const method = editId ? 'PUT' : 'POST';
+
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+
+        if (!res.ok) throw new Error(result.error || 'Failed to save teacher');
+
+        // If a course was entered, ensure it exists in courses table
+        if (course) {
+          await fetch('/api/courses', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ course_name: course })
+          });
+        }
+
+        showMessage(editId ? '✓ Teacher profile updated in Supabase.' : '✓ Teacher profile saved to Supabase.', 'success');
+        resetTeacherForm();
+        await loadTeacherProfiles();
+      } catch (err) {
+        showMessage(`Error: ${err.message}`, 'error');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTeacherProfiles();
+    });
+  </script>
+  <script src="/script.js"></script>
+</body>
+</html>
