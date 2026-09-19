@@ -1116,66 +1116,433 @@ button,
 }
 
 .features-section {
-  background: rgba(255, 255, 255, 0.45);
+  background: radial-gradient(circle at 10% 15%, rgba(45, 108, 223, 0.05) 0%, transparent 45%),
+              radial-gradient(circle at 90% 75%, rgba(29, 78, 216, 0.04) 0%, transparent 45%),
+              linear-gradient(180deg, #f7f9fd 0%, #eef4ff 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 88px 0 110px;
 }
 
 .features-section .section-heading {
-  margin-bottom: clamp(36px, 5vw, 64px);
+  margin-bottom: clamp(48px, 6vw, 76px);
 }
 
-.feature-grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: stretch;
-  gap: clamp(18px, 2vw, 32px);
+.features-intro-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lead);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  max-width: 65ch;
+  margin: 14px auto 0;
 }
 
-.feature-card {
-  width: 100%;
-  height: 100%;
-  padding: 24px 20px;
+/* ==============================================================================
+   ZIGZAG FEATURES TIMELINE & CARDS
+   ============================================================================== */
+.features-zigzag-timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+/* Subtle central vertical connecting path behind cards (Desktop) */
+.features-zigzag-timeline::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, 
+    rgba(45, 108, 223, 0.3) 0%, 
+    rgba(37, 99, 235, 0.25) 50%, 
+    rgba(45, 108, 223, 0.06) 100%);
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.features-zigzag-list {
   display: flex;
   flex-direction: column;
-  transition: var(--transition);
+  gap: clamp(44px, 5vw, 68px);
+  position: relative;
+  z-index: 2;
+  list-style: none;
 }
 
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+/* Base Zigzag Feature Card */
+.zigzag-card {
+  position: relative;
+  width: 53%;
+  max-width: 640px;
+  background: linear-gradient(145deg, #ffffff 0%, #f9fbff 100%);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 24px;
+  padding: clamp(26px, 3vw, 34px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 250ms ease,
+              border-color 250ms ease,
+              background 250ms ease;
+  outline: none;
 }
 
-.feature-icon {
+/* Alternating Left and Right Alignment */
+.zigzag-card:nth-child(odd) {
+  align-self: flex-start;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.zigzag-card:nth-child(even) {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Hover & Focus Interactions */
+.zigzag-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(45, 108, 223, 0.38);
+  background: linear-gradient(145deg, #ffffff 0%, #f2f7ff 100%);
+  box-shadow: 0 20px 42px rgba(45, 108, 223, 0.14), 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.zigzag-card:focus-visible {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(45, 108, 223, 0.25), 0 20px 42px rgba(45, 108, 223, 0.12);
+}
+
+.zigzag-card:active {
+  transform: translateY(-2px);
+}
+
+/* Card Header: Meta + Icon */
+.zigzag-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.zigzag-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-number {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  background: rgba(45, 108, 223, 0.1);
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+.feature-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zigzag-icon-box {
   width: 52px;
   height: 52px;
+  min-width: 52px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.7rem;
-  background: linear-gradient(135deg, var(--primary-soft), #dfeeff);
-  border-radius: 14px;
-  margin-bottom: 16px;
+  font-size: 1.65rem;
+  background: linear-gradient(135deg, var(--primary-soft) 0%, #deecff 100%);
+  border: 1px solid rgba(45, 108, 223, 0.15);
+  box-shadow: 0 2px 8px rgba(45, 108, 223, 0.08);
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
-.feature-card h3 {
+.zigzag-card:hover .zigzag-icon-box {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 6px 16px rgba(45, 108, 223, 0.18);
+}
+
+/* Card Typography */
+.zigzag-card h3 {
   font-family: var(--font-display);
-  margin-bottom: 12px;
+  font-size: clamp(1.2rem, 1.4vw, 1.45rem);
+  font-weight: 700;
   color: var(--text-dark);
-  font-size: var(--text-h3);
-  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-snug);
+  margin: 0;
+  line-height: 1.3;
 }
 
-.feature-card p {
+.zigzag-card p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  max-width: 55ch;
+}
+
+/* Card CTA Action */
+.zigzag-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 4px;
+  transition: color 200ms ease;
+}
+
+.zigzag-card:hover .zigzag-cta {
+  color: var(--primary-dark);
+}
+
+.zigzag-cta .cta-arrow {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 200ms ease;
+}
+
+.zigzag-card:hover .cta-arrow {
+  transform: translateX(6px);
+}
+
+/* Optional connector dot on the card edge facing the center timeline */
+.zigzag-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(45, 108, 223, 0.15);
+  transform: translateY(-50%);
+  opacity: 0.85;
+  transition: opacity 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+}
+
+.zigzag-card:nth-child(odd)::after {
+  right: -24px;
+}
+
+.zigzag-card:nth-child(even)::after {
+  left: -24px;
+}
+
+.zigzag-card:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 0 5px rgba(45, 108, 223, 0.25);
+  background: var(--primary-soft);
+}
+
+/* ==============================================================================
+   INTERACTIVE MODAL ENHANCEMENTS FOR FEATURES PAGE
+   ============================================================================== */
+.feature-modal-box {
+  background: #ffffff;
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 20px;
+  max-width: 580px;
+  width: 92%;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  position: relative;
+  animation: slideIn 0.25s ease-out;
+}
+
+.modal-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.modal-header-row h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.modal-badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(22, 163, 74, 0.1);
+  color: #15803d;
+}
+
+.modal-badge-status.idle {
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569;
+}
+
+.modal-content-body {
   font-family: var(--font-body);
   color: var(--text-muted);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  margin-bottom: 22px;
 }
 
-.feature-card .feature-link {
-  margin-top: auto;
-  padding-top: 18px;
+.modal-info-grid {
+  background: #f8fbff;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.modal-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.modal-info-label {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.modal-info-val {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.modal-rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.modal-rule-item:last-child {
+  border-bottom: none;
+}
+
+.rule-icon {
+  color: var(--success-color);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.modal-actions-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* ==============================================================================
+   RESPONSIVE DESIGN BREAKPOINTS FOR ZIGZAG
+   ============================================================================== */
+@media (max-width: 1024px) {
+  .zigzag-card {
+    width: 62%;
+  }
+
+  .zigzag-card:nth-child(odd)::after {
+    right: -16px;
+  }
+
+  .zigzag-card:nth-child(even)::after {
+    left: -16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    padding: 60px 0 80px;
+  }
+
+  /* Hide central timeline connecting line on mobile */
+  .features-zigzag-timeline::before {
+    display: none;
+  }
+
+  .features-zigzag-list {
+    gap: 24px;
+  }
+
+  /* Full width stacked cards without lateral offset */
+  .zigzag-card {
+    width: 100% !important;
+    max-width: none !important;
+    align-self: stretch !important;
+    margin: 0 !important;
+    border-radius: 20px;
+    padding: 22px 18px;
+  }
+
+  .zigzag-card::after {
+    display: none;
+  }
+
+  .zigzag-card-header {
+    gap: 12px;
+  }
+
+  .zigzag-icon-box {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    font-size: 1.45rem;
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zigzag-card,
+  .zigzag-icon-box,
+  .zigzag-cta .cta-arrow,
+  .zigzag-card::after {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Fallback legacy compatibility */
+.feature-grid {
+  display: none;
+}
+.feature-card {
+  display: none;
 }
 
 .rooms-section {
@@ -1522,9 +1889,15 @@ button,
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
   justify-content: center;
   align-items: center;
+}
+
+.modal.show,
+.modal.active {
+  display: flex !important;
 }
 
 .modal-content {
