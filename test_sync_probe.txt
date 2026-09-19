@@ -1,1 +1,2 @@
-Temporary sync verification test file created by automated test.
+Temporary sync verification test file modified to test modification detection.
+Line 2 with additional edits.
