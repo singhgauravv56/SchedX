@@ -153,53 +153,104 @@ function escapeHtml(value) {
   }[c]));
 }
 
-// Generate Page Form Setup (Requirements 13, 14, 15)
+// Generate Page Form Setup
 function setupTimetableForm() {
   const form = document.getElementById('timetableForm');
   if (!form) return;
 
   const teacherCountInput = document.getElementById('teacherCount');
+  const addTeacherBtn = document.getElementById('addTeacherBtn');
   const teacherFields = document.getElementById('teacherFields');
-  const subjectCountInput = document.getElementById('subjectCount');
   const subjectFields = document.getElementById('subjectFields');
+  const addSubjectBtn = document.getElementById('addSubjectBtn');
+  const maxSubjectsAllowedEl = document.getElementById('maxSubjectsAllowed');
 
-  let teachers = [];
-  let subjects = [];
+  let teachers = []; // stores strings (teacher names)
+  let subjects = ['']; // initial single subject row
 
-  // Dynamic Teacher Fields (Teacher Name + Specialization per teacher)
+  function getMaxAllowedSubjects() {
+    const tCount = teachers.length;
+    return tCount >= 1 ? tCount + 2 : 3;
+  }
+
+  function updateSubjectLimit() {
+    const maxAllowed = getMaxAllowedSubjects();
+    if (maxSubjectsAllowedEl) {
+      maxSubjectsAllowedEl.textContent = String(maxAllowed);
+    }
+
+    // If teacher count decreased and current subjects exceed limit, trim excess
+    if (subjects.length > maxAllowed) {
+      subjects = subjects.slice(0, maxAllowed);
+      renderSubjectFields();
+    }
+
+    if (addSubjectBtn) {
+      const isLimitReached = subjects.length >= maxAllowed;
+      const noTeachers = teachers.length < 1;
+      addSubjectBtn.disabled = isLimitReached || noTeachers;
+      addSubjectBtn.title = noTeachers
+        ? 'Enter number of teachers first'
+        : isLimitReached
+          ? `Maximum of ${maxAllowed} subjects reached (Teachers + 2)`
+          : 'Add another subject';
+    }
+  }
+
+  // Dynamic Teacher Fields (Teacher Name only)
   function renderTeacherFields() {
     const count = Number.parseInt(teacherCountInput.value, 10);
     if (!Number.isInteger(count) || count < 1) {
       teacherFields.innerHTML = '';
       teachers = [];
+      updateSubjectLimit();
       return;
     }
 
-    teachers = Array.from({ length: count }, (_, index) => ({
-      name: teachers[index] ? teachers[index].name : '',
-      specialization: teachers[index] ? teachers[index].specialization : ''
-    }));
+    // Cleanly preserve existing teacher names and remove excess when decreased
+    const existing = [...teachers];
+    teachers = Array.from({ length: count }, (_, index) => existing[index] || '');
 
-    teacherFields.innerHTML = teachers.map((teacher, index) => `
-      <div class="teacher-item" style="background: #f8fafc; padding: 16px; border-radius: 10px; margin-bottom: 12px; border-left: 4px solid #4f46e5;">
-        <strong style="display: block; margin-bottom: 8px; color: #1e293b;">Teacher ${index + 1}</strong>
-        <div class="form-group" style="margin-bottom: 8px;">
-          <label for="teacher-name-${index}">Teacher Name <span class="required">*</span></label>
-          <input type="text" id="teacher-name-${index}" data-teacher-idx="${index}" data-field="name" placeholder="e.g., Dr. Alan Turing" value="${escapeHtml(teacher.name)}" required>
+    teacherFields.innerHTML = teachers.map((name, index) => `
+      <div class="teacher-item-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+          <label for="teacher-name-${index}" class="teacher-card-label" style="margin-bottom: 0;">
+            Teacher ${index + 1} Name <span class="required">*</span>
+          </label>
+          ${teachers.length > 1 ? `<button type="button" class="btn-remove-subject" data-remove-teacher="${index}" aria-label="Remove Teacher ${index + 1}">- Remove</button>` : ''}
         </div>
-        <div class="form-group" style="margin-bottom: 0;">
-          <label for="teacher-spec-${index}">Specialization</label>
-          <input type="text" id="teacher-spec-${index}" data-teacher-idx="${index}" data-field="specialization" placeholder="e.g., Artificial Intelligence" value="${escapeHtml(teacher.specialization)}">
-        </div>
+        <input type="text" id="teacher-name-${index}" data-teacher-idx="${index}" placeholder="e.g., Dr. Alan Turing" value="${escapeHtml(name)}" required>
       </div>
     `).join('');
 
     teacherFields.querySelectorAll('[data-teacher-idx]').forEach((input) => {
       input.addEventListener('input', (event) => {
         const idx = Number(event.target.dataset.teacherIdx);
-        const field = event.target.dataset.field;
-        if (teachers[idx]) teachers[idx][field] = event.target.value;
+        teachers[idx] = event.target.value;
       });
+    });
+
+    teacherFields.querySelectorAll('[data-remove-teacher]').forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        const idx = Number(event.currentTarget.dataset.removeTeacher);
+        if (teachers.length > 1) {
+          teachers.splice(idx, 1);
+          teacherCountInput.value = teachers.length;
+          renderTeacherFields();
+        }
+      });
+    });
+
+    updateSubjectLimit();
+  }
+
+  if (addTeacherBtn) {
+    addTeacherBtn.addEventListener('click', () => {
+      const current = Number.parseInt(teacherCountInput.value, 10) || 0;
+      teacherCountInput.value = current + 1;
+      renderTeacherFields();
+      const newInput = document.getElementById(`teacher-name-${current}`);
+      if (newInput) newInput.focus();
     });
   }
 
@@ -208,28 +259,65 @@ function setupTimetableForm() {
 
   // Dynamic Subject Fields
   function renderSubjectFields() {
-    const count = Number.parseInt(subjectCountInput.value, 10);
-    if (!Number.isInteger(count) || count < 1) {
-      subjectFields.innerHTML = '';
-      subjects = [];
-      return;
+    if (!subjects.length) {
+      subjects = [''];
     }
 
-    subjects = Array.from({ length: count }, (_, index) => {
-      const currentInput = document.getElementById(`subject-${index}`);
-      return currentInput ? currentInput.value : (subjects[index] || '');
-    });
-
     subjectFields.innerHTML = subjects.map((subject, index) => `
-      <div class="form-group">
-        <label for="subject-${index}">Subject / Course ${index + 1} <span class="required">*</span></label>
+      <div class="subject-item-row">
+        <div class="subject-row-header">
+          <label for="subject-${index}" class="subject-row-label">Subject / Course ${index + 1} <span class="required">*</span></label>
+          ${subjects.length > 1 ? `<button type="button" class="btn-remove-subject" data-remove-subject="${index}" aria-label="Remove Subject ${index + 1}">- Remove</button>` : ''}
+        </div>
         <input type="text" id="subject-${index}" data-subject-index="${index}" placeholder="e.g., Operating Systems" value="${escapeHtml(subject)}" required>
       </div>
     `).join('');
+
+    // Attach input listeners
+    subjectFields.querySelectorAll('[data-subject-index]').forEach((input) => {
+      input.addEventListener('input', (event) => {
+        const idx = Number(event.target.dataset.subjectIndex);
+        subjects[idx] = event.target.value;
+      });
+    });
+
+    // Attach remove listeners
+    subjectFields.querySelectorAll('[data-remove-subject]').forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        const idx = Number(event.currentTarget.dataset.removeSubject);
+        if (subjects.length > 1) {
+          subjects.splice(idx, 1);
+          renderSubjectFields();
+          updateSubjectLimit();
+        }
+      });
+    });
+
+    updateSubjectLimit();
   }
 
-  subjectCountInput.addEventListener('input', renderSubjectFields);
-  subjectCountInput.addEventListener('change', renderSubjectFields);
+  // + Add Subject Button Click Handler
+  if (addSubjectBtn) {
+    addSubjectBtn.addEventListener('click', () => {
+      const maxAllowed = getMaxAllowedSubjects();
+      if (teachers.length < 1) {
+        showMessage('Please enter the number of teachers first.', 'error');
+        teacherCountInput.focus();
+        return;
+      }
+      if (subjects.length >= maxAllowed) {
+        showMessage(`Maximum ${maxAllowed} subjects are allowed for ${teachers.length} teachers.`, 'error');
+        return;
+      }
+
+      subjects.push('');
+      renderSubjectFields();
+
+      // Focus newly added input
+      const newInput = document.getElementById(`subject-${subjects.length - 1}`);
+      if (newInput) newInput.focus();
+    });
+  }
 
   // Form Submit Handler
   form.addEventListener('submit', async (e) => {
@@ -237,51 +325,65 @@ function setupTimetableForm() {
     hideMessage();
 
     const teacherCount = Number.parseInt(teacherCountInput.value, 10);
-    const subjectCount = Number.parseInt(subjectCountInput.value, 10);
-
     if (!Number.isInteger(teacherCount) || teacherCount < 1) {
       showMessage('Please specify a valid number of teachers.', 'error');
+      teacherCountInput.focus();
       return;
     }
 
-    if (!Number.isInteger(subjectCount) || subjectCount < 1) {
-      showMessage('Please specify a valid number of subjects.', 'error');
+    // Validate Teacher Names (Trimmed, Non-Empty, Unique)
+    const teacherInputs = Array.from(teacherFields.querySelectorAll('[data-teacher-idx]'));
+    if (teacherInputs.length !== teacherCount) {
+      showMessage('Please configure all teacher name fields.', 'error');
       return;
     }
 
-    // REQUIREMENT 14: Validation - Number of subjects MUST NOT be greater than number of teachers
-    if (subjectCount > teacherCount) {
-      showMessage(`Validation Error: Number of subjects (${subjectCount}) cannot be greater than the number of teachers (${teacherCount}).`, 'error');
-      showToast('Subjects count cannot exceed teachers count');
+    const trimmedTeacherNames = [];
+    for (let i = 0; i < teacherInputs.length; i++) {
+      const val = teacherInputs[i].value.trim();
+      if (!val) {
+        showMessage(`Please enter Teacher ${i + 1} name.`, 'error');
+        teacherInputs[i].focus();
+        return;
+      }
+      trimmedTeacherNames.push(val);
+    }
+
+    // Prevent duplicate teacher names
+    const lowerTeacherNames = trimmedTeacherNames.map((n) => n.toLowerCase());
+    if (new Set(lowerTeacherNames).size !== lowerTeacherNames.length) {
+      showMessage('Teacher names must be unique.', 'error');
       return;
     }
 
-    // Collect teacher names and specializations
-    const teacherData = Array.from(teacherFields.querySelectorAll('.teacher-item')).map((item, idx) => {
-      const nameInput = item.querySelector('[data-field="name"]');
-      const specInput = item.querySelector('[data-field="specialization"]');
-      return {
-        name: nameInput ? nameInput.value.trim() : '',
-        specialization: specInput ? specInput.value.trim() : ''
-      };
-    });
-
-    const missingTeacher = teacherData.findIndex((t) => !t.name);
-    if (missingTeacher !== -1) {
-      showMessage(`Please enter a name for Teacher ${missingTeacher + 1}.`, 'error');
+    // Validate Subject Names (Trimmed, Non-Empty, Unique)
+    const subjectInputs = Array.from(subjectFields.querySelectorAll('[data-subject-index]'));
+    if (!subjectInputs.length) {
+      showMessage('Please enter at least one subject/course.', 'error');
       return;
     }
 
-    const subjectNames = Array.from(subjectFields.querySelectorAll('[data-subject-index]'))
-      .sort((a, b) => Number(a.dataset.subjectIndex) - Number(b.dataset.subjectIndex))
-      .map((input) => input.value.trim());
+    const trimmedSubjectNames = [];
+    for (let i = 0; i < subjectInputs.length; i++) {
+      const val = subjectInputs[i].value.trim();
+      if (!val) {
+        showMessage(`Please enter Subject ${i + 1} name.`, 'error');
+        subjectInputs[i].focus();
+        return;
+      }
+      trimmedSubjectNames.push(val);
+    }
 
-    if (subjectNames.length !== subjectCount || subjectNames.some((s) => !s)) {
-      showMessage('Please enter a name for every subject.', 'error');
+    // Enforce NEW Subject Formula: subjects <= teachers + 2
+    const maxAllowedSubjects = teacherCount + 2;
+    if (trimmedSubjectNames.length > maxAllowedSubjects) {
+      showMessage(`Maximum ${maxAllowedSubjects} subjects are allowed for ${teacherCount} teachers.`, 'error');
       return;
     }
 
-    if (new Set(subjectNames.map((s) => s.toLowerCase())).size !== subjectNames.length) {
+    // Prevent duplicate subject names
+    const lowerSubjectNames = trimmedSubjectNames.map((s) => s.toLowerCase());
+    if (new Set(lowerSubjectNames).size !== lowerSubjectNames.length) {
       showMessage('Subject names must be unique.', 'error');
       return;
     }
@@ -289,6 +391,7 @@ function setupTimetableForm() {
     const roomType = document.getElementById('roomType').value;
     if (!roomType) {
       showMessage('Please select a room type preference.', 'error');
+      document.getElementById('roomType').focus();
       return;
     }
 
@@ -301,9 +404,10 @@ function setupTimetableForm() {
     showMessage('Generating timetable and persisting to Supabase...', 'info');
 
     try {
+      // API Payload: Teacher Name ONLY (NO Specialization!)
       const payload = {
-        teachers: teacherData,
-        subjects: subjectNames,
+        teachers: trimmedTeacherNames.map((name) => ({ name })),
+        subjects: trimmedSubjectNames,
         room_type: roomType,
         working_days_per_week: workingDays,
         working_start_time: startTime,
@@ -328,11 +432,15 @@ function setupTimetableForm() {
     window.setTimeout(() => {
       teacherFields.innerHTML = '';
       teachers = [];
-      subjectFields.innerHTML = '';
-      subjects = [];
+      subjects = [''];
+      renderSubjectFields();
+      updateSubjectLimit();
       hideMessage();
     }, 0);
   });
+
+  // Initial render of default subject row
+  renderSubjectFields();
 
   // Refresh Timetable Button
   const refreshBtn = document.getElementById('refreshBtn');

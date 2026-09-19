@@ -42,20 +42,30 @@
 
           <form id="timetableForm" class="form-grid">
             <div class="form-group">
-              <label for="teacherCount">Number of Teachers <span class="required">*</span></label>
+              <div class="teacher-header-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <label for="teacherCount" style="margin-bottom: 0;">Number of Teachers <span class="required">*</span></label>
+                <button type="button" id="addTeacherBtn" class="btn btn-secondary btn-sm" aria-label="Add Teacher">+ Add Teacher</button>
+              </div>
               <input type="number" id="teacherCount" min="1" max="50" step="1" placeholder="e.g., 3" required>
-              <small class="form-help">Enter the number of teachers to dynamically create teacher fields.</small>
+              <small class="form-help">Enter the number of teachers or click "+ Add Teacher" to create teacher name fields.</small>
             </div>
 
             <div class="teacher-fields" id="teacherFields" aria-live="polite"></div>
 
-            <div class="form-group">
-              <label for="subjectCount">Number of Subjects <span class="required">*</span></label>
-              <input type="number" id="subjectCount" min="1" max="50" step="1" placeholder="e.g., 3" required>
-              <small class="form-help">Note: Number of subjects cannot be greater than number of teachers.</small>
+            <div class="subjects-section-wrapper" style="grid-column: 1 / -1;">
+              <div class="subjects-header">
+                <div>
+                  <label class="subjects-section-label" for="addSubjectBtn">Subjects / Courses <span class="required">*</span></label>
+                  <div class="max-subjects-badge" id="maxSubjectsBadge" aria-live="polite">
+                    Maximum allowed: <strong id="maxSubjectsAllowed">3</strong> subjects (Number of Teachers + 2)
+                  </div>
+                </div>
+                <button type="button" id="addSubjectBtn" class="btn btn-secondary btn-sm" aria-label="Add Subject">
+                  + Add Subject
+                </button>
+              </div>
+              <div class="subject-fields-list" id="subjectFields" aria-live="polite"></div>
             </div>
-
-            <div class="teacher-fields" id="subjectFields" aria-live="polite"></div>
 
             <div class="form-group">
               <label for="roomType">Room Type <span class="required">*</span></label>

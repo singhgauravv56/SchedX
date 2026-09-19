@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build": "node --check server.js"
+    "build": "node --check server.js",
+    "git:sync": "node scripts/auto-sync.js",
+    "auto-sync": "node scripts/auto-sync.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
