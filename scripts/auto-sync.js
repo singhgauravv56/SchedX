@@ -12,7 +12,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawnSync, execFileSync } = require('child_process');
+const { spawnSync } = require('child_process');
 
 // Project root directory
 const PROJECT_ROOT = path.resolve(__dirname, '..');
@@ -70,7 +70,7 @@ function runGit(gitArgs, options = {}) {
     throw err;
   }
 
-  return (result.stdout || '').trim();
+  return result.stdout || '';
 }
 
 /**
@@ -78,11 +78,11 @@ function runGit(gitArgs, options = {}) {
  */
 function getCurrentBranch() {
   try {
-    const branch = runGit(['rev-parse', '--abbrev-ref', 'HEAD']);
+    const branch = runGit(['rev-parse', '--abbrev-ref', 'HEAD']).trim();
     if (branch && branch !== 'HEAD') return branch;
   } catch (_) {}
   try {
-    const branch = runGit(['branch', '--show-current']);
+    const branch = runGit(['branch', '--show-current']).trim();
     if (branch) return branch;
   } catch (_) {}
   return 'main';
@@ -116,22 +116,34 @@ function shouldIgnore(relativePath) {
 }
 
 /**
- * Generate a descriptive, intelligent commit message based on porcelain git status
+ * Robust parser for porcelain status lines
  */
-function generateCommitMessage(statusLines) {
-  if (!statusLines || statusLines.length === 0) {
+function parsePorcelainLine(line) {
+  const trimmed = line.trim();
+  const match = trimmed.match(/^([A-Z?]{1,2})\s+(.+)$/i);
+  if (match) {
+    return {
+      code: match[1].toUpperCase(),
+      file: match[2].trim().replace(/^"(.*)"$/, '$1')
+    };
+  }
+  return {
+    code: '',
+    file: trimmed
+  };
+}
+
+/**
+ * Generate a descriptive, intelligent commit message based on parsed entries
+ */
+function generateCommitMessage(entries) {
+  if (!entries || entries.length === 0) {
     return 'auto: sync project changes';
   }
 
-  const entries = statusLines.map(line => {
-    const code = line.slice(0, 2).trim();
-    const file = line.slice(3).trim().replace(/^"(.*)"$/, '$1');
-    return { code, file };
-  });
-
   const isAllUntracked = entries.every(e => e.code === '??' || e.code === 'A');
-  const isAllDeleted = entries.every(e => e.code === 'D');
-  const isAllModified = entries.every(e => e.code === 'M');
+  const isAllDeleted = entries.every(e => e.code.includes('D'));
+  const isAllModified = entries.every(e => e.code.includes('M'));
 
   const files = entries.map(e => e.file.replace(/\\/g, '/'));
 
@@ -189,28 +201,29 @@ async function performSync(reason = 'change') {
     const currentBranch = getCurrentBranch();
 
     // Check Git status
-    const statusOutput = runGit(['status', '--porcelain']);
-    if (!statusOutput) {
+    const rawStatus = runGit(['status', '--porcelain']);
+    if (!rawStatus || rawStatus.trim().length === 0) {
       isSyncing = false;
       changedPaths.clear();
       return;
     }
 
-    const statusLines = statusOutput.split(/\r?\n/).filter(line => line.trim().length > 0);
-    if (statusLines.length === 0) {
+    const lines = rawStatus.split(/\r?\n/).filter(line => line.trim().length > 0);
+    const entries = lines.map(parsePorcelainLine);
+
+    if (entries.length === 0) {
       isSyncing = false;
       changedPaths.clear();
       return;
     }
 
-    console.log(`[Git Sync] Changes detected (${statusLines.length} item${statusLines.length === 1 ? '' : 's'}).`);
+    console.log(`[Git Sync] Changes detected (${entries.length} item${entries.length === 1 ? '' : 's'}).`);
 
     // Safety check: ensure no secrets are included
-    for (const line of statusLines) {
-      const file = line.slice(3).trim();
-      const base = path.basename(file);
+    for (const entry of entries) {
+      const base = path.basename(entry.file);
       if (base.startsWith('.env') && base !== '.env.example') {
-        console.warn(`[Git Sync] WARNING: Environment file '${file}' detected. Skipping stage of secrets.`);
+        console.warn(`[Git Sync] WARNING: Environment file '${entry.file}' detected. Skipping stage of secrets.`);
       }
     }
 
@@ -219,7 +232,7 @@ async function performSync(reason = 'change') {
     runGit(['add', '-A']);
 
     // Generate commit message
-    const commitMessage = generateCommitMessage(statusLines);
+    const commitMessage = generateCommitMessage(entries);
     console.log(`[Git Sync] Creating commit: "${commitMessage}"...`);
     runGit(['commit', '-m', commitMessage]);
 
@@ -229,7 +242,7 @@ async function performSync(reason = 'change') {
     // Check remote connectivity and fetch branch status
     try {
       runGit(['fetch', 'origin', currentBranch], { allowFailure: true });
-      const revCount = runGit(['rev-list', '--count', `HEAD..origin/${currentBranch}`], { allowFailure: true });
+      const revCount = runGit(['rev-list', '--count', `HEAD..origin/${currentBranch}`], { allowFailure: true }).trim();
       const behindCount = parseInt(revCount, 10) || 0;
 
       if (behindCount > 0) {
@@ -292,7 +305,7 @@ function startWatcher() {
   const currentBranch = getCurrentBranch();
   let remoteUrl = 'unknown';
   try {
-    remoteUrl = runGit(['remote', 'get-url', 'origin']);
+    remoteUrl = runGit(['remote', 'get-url', 'origin']).trim();
   } catch (_) {}
 
   console.log('========================================================');
