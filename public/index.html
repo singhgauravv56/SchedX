@@ -35,21 +35,232 @@
     <!-- HERO SECTION -->
     <section class="hero-section section">
       <div class="container hero-grid">
+        <!-- LEFT COLUMN: Value Proposition & Actions -->
         <div class="hero-copy">
-          <span class="eyebrow">Smart Timetable Generator</span>
-          <h1>SchedX</h1>
-          <p>
+          <span class="eyebrow hero-eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Smart Timetable Generator
+          </span>
+          <h1 class="hero-title">SchedX</h1>
+          <p class="hero-desc">
             SchedX helps organize teaching schedules with minimal effort by checking teacher availability,
             room usage, class conflicts, and time clashes before creating a timetable.
           </p>
           <div class="hero-actions">
-            <a href="/generate" class="btn btn-primary">Generate Timetable</a>
-            <a href="/features" class="btn btn-secondary">Explore Features</a>
+            <a href="/generate" class="btn btn-primary hero-btn-primary" id="heroGenerateCta">
+              <span>Generate Timetable</span>
+              <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a href="/features" class="btn btn-secondary hero-btn-secondary" id="heroFeaturesCta">
+              Explore Features
+            </a>
           </div>
-          <div class="trust-row">
-            <span>Teacher checks</span>
-            <span>Room checks</span>
-            <span>Time conflict prevention</span>
+          <div class="hero-trust-pills trust-row" aria-label="Core automated verifications">
+            <span class="trust-pill">
+              <span class="pill-icon" aria-hidden="true">&#128104;&#8205;&#127979;</span>
+              <span>Teacher checks</span>
+            </span>
+            <span class="trust-pill">
+              <span class="pill-icon" aria-hidden="true">&#127979;</span>
+              <span>Room checks</span>
+            </span>
+            <span class="trust-pill">
+              <span class="pill-icon" aria-hidden="true">&#128737;&#65039;</span>
+              <span>Conflict prevention</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Timetable Product Visualization -->
+        <div class="hero-visual" aria-label="SchedX Interactive Timetable Preview">
+          <div class="hero-visual-glow" aria-hidden="true"></div>
+
+          <!-- Main Timetable Preview Mockup Card -->
+          <div class="timetable-preview-card">
+            <!-- Window Header -->
+            <div class="preview-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="dot dot-close"></span>
+                <span class="dot dot-minimize"></span>
+                <span class="dot dot-expand"></span>
+              </div>
+              <div class="preview-window-title">
+                <span class="preview-brand-tag">SchedX</span>
+                <span class="preview-title-sep">&bull;</span>
+                <span class="preview-schedule-label">Smart Academic Timetable</span>
+              </div>
+              <div class="preview-status-badge">
+                <span class="status-indicator-dot" aria-hidden="true"></span>
+                <span>Active</span>
+              </div>
+            </div>
+
+            <!-- Timetable Interactive Grid -->
+            <div class="preview-timetable-container">
+              <div class="preview-timetable">
+                <!-- Day Header Row -->
+                <div class="preview-row preview-row--header">
+                  <div class="preview-cell preview-cell--time">Time</div>
+                  <div class="preview-cell">MON</div>
+                  <div class="preview-cell">TUE</div>
+                  <div class="preview-cell">WED</div>
+                  <div class="preview-cell">THU</div>
+                  <div class="preview-cell">FRI</div>
+                </div>
+
+                <!-- Slot 09:00 -->
+                <div class="preview-row">
+                  <div class="preview-cell preview-cell--time">09:00</div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">Mathematics</span>
+                      <span class="chip-meta">R-101 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-purple">
+                      <span class="chip-subject">Physics Lab</span>
+                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">Mathematics</span>
+                      <span class="chip-meta">R-101 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-cyan">
+                      <span class="chip-subject">Computer Sci</span>
+                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-amber">
+                      <span class="chip-subject">Chemistry</span>
+                      <span class="chip-meta">R-204 &bull; Sec B</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slot 10:00 -->
+                <div class="preview-row">
+                  <div class="preview-cell preview-cell--time">10:00</div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-cyan">
+                      <span class="chip-subject">Computer Sci</span>
+                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">Mathematics</span>
+                      <span class="chip-meta">R-101 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-purple">
+                      <span class="chip-subject">Physics Lab</span>
+                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-amber">
+                      <span class="chip-subject">Chemistry</span>
+                      <span class="chip-meta">R-204 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-cyan">
+                      <span class="chip-subject">Computer Sci</span>
+                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slot 11:00 -->
+                <div class="preview-row">
+                  <div class="preview-cell preview-cell--time">11:00</div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-purple">
+                      <span class="chip-subject">Physics Lab</span>
+                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-amber">
+                      <span class="chip-subject">Chemistry</span>
+                      <span class="chip-meta">R-204 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-cyan">
+                      <span class="chip-subject">Computer Sci</span>
+                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">Mathematics</span>
+                      <span class="chip-meta">R-101 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-purple">
+                      <span class="chip-subject">Physics Lab</span>
+                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Information Cards (4 Elements) -->
+          <div class="hero-float-cards-grid">
+            <!-- 1. Top-Right: Conflict-Free Indicator -->
+            <div class="float-card float-card--conflict">
+              <div class="float-card-icon-wrap icon-success">
+                <span class="check-icon" aria-hidden="true">&#10003;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-title">Conflict Free</span>
+                <span class="float-card-sub">All constraints satisfied</span>
+              </div>
+            </div>
+
+            <!-- 2. Bottom-Left: Teachers Metric -->
+            <div class="float-card float-card--teachers">
+              <div class="float-card-icon-wrap icon-primary">
+                <span aria-hidden="true">&#128101;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-value">12</span>
+                <span class="float-card-label">Teachers Assigned</span>
+              </div>
+            </div>
+
+            <!-- 3. Bottom-Right: Rooms Metric -->
+            <div class="float-card float-card--rooms">
+              <div class="float-card-icon-wrap icon-info">
+                <span aria-hidden="true">&#127979;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-value">8</span>
+                <span class="float-card-label">Rooms &amp; Labs</span>
+              </div>
+            </div>
+
+            <!-- 4. Top-Left: Zero Overlap Badge -->
+            <div class="float-card float-card--sections">
+              <div class="float-card-icon-wrap icon-accent">
+                <span aria-hidden="true">&#128218;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-value">100%</span>
+                <span class="float-card-label">Zero Overlap</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
