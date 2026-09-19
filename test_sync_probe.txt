@@ -1,3 +1,0 @@
-Temporary sync verification test file modified to test modification detection.
-Line 2 with additional edits.
-another line
