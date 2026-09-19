@@ -55,34 +55,128 @@
       </div>
     </section>
 
+    <!-- PLATFORM OVERVIEW SECTION -->
+    <section class="section home-overview-section" id="platform-overview">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow subtle">Intelligent Scheduling Suite</span>
+          <h2>Modular control for modern academic institutions</h2>
+          <p class="section-lead">Automate complex constraints, manage faculty workloads, and optimize campus room allocation with zero conflicts.</p>
+        </div>
+
+        <!-- 3-Column Dashboard Grid: Primary Card + 2 Action Cards -->
+        <div class="home-dashboard-grid">
+          <!-- Primary CTA Box -->
+          <article class="home-card home-card--primary">
+            <div class="home-card-header">
+              <div class="home-card-meta">
+                <span class="home-card-tag">Core Engine</span>
+                <h3>Generate Your Timetable</h3>
+              </div>
+              <div class="home-card-icon" aria-hidden="true">&#9881;&#65039;</div>
+            </div>
+            <p>Deploy SchedX's multi-constraint optimization engine to generate clash-free schedules across faculty, sections, and classrooms in seconds.</p>
+            <div class="home-card-chips" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 10px;">
+              <span style="font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(45, 108, 223, 0.08); color: var(--primary-dark);">Multi-Section Support</span>
+              <span style="font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(45, 108, 223, 0.08); color: var(--primary-dark);">Room Allocation</span>
+              <span style="font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(45, 108, 223, 0.08); color: var(--primary-dark);">Zero Clashes</span>
+            </div>
+            <a href="/generate" class="btn btn-primary" id="homePrimaryCta">
+              Generate Schedule Now <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+
+          <!-- Action Card 1: Faculty Availability -->
+          <a href="/teacher-availability" class="home-card home-card--action" id="homeActionFaculty">
+            <div class="home-card-header">
+              <div class="home-card-meta">
+                <span class="home-card-tag">Faculty Schedules</span>
+                <h3>Teacher Availability</h3>
+              </div>
+              <div class="home-card-icon" aria-hidden="true">&#128104;&#8205;&#127979;</div>
+            </div>
+            <p>Inspect faculty timetables, weekly workload distribution, and real-time room assignments to eliminate double-booking across departments.</p>
+            <div class="home-card-cta">
+              <span>View Faculty Schedules</span>
+              <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- Action Card 2: Room Management -->
+          <a href="/rooms" class="home-card home-card--action" id="homeActionRooms">
+            <div class="home-card-header">
+              <div class="home-card-meta">
+                <span class="home-card-tag">Infrastructure</span>
+                <h3>Room & Lab Management</h3>
+              </div>
+              <div class="home-card-icon" aria-hidden="true">&#127979;</div>
+            </div>
+            <p>Monitor classroom capacity, laboratory designations, and utilization rates across all campus buildings with instant schedule tracking.</p>
+            <div class="home-card-cta">
+              <span>Manage Classrooms & Labs</span>
+              <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4-Column Statistic Cards Grid -->
+        <div class="home-stats-grid">
+          <div class="home-card home-card--stat">
+            <span class="home-stat-label">Conflict Prevention</span>
+            <span class="home-stat-number">0</span>
+            <p class="home-stat-desc">Strict zero-overlap enforcement for teachers, sections & rooms across all time slots.</p>
+          </div>
+
+          <div class="home-card home-card--stat">
+            <span class="home-stat-label">Constraint Resolution</span>
+            <span class="home-stat-number">100%</span>
+            <p class="home-stat-desc">All specified lecture quotas automatically mapped to weekly academic periods.</p>
+          </div>
+
+          <div class="home-card home-card--stat">
+            <span class="home-stat-label">Academic Partitioning</span>
+            <span class="home-stat-number">7 Days</span>
+            <p class="home-stat-desc">Monday through Sunday flexible scheduling with customizable period bounds.</p>
+          </div>
+
+          <div class="home-card home-card--stat">
+            <span class="home-stat-label">Data Architecture</span>
+            <span class="home-stat-number">2-Tier</span>
+            <p class="home-stat-desc">Instant memory caching backed by reliable Supabase PostgreSQL cloud sync.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- WORKFLOW SECTION -->
-    <section class="section workflow-section">
+    <section class="section workflow-section" id="how-it-works">
       <div class="container">
         <div class="section-heading center">
           <span class="eyebrow subtle">How it works</span>
-          <h2>Simple workflow for a conflict-free timetable</h2>
+          <h2>Simple 4-step workflow for a conflict-free timetable</h2>
+          <p class="section-lead">Streamlined end-to-end process from input parameters to a fully synchronized schedule.</p>
         </div>
 
         <div class="workflow-grid">
-          <div class="workflow-card">
-            <span class="step-number">01</span>
-            <h3>Enter details</h3>
-            <p>Add teacher, subject, and scheduling preferences.</p>
+          <div class="home-card home-card--workflow workflow-card">
+            <span class="workflow-step-badge step-number">01</span>
+            <h3>Enter Details</h3>
+            <p>Specify faculty members, subjects, section/class identifiers, and assigned rooms in the generator.</p>
           </div>
-          <div class="workflow-card">
-            <span class="step-number">02</span>
-            <h3>Check availability</h3>
-            <p>SchedX verifies teacher, class, and room availability before assignment.</p>
+          <div class="home-card home-card--workflow workflow-card">
+            <span class="workflow-step-badge step-number">02</span>
+            <h3>Verify Constraints</h3>
+            <p>SchedX checks faculty availability, room limits, and period boundaries prior to timetable creation.</p>
           </div>
-          <div class="workflow-card">
-            <span class="step-number">03</span>
-            <h3>Generate schedule</h3>
-            <p>Suitable combinations are selected without overlapping classes or rooms.</p>
+          <div class="home-card home-card--workflow workflow-card">
+            <span class="workflow-step-badge step-number">03</span>
+            <h3>Generate Schedule</h3>
+            <p>The multi-constraint solver calculates optimal combinations with zero room or teacher collisions.</p>
           </div>
-          <div class="workflow-card">
-            <span class="step-number">04</span>
-            <h3>Save & use</h3>
-            <p>Timetable is saved to the database and remains available after refresh.</p>
+          <div class="home-card home-card--workflow workflow-card">
+            <span class="workflow-step-badge step-number">04</span>
+            <h3>Save & Persist</h3>
+            <p>Schedules persist directly to the database, remaining accessible across all sessions and page refreshes.</p>
           </div>
         </div>
       </div>
