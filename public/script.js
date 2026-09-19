@@ -112,34 +112,126 @@ async function apiRequest(method, endpoint, data = null) {
   }
 }
 
-// Load Persisted Timetable from Supabase (Requirement 19)
+// Day Names Order for Sorting
+const WORKING_DAYS_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+function formatTimeSlot(startTime, endTime) {
+  const s = String(startTime || '09:00').substring(0, 5);
+  const e = String(endTime || '10:00').substring(0, 5);
+  return `${s} - ${e}`;
+}
+
+// Load Persisted Day-by-Day Timetable from Supabase / Backend Store
 async function loadTimetable() {
-  const timetableBody = document.getElementById('timetableBody');
+  const container = document.getElementById('daywiseTimetableContainer');
   const timetableSection = document.getElementById('timetableSection');
 
-  if (!timetableBody || !timetableSection) return;
+  if (!container || !timetableSection) return;
 
   try {
     const timetable = await apiRequest('GET', '/timetable');
 
     if (!timetable || timetable.length === 0) {
-      timetableBody.innerHTML = '<tr><td colspan="8" class="no-data">No timetable generated yet. Fill the form and click "Generate Timetable".</td></tr>';
+      container.innerHTML = '<div class="empty-day-notice">No timetable generated yet. Fill the form above and click "Generate Timetable".</div>';
       timetableSection.style.display = 'none';
       return;
     }
 
-    timetableBody.innerHTML = timetable.map((entry) => `
-      <tr>
-        <td><strong>${escapeHtml(entry.day)}</strong></td>
-        <td>${escapeHtml(String(entry.start_time).substring(0, 5))} - ${escapeHtml(String(entry.end_time).substring(0, 5))}</td>
-        <td>${escapeHtml(entry.class_name || 'General')}</td>
-        <td>${escapeHtml(entry.section || 'A')}</td>
-        <td>${escapeHtml(entry.course_name || 'Course')}</td>
-        <td>${escapeHtml(entry.teacher_name || 'Faculty')}</td>
-        <td>${escapeHtml(entry.room_name || 'Room')}</td>
-        <td><span class="status-badge status-available">${escapeHtml(entry.room_type || 'Classroom')}</span></td>
-      </tr>
-    `).join('');
+    // Group entries by Day
+    const dayMap = new Map();
+    for (const d of WORKING_DAYS_ORDER) {
+      dayMap.set(d, []);
+    }
+
+    for (const entry of timetable) {
+      const day = entry.day || 'Monday';
+      if (!dayMap.has(day)) {
+        dayMap.set(day, []);
+      }
+      dayMap.get(day).push(entry);
+    }
+
+    // Sort each day's entries chronologically by start_time
+    for (const [day, entries] of dayMap.entries()) {
+      entries.sort((a, b) => String(a.start_time).localeCompare(String(b.start_time)));
+    }
+
+    // Filter to only days that have entries or configured working days
+    const activeDays = Array.from(dayMap.keys()).filter((day) => {
+      return (dayMap.get(day) && dayMap.get(day).length > 0);
+    });
+
+    if (activeDays.length === 0) {
+      container.innerHTML = '<div class="empty-day-notice">No classes scheduled.</div>';
+      timetableSection.style.display = 'block';
+      return;
+    }
+
+    container.innerHTML = activeDays.map((day) => {
+      const entries = dayMap.get(day) || [];
+      const classCount = entries.length;
+
+      if (classCount === 0) {
+        return `
+          <div class="day-card">
+            <div class="day-card-header">
+              <h3 class="day-title">${escapeHtml(day)}</h3>
+              <span class="day-count-badge" style="background: #f1f5f9; color: #64748b;">0 Classes</span>
+            </div>
+            <div class="empty-day-notice">${escapeHtml(day)}: No classes scheduled.</div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="day-card">
+          <div class="day-card-header">
+            <h3 class="day-title">
+              <span>📅 ${escapeHtml(day)}</span>
+            </h3>
+            <span class="day-count-badge">${classCount} Class${classCount === 1 ? '' : 'es'}</span>
+          </div>
+          <div class="day-table-container">
+            <table class="timetable">
+              <thead>
+                <tr>
+                  <th>Time Slot</th>
+                  <th>Section / Class</th>
+                  <th>Subject / Course</th>
+                  <th>Teacher</th>
+                  <th>Room</th>
+                  <th>Room Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${entries.map((entry) => `
+                  <tr>
+                    <td><strong>${escapeHtml(formatTimeSlot(entry.start_time, entry.end_time))}</strong></td>
+                    <td>
+                      <span class="status-badge" style="background: rgba(45, 108, 223, 0.1); color: var(--primary-dark); font-weight: 700;">
+                        ${escapeHtml(entry.section || entry.class_name || 'General')}
+                      </span>
+                    </td>
+                    <td><strong>${escapeHtml(entry.course_name || entry.subject || 'Course')}</strong></td>
+                    <td>${escapeHtml(entry.teacher_name || 'Faculty')}</td>
+                    <td>
+                      <span class="status-badge" style="background: #ecfdf5; color: #047857; font-weight: 700;">
+                        🚪 ${escapeHtml(entry.room_name || 'Room')}
+                      </span>
+                    </td>
+                    <td>
+                      <span class="status-badge status-available">
+                        ${escapeHtml(entry.room_type || 'Classroom')}
+                      </span>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }).join('');
 
     timetableSection.style.display = 'block';
   } catch (error) {
@@ -165,8 +257,16 @@ function setupTimetableForm() {
   const addSubjectBtn = document.getElementById('addSubjectBtn');
   const maxSubjectsAllowedEl = document.getElementById('maxSubjectsAllowed');
 
-  let teachers = []; // stores strings (teacher names)
+  const sectionFields = document.getElementById('sectionFields');
+  const addSectionBtn = document.getElementById('addSectionBtn');
+
+  const roomFields = document.getElementById('roomFields');
+  const addRoomBtn = document.getElementById('addRoomBtn');
+
+  let teachers = []; // stores strings (teacher names only)
   let subjects = ['']; // initial single subject row
+  let sections = ['CSE-A']; // initial default section
+  let rooms = [{ room_number: '101', room_type: 'Classroom' }]; // initial default room
 
   function getMaxAllowedSubjects() {
     const tCount = teachers.length;
@@ -207,7 +307,6 @@ function setupTimetableForm() {
       return;
     }
 
-    // Cleanly preserve existing teacher names and remove excess when decreased
     const existing = [...teachers];
     teachers = Array.from({ length: count }, (_, index) => existing[index] || '');
 
@@ -273,7 +372,6 @@ function setupTimetableForm() {
       </div>
     `).join('');
 
-    // Attach input listeners
     subjectFields.querySelectorAll('[data-subject-index]').forEach((input) => {
       input.addEventListener('input', (event) => {
         const idx = Number(event.target.dataset.subjectIndex);
@@ -281,7 +379,6 @@ function setupTimetableForm() {
       });
     });
 
-    // Attach remove listeners
     subjectFields.querySelectorAll('[data-remove-subject]').forEach((btn) => {
       btn.addEventListener('click', (event) => {
         const idx = Number(event.currentTarget.dataset.removeSubject);
@@ -296,7 +393,6 @@ function setupTimetableForm() {
     updateSubjectLimit();
   }
 
-  // + Add Subject Button Click Handler
   if (addSubjectBtn) {
     addSubjectBtn.addEventListener('click', () => {
       const maxAllowed = getMaxAllowedSubjects();
@@ -313,8 +409,116 @@ function setupTimetableForm() {
       subjects.push('');
       renderSubjectFields();
 
-      // Focus newly added input
       const newInput = document.getElementById(`subject-${subjects.length - 1}`);
+      if (newInput) newInput.focus();
+    });
+  }
+
+  // Dynamic Section Fields
+  function renderSectionFields() {
+    if (!sections.length) {
+      sections = ['CSE-A'];
+    }
+
+    sectionFields.innerHTML = sections.map((sec, index) => `
+      <div class="section-item-card">
+        <div class="section-card-header">
+          <label for="section-${index}" class="section-card-label">Section ${index + 1} <span class="required">*</span></label>
+          ${sections.length > 1 ? `<button type="button" class="btn-remove-section" data-remove-section="${index}" aria-label="Remove Section ${index + 1}">- Remove</button>` : ''}
+        </div>
+        <input type="text" id="section-${index}" data-section-index="${index}" placeholder="e.g., CSE-A" value="${escapeHtml(sec)}" required>
+      </div>
+    `).join('');
+
+    sectionFields.querySelectorAll('[data-section-index]').forEach((input) => {
+      input.addEventListener('input', (event) => {
+        const idx = Number(event.target.dataset.sectionIndex);
+        sections[idx] = event.target.value;
+      });
+    });
+
+    sectionFields.querySelectorAll('[data-remove-section]').forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        const idx = Number(event.currentTarget.dataset.removeSection);
+        if (sections.length > 1) {
+          sections.splice(idx, 1);
+          renderSectionFields();
+        }
+      });
+    });
+  }
+
+  if (addSectionBtn) {
+    addSectionBtn.addEventListener('click', () => {
+      const nextLetter = String.fromCharCode(65 + sections.length);
+      sections.push(`CSE-${nextLetter}`);
+      renderSectionFields();
+
+      const newInput = document.getElementById(`section-${sections.length - 1}`);
+      if (newInput) newInput.focus();
+    });
+  }
+
+  // Dynamic Room Fields
+  function renderRoomFields() {
+    if (!rooms.length) {
+      rooms = [{ room_number: '101', room_type: 'Classroom' }];
+    }
+
+    roomFields.innerHTML = rooms.map((room, index) => `
+      <div class="room-item-card">
+        <div class="room-card-header">
+          <label class="room-card-label">Room ${index + 1} <span class="required">*</span></label>
+          ${rooms.length > 1 ? `<button type="button" class="btn-remove-room" data-remove-room="${index}" aria-label="Remove Room ${index + 1}">- Remove</button>` : ''}
+        </div>
+        <div class="room-inputs-grid">
+          <div>
+            <label for="room-num-${index}" style="font-size: 0.8rem; margin-bottom: 2px; display: block;">Room Number / Name</label>
+            <input type="text" id="room-num-${index}" data-room-num-index="${index}" placeholder="e.g., 101 or Lab-1" value="${escapeHtml(room.room_number)}" required>
+          </div>
+          <div>
+            <label for="room-type-select-${index}" style="font-size: 0.8rem; margin-bottom: 2px; display: block;">Room Type</label>
+            <select id="room-type-select-${index}" data-room-type-index="${index}" required>
+              <option value="Classroom" ${room.room_type === 'Classroom' ? 'selected' : ''}>Classroom</option>
+              <option value="Laboratory" ${room.room_type === 'Laboratory' ? 'selected' : ''}>Laboratory</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    roomFields.querySelectorAll('[data-room-num-index]').forEach((input) => {
+      input.addEventListener('input', (event) => {
+        const idx = Number(event.target.dataset.roomNumIndex);
+        rooms[idx].room_number = event.target.value;
+      });
+    });
+
+    roomFields.querySelectorAll('[data-room-type-index]').forEach((select) => {
+      select.addEventListener('change', (event) => {
+        const idx = Number(event.target.dataset.roomTypeIndex);
+        rooms[idx].room_type = event.target.value;
+      });
+    });
+
+    roomFields.querySelectorAll('[data-remove-room]').forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        const idx = Number(event.currentTarget.dataset.removeRoom);
+        if (rooms.length > 1) {
+          rooms.splice(idx, 1);
+          renderRoomFields();
+        }
+      });
+    });
+  }
+
+  if (addRoomBtn) {
+    addRoomBtn.addEventListener('click', () => {
+      const nextNum = 101 + rooms.length;
+      rooms.push({ room_number: String(nextNum), room_type: 'Classroom' });
+      renderRoomFields();
+
+      const newInput = document.getElementById(`room-num-${rooms.length - 1}`);
       if (newInput) newInput.focus();
     });
   }
@@ -331,7 +535,7 @@ function setupTimetableForm() {
       return;
     }
 
-    // Validate Teacher Names (Trimmed, Non-Empty, Unique)
+    // 1. Validate Teacher Names (Trimmed, Non-Empty, Unique)
     const teacherInputs = Array.from(teacherFields.querySelectorAll('[data-teacher-idx]'));
     if (teacherInputs.length !== teacherCount) {
       showMessage('Please configure all teacher name fields.', 'error');
@@ -356,7 +560,7 @@ function setupTimetableForm() {
       return;
     }
 
-    // Validate Subject Names (Trimmed, Non-Empty, Unique)
+    // 2. Validate Subject Names (Trimmed, Non-Empty, Unique)
     const subjectInputs = Array.from(subjectFields.querySelectorAll('[data-subject-index]'));
     if (!subjectInputs.length) {
       showMessage('Please enter at least one subject/course.', 'error');
@@ -374,7 +578,7 @@ function setupTimetableForm() {
       trimmedSubjectNames.push(val);
     }
 
-    // Enforce NEW Subject Formula: subjects <= teachers + 2
+    // Formula: subjects <= teachers + 2
     const maxAllowedSubjects = teacherCount + 2;
     if (trimmedSubjectNames.length > maxAllowedSubjects) {
       showMessage(`Maximum ${maxAllowedSubjects} subjects are allowed for ${teacherCount} teachers.`, 'error');
@@ -388,10 +592,76 @@ function setupTimetableForm() {
       return;
     }
 
-    const roomType = document.getElementById('roomType').value;
-    if (!roomType) {
-      showMessage('Please select a room type preference.', 'error');
+    // 3. Validate Sections (Trimmed, Non-Empty, Unique)
+    const sectionInputs = Array.from(sectionFields.querySelectorAll('[data-section-index]'));
+    if (!sectionInputs.length) {
+      showMessage('Please add at least one class/section.', 'error');
+      return;
+    }
+
+    const trimmedSectionNames = [];
+    for (let i = 0; i < sectionInputs.length; i++) {
+      const val = sectionInputs[i].value.trim();
+      if (!val) {
+        showMessage(`Please enter Section ${i + 1} name.`, 'error');
+        sectionInputs[i].focus();
+        return;
+      }
+      trimmedSectionNames.push(val);
+    }
+
+    // Prevent duplicate section names
+    const lowerSectionNames = trimmedSectionNames.map((s) => s.toLowerCase());
+    if (new Set(lowerSectionNames).size !== lowerSectionNames.length) {
+      showMessage('Section names must be unique.', 'error');
+      return;
+    }
+
+    // 4. Validate Rooms (Trimmed, Non-Empty, Unique, Valid Room Type)
+    const roomNumInputs = Array.from(roomFields.querySelectorAll('[data-room-num-index]'));
+    const roomTypeSelects = Array.from(roomFields.querySelectorAll('[data-room-type-index]'));
+    if (!roomNumInputs.length) {
+      showMessage('Please add at least one room.', 'error');
+      return;
+    }
+
+    const configuredRooms = [];
+    for (let i = 0; i < roomNumInputs.length; i++) {
+      const numVal = roomNumInputs[i].value.trim();
+      if (!numVal) {
+        showMessage(`Please enter Room ${i + 1} number or name.`, 'error');
+        roomNumInputs[i].focus();
+        return;
+      }
+      const typeVal = roomTypeSelects[i] ? roomTypeSelects[i].value : 'Classroom';
+      configuredRooms.push({
+        room_number: numVal,
+        room_type: typeVal
+      });
+    }
+
+    // Prevent duplicate room numbers
+    const lowerRoomNumbers = configuredRooms.map((r) => r.room_number.toLowerCase());
+    if (new Set(lowerRoomNumbers).size !== lowerRoomNumbers.length) {
+      showMessage('Room numbers must be unique.', 'error');
+      return;
+    }
+
+    // 5. Global Room Type Filter
+    const roomTypePreference = document.getElementById('roomType').value;
+    if (!roomTypePreference) {
+      showMessage('Please select a room type requirement.', 'error');
       document.getElementById('roomType').focus();
+      return;
+    }
+
+    // Validate that at least one room matches the global room type preference
+    if (roomTypePreference === 'Classroom' && !configuredRooms.some((r) => r.room_type === 'Classroom')) {
+      showMessage("No configured room is of type 'Classroom' to fulfill your room type requirement.", 'error');
+      return;
+    }
+    if (roomTypePreference === 'Laboratory' && !configuredRooms.some((r) => r.room_type === 'Laboratory')) {
+      showMessage("No configured room is of type 'Laboratory' to fulfill your room type requirement.", 'error');
       return;
     }
 
@@ -401,14 +671,16 @@ function setupTimetableForm() {
 
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
-    showMessage('Generating timetable and persisting to Supabase...', 'info');
+    showMessage('Generating conflict-free timetable and saving to Supabase...', 'info');
 
     try {
-      // API Payload: Teacher Name ONLY (NO Specialization!)
+      // API Payload: Teacher Name ONLY (NO Specialization), Sections array, Rooms array
       const payload = {
         teachers: trimmedTeacherNames.map((name) => ({ name })),
         subjects: trimmedSubjectNames,
-        room_type: roomType,
+        sections: trimmedSectionNames.map((name) => ({ name })),
+        rooms: configuredRooms,
+        room_type: roomTypePreference,
         working_days_per_week: workingDays,
         working_start_time: startTime,
         working_end_time: endTime
@@ -420,6 +692,11 @@ function setupTimetableForm() {
       showToast('Timetable generated and saved to Supabase!');
 
       await loadTimetable();
+
+      const timetableSection = document.getElementById('timetableSection');
+      if (timetableSection) {
+        timetableSection.scrollIntoView({ behavior: 'smooth' });
+      }
     } catch (error) {
       showMessage(`Error: ${error.message}`, 'error');
       showToast(error.message);
@@ -433,14 +710,20 @@ function setupTimetableForm() {
       teacherFields.innerHTML = '';
       teachers = [];
       subjects = [''];
+      sections = ['CSE-A'];
+      rooms = [{ room_number: '101', room_type: 'Classroom' }];
       renderSubjectFields();
+      renderSectionFields();
+      renderRoomFields();
       updateSubjectLimit();
       hideMessage();
     }, 0);
   });
 
-  // Initial render of default subject row
+  // Initial renders
   renderSubjectFields();
+  renderSectionFields();
+  renderRoomFields();
 
   // Refresh Timetable Button
   const refreshBtn = document.getElementById('refreshBtn');
@@ -469,8 +752,8 @@ function setupTimetableForm() {
         showToast('Timetable cleared');
         const timetableSection = document.getElementById('timetableSection');
         if (timetableSection) timetableSection.style.display = 'none';
-        const timetableBody = document.getElementById('timetableBody');
-        if (timetableBody) timetableBody.innerHTML = '';
+        const container = document.getElementById('daywiseTimetableContainer');
+        if (container) container.innerHTML = '';
       } catch (error) {
         showMessage(`Error clearing timetable: ${error.message}`, 'error');
       }

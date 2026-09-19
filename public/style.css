@@ -578,6 +578,160 @@ button,
   pointer-events: none;
 }
 
+/* Dynamic Sections / Classes Section */
+.sections-section-wrapper {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.sections-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.sections-section-label {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.section-fields-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
+}
+
+.section-item-card {
+  background: #f8fbff;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.section-item-card:hover {
+  border-color: #cbd5e1;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-card-label {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+}
+
+.btn-remove-section {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--error-color);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-remove-section:hover:not(:disabled) {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+/* Dynamic Rooms Section */
+.rooms-section-wrapper {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.rooms-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.rooms-section-label {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.room-fields-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(12px, 1.5vw, 18px);
+}
+
+.room-item-card {
+  background: #f8fbff;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid #10b981;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.room-item-card:hover {
+  border-color: #cbd5e1;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.room-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-card-label {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+}
+
+.btn-remove-room {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--error-color);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-remove-room:hover:not(:disabled) {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+.room-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
 .form-actions {
   grid-column: 1 / -1;
   display: grid;
@@ -627,6 +781,7 @@ button,
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 22px;
+  flex-wrap: wrap;
 }
 
 .timetable-header h2 {
@@ -641,12 +796,70 @@ button,
   flex-wrap: wrap;
 }
 
-.timetable-container {
+/* Day-Wise Timetable Layout */
+.daywise-timetable-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.day-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.day-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.day-card-header {
+  background: #f8fbff;
+  border-bottom: 1px solid var(--border-color);
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-dark);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.day-count-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(45, 108, 223, 0.1);
+  color: var(--primary-color);
+}
+
+.day-table-container {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: 14px;
-  border: 1px solid var(--border-color);
+}
+
+.empty-day-notice {
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+  background: #ffffff;
 }
 
 .timetable {

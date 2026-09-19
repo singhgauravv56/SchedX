@@ -861,7 +861,7 @@ async function generateTimetableHandler(req, res) {
   try {
     const body = req.body || {};
 
-    // 1. Normalize teachers input
+    // 1. Normalize and validate Teachers input (Teacher Name ONLY - No specialization)
     let teachers = [];
     if (Array.isArray(body.teachers)) {
       teachers = body.teachers.map((t) => {
@@ -878,7 +878,17 @@ async function generateTimetableHandler(req, res) {
       }];
     }
 
-    // 2. Normalize subjects input
+    if (!teachers.length) {
+      return res.status(400).json({ error: 'Please enter at least one teacher.' });
+    }
+
+    // Teacher names must be unique
+    const lowerTeacherNames = teachers.map((t) => t.name.toLowerCase());
+    if (new Set(lowerTeacherNames).size !== lowerTeacherNames.length) {
+      return res.status(400).json({ error: 'Teacher names must be unique.' });
+    }
+
+    // 2. Normalize and validate Subjects input
     let subjects = [];
     if (Array.isArray(body.subjects)) {
       subjects = body.subjects.map((s) => String(s).trim()).filter(Boolean);
@@ -886,15 +896,13 @@ async function generateTimetableHandler(req, res) {
       subjects = [String(body.course_name).trim()].filter(Boolean);
     }
 
-    // Unique subjects
-    subjects = [...new Set(subjects)];
-
-    // 3. Validation
-    if (!teachers.length) {
-      return res.status(400).json({ error: 'Please enter at least one teacher.' });
-    }
+    // Subject names must be non-empty and unique
     if (!subjects.length) {
       return res.status(400).json({ error: 'Please enter at least one subject/course.' });
+    }
+    const lowerSubjectNames = subjects.map((s) => s.toLowerCase());
+    if (new Set(lowerSubjectNames).size !== lowerSubjectNames.length) {
+      return res.status(400).json({ error: 'Subject names must be unique.' });
     }
 
     // Formula: Maximum Subjects = Number of Teachers + 2
@@ -905,6 +913,63 @@ async function generateTimetableHandler(req, res) {
       });
     }
 
+    // 3. Normalize and validate Sections / Classes input
+    let sections = [];
+    if (Array.isArray(body.sections)) {
+      sections = body.sections.map((sec) => {
+        if (typeof sec === 'string') return sec.trim();
+        return String(sec.name || sec.section || sec.class_name || '').trim();
+      }).filter(Boolean);
+    } else if (body.section || body.class_section) {
+      sections = [String(body.section || body.class_section).trim()].filter(Boolean);
+    } else if (body.class_name) {
+      sections = [String(body.class_name).trim()].filter(Boolean);
+    }
+
+    if (!sections.length) {
+      return res.status(400).json({ error: 'Please enter at least one class/section.' });
+    }
+
+    // Section names must be unique
+    const lowerSectionNames = sections.map((s) => s.toLowerCase());
+    if (new Set(lowerSectionNames).size !== lowerSectionNames.length) {
+      return res.status(400).json({ error: 'Section names must be unique.' });
+    }
+
+    // 4. Normalize and validate Rooms input
+    let userRooms = [];
+    if (Array.isArray(body.rooms)) {
+      userRooms = body.rooms.map((r) => {
+        if (typeof r === 'string') {
+          return { room_number: r.trim(), room_type: 'Classroom', capacity: 40 };
+        }
+        return {
+          room_number: String(r.room_number || r.roomNumber || r.room_name || '').trim(),
+          room_type: String(r.room_type || r.roomType || 'Classroom').trim(),
+          capacity: Number(r.capacity || 40)
+        };
+      }).filter((r) => r.room_number);
+    }
+
+    if (body.rooms && !userRooms.length) {
+      return res.status(400).json({ error: 'Please enter at least one room.' });
+    }
+
+    // Room numbers must be unique
+    const lowerRoomNumbers = userRooms.map((r) => r.room_number.toLowerCase());
+    if (new Set(lowerRoomNumbers).size !== lowerRoomNumbers.length) {
+      return res.status(400).json({ error: 'Room numbers must be unique.' });
+    }
+
+    for (const r of userRooms) {
+      if (!['Classroom', 'Laboratory'].includes(r.room_type)) {
+        return res.status(400).json({
+          error: `Invalid room type '${r.room_type}' for room ${r.room_number}. Must be 'Classroom' or 'Laboratory'.`
+        });
+      }
+    }
+
+    // 5. Global Room Type Preference
     const roomTypePreference = String(body.room_type || 'Classroom').trim();
     if (!['Classroom', 'Laboratory', 'Both'].includes(roomTypePreference)) {
       return res.status(400).json({ error: "Room type must be 'Classroom', 'Laboratory', or 'Both'." });
@@ -924,10 +989,6 @@ async function generateTimetableHandler(req, res) {
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-
-    const className = String(body.class_name || 'General Class').trim();
-    const classSection = String(body.class_section || 'A').trim();
-    const studentCount = Number(body.student_count || 40);
 
     // ============================================================================
     // STEP A: Ensure Teachers exist in Supabase or in-memory
@@ -958,7 +1019,7 @@ async function generateTimetableHandler(req, res) {
             .from('teachers')
             .insert({
               name: tInput.name,
-              specialization: tInput.specialization || null,
+              specialization: null,
               working_days_per_week: workingDaysCount
             })
             .select();
@@ -971,7 +1032,7 @@ async function generateTimetableHandler(req, res) {
               .from('teachers')
               .insert({
                 teacher_name: tInput.name,
-                specialization: tInput.specialization || null,
+                specialization: null,
                 working_days_per_week: workingDaysCount
               })
               .select();
@@ -983,7 +1044,7 @@ async function generateTimetableHandler(req, res) {
           created = {
             teacher_id: `teacher_${Date.now()}_${i + 1}`,
             teacher_name: tInput.name,
-            specialization: tInput.specialization || '',
+            specialization: '',
             department: 'General',
             working_days_per_week: workingDaysCount,
             availability: {}
@@ -996,7 +1057,7 @@ async function generateTimetableHandler(req, res) {
     }
 
     // ============================================================================
-    // STEP B: Find Suitable Rooms in Supabase or auto-provision
+    // STEP B: Ensure Rooms exist in Supabase or in-memory
     // ============================================================================
     let dbRooms = [];
     try {
@@ -1004,52 +1065,63 @@ async function generateTimetableHandler(req, res) {
       if (data) dbRooms = data;
     } catch (_) {}
 
-    const normalizedRooms = dbRooms.map(formatRoomRecord);
-    let availableRooms = normalizedRooms.filter((r) => {
-      if (roomTypePreference === 'Classroom' && r.room_type !== 'Classroom') return false;
-      if (roomTypePreference === 'Laboratory' && r.room_type !== 'Laboratory') return false;
-      return r.capacity >= Math.min(studentCount, 30);
-    });
-
-    if (availableRooms.length === 0) {
-      const neededTypes = roomTypePreference === 'Both'
-        ? ['Classroom', 'Laboratory']
-        : [roomTypePreference];
-
-      for (let i = 0; i < neededTypes.length; i++) {
-        const type = neededTypes[i];
-        const roomNumber = `${type.substring(0, 4).toUpperCase()}-${101 + i}`;
-        let newRoomObj = null;
-
-        try {
-          const insRoom = await supabase
-            .from('rooms')
-            .insert({
-              room_number: roomNumber,
-              room_type: type,
-              capacity: Math.max(studentCount, 50),
-              availability: 'Available'
-            })
-            .select();
-          if (insRoom.data && insRoom.data.length > 0) newRoomObj = formatRoomRecord(insRoom.data[0]);
-        } catch (_) {}
-
-        if (!newRoomObj) {
-          newRoomObj = {
-            room_id: `room_auto_${i + 1}`,
-            room_name: roomNumber,
-            room_type: type,
-            capacity: Math.max(studentCount, 50),
-            availability: 'Available'
-          };
-        }
-        availableRooms.push(newRoomObj);
-      }
+    const existingRoomMap = new Map();
+    for (const r of dbRooms) {
+      const norm = formatRoomRecord(r);
+      existingRoomMap.set(norm.room_name.toLowerCase(), norm);
     }
 
-    if (availableRooms.length === 0) {
+    const allConfiguredRooms = [];
+    if (userRooms.length > 0) {
+      for (let i = 0; i < userRooms.length; i++) {
+        const uRoom = userRooms[i];
+        const key = uRoom.room_number.toLowerCase();
+
+        if (existingRoomMap.has(key)) {
+          allConfiguredRooms.push(existingRoomMap.get(key));
+        } else {
+          let created = null;
+          try {
+            const ins = await supabase
+              .from('rooms')
+              .insert({
+                room_number: uRoom.room_number,
+                room_type: uRoom.room_type,
+                capacity: uRoom.capacity || 40,
+                availability: 'Available'
+              })
+              .select();
+            if (ins.data && ins.data.length > 0) created = formatRoomRecord(ins.data[0]);
+          } catch (_) {}
+
+          if (!created) {
+            created = {
+              room_id: `room_${Date.now()}_${i + 1}`,
+              room_name: uRoom.room_number,
+              room_type: uRoom.room_type,
+              capacity: uRoom.capacity || 40,
+              availability: 'Available'
+            };
+          }
+          allConfiguredRooms.push(created);
+          existingRoomMap.set(key, created);
+        }
+      }
+    } else {
+      // Fallback: use all rooms from database
+      allConfiguredRooms.push(...dbRooms.map(formatRoomRecord));
+    }
+
+    // Filter rooms by global roomTypePreference
+    const candidateRooms = allConfiguredRooms.filter((r) => {
+      if (roomTypePreference === 'Classroom' && r.room_type !== 'Classroom') return false;
+      if (roomTypePreference === 'Laboratory' && r.room_type !== 'Laboratory') return false;
+      return true;
+    });
+
+    if (candidateRooms.length === 0) {
       return res.status(400).json({
-        error: `No suitable ${roomTypePreference} rooms are available with capacity for ${studentCount} students.`
+        error: `No suitable ${roomTypePreference} rooms are available for timetable generation.`
       });
     }
 
@@ -1075,7 +1147,7 @@ async function generateTimetableHandler(req, res) {
     }
 
     // ============================================================================
-    // STEP D: Teacher Availability & Existing Timetable Bookings
+    // STEP D: Teacher Availability
     // ============================================================================
     const teacherUnavailableSlots = new Set();
     for (const teacher of teacherRecords) {
@@ -1088,46 +1160,35 @@ async function generateTimetableHandler(req, res) {
       }
     }
 
-    // Existing bookings for other classes to prevent multi-class room/teacher collisions
-    const occupiedTeacherSlots = new Set();
-    const occupiedRoomSlots = new Set();
-    const occupiedClassSlots = new Set();
-
-    try {
-      const existingEntries = loadTimetableLocally();
-      for (const entry of existingEntries) {
-        if (entry.class_name !== className || entry.section !== classSection) {
-          const slotKey = `d${entry.day_of_week}_${entry.start_time}`;
-          if (entry.teacher_id) occupiedTeacherSlots.add(`${slotKey}-${entry.teacher_id}`);
-          if (entry.room_id) occupiedRoomSlots.add(`${slotKey}-${entry.room_id}`);
-        }
-      }
-    } catch (_) {}
-
     // ============================================================================
-    // STEP E: Backtracking Schedule Generator
+    // STEP E: Multi-Resource Backtracking Schedule Generator
     // ============================================================================
-    // Build items to schedule: distribute subjects across working days
+    // Build items to schedule: each section receives its subject periods across days
     const itemsToSchedule = [];
-    if (subjects.length <= slotsPerDay) {
-      for (const subject of subjects) {
-        for (let d = 1; d <= workingDaysCount; d++) {
-          itemsToSchedule.push({ subject, day: d });
+    for (const sectionName of sections) {
+      if (subjects.length <= slotsPerDay) {
+        for (const subject of subjects) {
+          for (let d = 1; d <= workingDaysCount; d++) {
+            itemsToSchedule.push({ section: sectionName, subject, day: d });
+          }
         }
-      }
-    } else {
-      // Distribute evenly so at most slotsPerDay periods occur per day
-      for (let d = 1; d <= workingDaysCount; d++) {
-        for (let sIdx = 0; sIdx < slotsPerDay; sIdx++) {
-          const subIdx = (d * slotsPerDay + sIdx) % subjects.length;
-          itemsToSchedule.push({ subject: subjects[subIdx], day: d });
+      } else {
+        for (let d = 1; d <= workingDaysCount; d++) {
+          for (let sIdx = 0; sIdx < slotsPerDay; sIdx++) {
+            const subIdx = (d * slotsPerDay + sIdx) % subjects.length;
+            itemsToSchedule.push({ section: sectionName, subject: subjects[subIdx], day: d });
+          }
         }
       }
     }
 
+    const occupiedTeacherSlots = new Set();
+    const occupiedRoomSlots = new Set();
+    const occupiedSectionSlots = new Set();
+
     const assignments = [];
     let backtrackSteps = 0;
-    const MAX_STEPS = 15000;
+    const MAX_STEPS = 40000;
 
     function solveBacktracking(itemIndex) {
       if (itemIndex >= itemsToSchedule.length) {
@@ -1137,43 +1198,53 @@ async function generateTimetableHandler(req, res) {
         return false;
       }
 
-      const { subject, day } = itemsToSchedule[itemIndex];
+      const { section, subject, day } = itemsToSchedule[itemIndex];
       const daySlots = allSlotsByDay[day] || [];
 
-      // Preferred round-robin teacher assignment
-      const preferredTeacherIdx = subjects.indexOf(subject) % teacherRecords.length;
-      const candidates = [
+      // Balanced teacher assignment
+      const subIdx = subjects.indexOf(subject);
+      const secIdx = sections.indexOf(section);
+      const preferredTeacherIdx = (subIdx + secIdx) % teacherRecords.length;
+      const candidateTeachers = [
         teacherRecords[preferredTeacherIdx],
         ...teacherRecords.filter((_, idx) => idx !== preferredTeacherIdx)
+      ];
+
+      // Balanced room assignment
+      const preferredRoomIdx = (secIdx + subIdx) % candidateRooms.length;
+      const orderedRooms = [
+        candidateRooms[preferredRoomIdx],
+        ...candidateRooms.filter((_, idx) => idx !== preferredRoomIdx)
       ];
 
       for (const slot of daySlots) {
         if (slot.is_break) continue;
 
-        // Constraint 3: Same class cannot have two subjects at same slot
-        const classSlotKey = `${slot.slot_id}-${className}-${classSection}`;
-        if (occupiedClassSlots.has(classSlotKey)) continue;
+        // Constraint: Section cannot attend two classes at the same day + time slot
+        const sectionSlotKey = `${slot.slot_id}-${section.toLowerCase()}`;
+        if (occupiedSectionSlots.has(sectionSlotKey)) continue;
 
-        for (const teacher of candidates) {
-          // Availability check
+        for (const teacher of candidateTeachers) {
+          // Constraint: Teacher availability
           const availKey = `${slot.slot_id}-${teacher.teacher_id}`;
           if (teacherUnavailableSlots.has(availKey)) continue;
 
-          // Constraint 1: Same teacher cannot teach two classes at same slot
+          // Constraint: Teacher cannot teach two classes at the same day + time slot
           const teacherSlotKey = `${slot.slot_id}-${teacher.teacher_id}`;
           if (occupiedTeacherSlots.has(teacherSlotKey)) continue;
 
-          for (const room of availableRooms) {
-            // Constraint 2: Same room cannot be assigned to two classes at same slot
+          for (const room of orderedRooms) {
+            // Constraint: Room cannot host two classes at the same day + time slot
             const roomSlotKey = `${slot.slot_id}-${room.room_id}`;
             if (occupiedRoomSlots.has(roomSlotKey)) continue;
 
-            // Combination is conflict-free! Assign it
+            // Combination is completely conflict-free
             const scheduledEntry = {
               slot_id: slot.slot_id,
               day_of_week: day,
               start_time: slot.start_time,
               end_time: slot.end_time,
+              section,
               subject,
               teacher_id: teacher.teacher_id,
               teacher_name: teacher.teacher_name,
@@ -1183,19 +1254,19 @@ async function generateTimetableHandler(req, res) {
             };
 
             assignments.push(scheduledEntry);
+            occupiedSectionSlots.add(sectionSlotKey);
             occupiedTeacherSlots.add(teacherSlotKey);
             occupiedRoomSlots.add(roomSlotKey);
-            occupiedClassSlots.add(classSlotKey);
 
             if (solveBacktracking(itemIndex + 1)) {
               return true;
             }
 
-            // Backtrack if subsequent assignments fail
+            // Backtrack
             assignments.pop();
+            occupiedSectionSlots.delete(sectionSlotKey);
             occupiedTeacherSlots.delete(teacherSlotKey);
             occupiedRoomSlots.delete(roomSlotKey);
-            occupiedClassSlots.delete(classSlotKey);
           }
         }
       }
@@ -1207,12 +1278,39 @@ async function generateTimetableHandler(req, res) {
 
     if (!isGenerated || assignments.length === 0) {
       return res.status(409).json({
-        error: `Could not generate a conflict-free schedule for ${subjects.length} subjects with ${teacherRecords.length} teachers and ${availableRooms.length} rooms. Consider adjusting working hours or adding rooms.`
+        error: `Could not generate a conflict-free schedule for ${sections.length} section(s), ${subjects.length} subject(s), ${teacherRecords.length} teacher(s), and ${candidateRooms.length} room(s). Consider adding more rooms, teachers, or expanding working hours.`
       });
     }
 
     // ============================================================================
-    // STEP F: Format & Persist Timetable
+    // STEP F: Final Exhaustive Conflict Validation Pass
+    // ============================================================================
+    for (let i = 0; i < assignments.length; i++) {
+      const a = assignments[i];
+      for (let j = i + 1; j < assignments.length; j++) {
+        const b = assignments[j];
+        if (a.day_of_week === b.day_of_week && a.start_time === b.start_time) {
+          if (a.teacher_id === b.teacher_id) {
+            return res.status(409).json({
+              error: `Teacher conflict detected: ${a.teacher_name} is scheduled for both ${a.section} and ${b.section} on Day ${a.day_of_week} at ${a.start_time}.`
+            });
+          }
+          if (a.section.toLowerCase() === b.section.toLowerCase()) {
+            return res.status(409).json({
+              error: `Section conflict detected: Section ${a.section} has multiple classes scheduled simultaneously on Day ${a.day_of_week} at ${a.start_time}.`
+            });
+          }
+          if (a.room_id === b.room_id || a.room_name.toLowerCase() === b.room_name.toLowerCase()) {
+            return res.status(409).json({
+              error: `Room conflict detected: Room ${a.room_name} is assigned to both ${a.section} and ${b.section} on Day ${a.day_of_week} at ${a.start_time}.`
+            });
+          }
+        }
+      }
+    }
+
+    // ============================================================================
+    // STEP G: Format & Persist Timetable
     // ============================================================================
     const formattedEntries = assignments.map((entry, idx) => ({
       timetable_id: `tt_${Date.now()}_${idx + 1}`,
@@ -1220,8 +1318,8 @@ async function generateTimetableHandler(req, res) {
       day_of_week: entry.day_of_week,
       start_time: entry.start_time,
       end_time: entry.end_time,
-      class_name: className,
-      section: classSection,
+      class_name: entry.section,
+      section: entry.section,
       course_name: entry.subject,
       teacher_name: entry.teacher_name,
       teacher_id: entry.teacher_id,
@@ -1229,6 +1327,12 @@ async function generateTimetableHandler(req, res) {
       room_id: entry.room_id,
       room_type: entry.room_type
     }));
+
+    // Sort by day_of_week, then by start_time
+    formattedEntries.sort((a, b) => {
+      if (a.day_of_week !== b.day_of_week) return a.day_of_week - b.day_of_week;
+      return String(a.start_time).localeCompare(String(b.start_time));
+    });
 
     // Persist locally for instant reliability
     saveTimetableLocally(formattedEntries);
@@ -1245,8 +1349,8 @@ async function generateTimetableHandler(req, res) {
       timetable: formattedEntries,
       teachers: teacherRecords.map((t) => t.teacher_name),
       subjects: subjects,
-      class_name: className,
-      section: classSection,
+      sections: sections,
+      rooms: candidateRooms.map((r) => ({ room_number: r.room_name, room_type: r.room_type })),
       room_type: roomTypePreference
     });
 

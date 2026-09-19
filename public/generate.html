@@ -67,14 +67,43 @@
               <div class="subject-fields-list" id="subjectFields" aria-live="polite"></div>
             </div>
 
+            <!-- CLASSES / SECTIONS SECTION -->
+            <div class="sections-section-wrapper" style="grid-column: 1 / -1;">
+              <div class="sections-header">
+                <div>
+                  <label class="sections-section-label" for="addSectionBtn">Classes / Sections <span class="required">*</span></label>
+                  <small class="form-help" style="display: block; margin-top: 2px;">Add the classes or sections to be scheduled (e.g., CSE-A, CSE-B).</small>
+                </div>
+                <button type="button" id="addSectionBtn" class="btn btn-secondary btn-sm" aria-label="Add Section">
+                  + Add Section
+                </button>
+              </div>
+              <div class="section-fields-list" id="sectionFields" aria-live="polite"></div>
+            </div>
+
+            <!-- ROOMS SECTION -->
+            <div class="rooms-section-wrapper" style="grid-column: 1 / -1;">
+              <div class="rooms-header">
+                <div>
+                  <label class="rooms-section-label" for="addRoomBtn">Rooms <span class="required">*</span></label>
+                  <small class="form-help" style="display: block; margin-top: 2px;">Add physical rooms and laboratories available for scheduling.</small>
+                </div>
+                <button type="button" id="addRoomBtn" class="btn btn-secondary btn-sm" aria-label="Add Room">
+                  + Add Room
+                </button>
+              </div>
+              <div class="room-fields-list" id="roomFields" aria-live="polite"></div>
+            </div>
+
             <div class="form-group">
-              <label for="roomType">Room Type <span class="required">*</span></label>
+              <label for="roomType">Room Type Requirement <span class="required">*</span></label>
               <select id="roomType" required>
                 <option value="">-- Select Room Type --</option>
                 <option value="Classroom">Classroom</option>
                 <option value="Laboratory">Laboratory</option>
                 <option value="Both">Both (Classroom & Laboratory)</option>
               </select>
+              <small class="form-help">Scheduling filter: restrict timetable to Classroom, Laboratory, or Both.</small>
             </div>
 
             <div class="form-group">
@@ -101,36 +130,21 @@
           <div id="message" class="message hidden"></div>
         </section>
 
-        <!-- GENERATED TIMETABLE SECTION -->
+        <!-- GENERATED TIMETABLE SECTION (DAY-BY-DAY) -->
         <section class="timetable-section" id="timetableSection" style="display: none;">
           <div class="timetable-header">
-            <h2>Generated Timetable</h2>
+            <div>
+              <h2>Generated Timetable</h2>
+              <p class="section-description" style="margin-top: 4px; margin-bottom: 0;">Conflict-free academic schedule organized day-by-day.</p>
+            </div>
             <div class="timetable-actions">
               <button id="refreshBtn" class="btn btn-secondary" type="button">↻ Refresh</button>
               <button id="clearBtn" class="btn btn-danger" type="button">Clear Timetable</button>
             </div>
           </div>
 
-          <div class="timetable-container">
-            <table class="timetable">
-              <thead>
-                <tr>
-                  <th>Day</th>
-                  <th>Time Slot</th>
-                  <th>Class</th>
-                  <th>Section</th>
-                  <th>Subject</th>
-                  <th>Teacher</th>
-                  <th>Room</th>
-                  <th>Room Type</th>
-                </tr>
-              </thead>
-              <tbody id="timetableBody">
-                <tr>
-                  <td colspan="8" class="no-data">No timetable generated yet.</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="daywise-timetable-container" id="daywiseTimetableContainer">
+            <!-- Rendered day cards injected dynamically -->
           </div>
         </section>
       </div>
