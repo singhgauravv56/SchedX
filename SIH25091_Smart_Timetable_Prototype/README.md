@@ -1,4 +1,4 @@
-# SIH25091 SmartSchedule AI — Prototype
+# SmartSchedule AI — Prototype
 
 ## What this is
 A front-end prototype for:
