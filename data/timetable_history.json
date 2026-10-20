@@ -1,0 +1,5946 @@
+[
+  {
+    "version_id": "gen_1792533354234_t2zug",
+    "timestamp": "2026-10-20T21:55:54.234Z",
+    "created_at": "2026-10-20T21:55:54.234Z",
+    "is_active": true,
+    "department": "TestDept_Recovery",
+    "status": "WARNING",
+    "summary": {
+      "total_required": 15,
+      "successfully_scheduled": 3,
+      "requiring_attention": 12,
+      "detected_conflicts": 12
+    },
+    "conflicts": [
+      {
+        "id": "room_conflict_tt_1792533347616_1_tt_1792533354233_6",
+        "type": "room_conflict",
+        "day": "Monday",
+        "time_slot": "09:00 AM – 10:00 AM",
+        "affected_ids": [
+          "tt_1792533347616_1",
+          "tt_1792533354233_6"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 09:00 AM on Monday: \"Algorithms\" (Section A) and \"Mathematics\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533347930_1_tt_1792533354233_9",
+        "type": "room_conflict",
+        "day": "Monday",
+        "time_slot": "10:00 AM – 11:00 AM",
+        "affected_ids": [
+          "tt_1792533347930_1",
+          "tt_1792533354233_9"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 10:00 AM on Monday: \"Algorithms\" (Section A) and \"Mathematics\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533349032_1_tt_1792533354233_2",
+        "type": "room_conflict",
+        "day": "Monday",
+        "time_slot": "11:00 AM – 12:00 PM",
+        "affected_ids": [
+          "tt_1792533349032_1",
+          "tt_1792533354233_2"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 11:00 AM on Monday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533349032_6_tt_1792533354233_7",
+        "type": "room_conflict",
+        "day": "Monday",
+        "time_slot": "01:00 PM – 02:00 PM",
+        "affected_ids": [
+          "tt_1792533349032_6",
+          "tt_1792533354233_7"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 01:00 PM on Monday: \"Mathematics\" (Section A) and \"Algorithms\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533347930_7_tt_1792533354233_5",
+        "type": "room_conflict",
+        "day": "Tuesday",
+        "time_slot": "09:00 AM – 10:00 AM",
+        "affected_ids": [
+          "tt_1792533347930_7",
+          "tt_1792533354233_5"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 09:00 AM on Tuesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533349032_2_tt_1792533354233_10",
+        "type": "room_conflict",
+        "day": "Tuesday",
+        "time_slot": "11:00 AM – 12:00 PM",
+        "affected_ids": [
+          "tt_1792533349032_2",
+          "tt_1792533354233_10"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 11:00 AM on Tuesday: \"Compilers\" (Section A) and \"Algorithms\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533352337_4_tt_1792533354233_8",
+        "type": "room_conflict",
+        "day": "Tuesday",
+        "time_slot": "01:00 PM – 02:00 PM",
+        "affected_ids": [
+          "tt_1792533352337_4",
+          "tt_1792533354233_8"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 01:00 PM on Tuesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533347930_13_tt_1792533354233_11",
+        "type": "room_conflict",
+        "day": "Wednesday",
+        "time_slot": "09:00 AM – 10:00 AM",
+        "affected_ids": [
+          "tt_1792533347930_13",
+          "tt_1792533354233_11"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 09:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+      },
+      {
+        "id": "room_conflict_rc_test_2_tt_1792533354233_13",
+        "type": "room_conflict",
+        "day": "Wednesday",
+        "time_slot": "11:00 AM – 11:15 AM",
+        "affected_ids": [
+          "rc_test_2",
+          "tt_1792533354233_13"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 10:15 AM on Wednesday: \"Compilers\" (Section B) and \"Algorithms\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533349032_8_tt_1792533354233_12",
+        "type": "room_conflict",
+        "day": "Wednesday",
+        "time_slot": "02:00 PM – 03:00 PM",
+        "affected_ids": [
+          "tt_1792533349032_8",
+          "tt_1792533354233_12"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 02:00 PM on Wednesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533352337_8_tt_1792533354233_15",
+        "type": "room_conflict",
+        "day": "Thursday",
+        "time_slot": "09:00 AM – 10:00 AM",
+        "affected_ids": [
+          "tt_1792533352337_8",
+          "tt_1792533354233_15"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 09:00 AM on Thursday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+      },
+      {
+        "id": "room_conflict_tt_1792533347930_9_tt_1792533354233_14",
+        "type": "room_conflict",
+        "day": "Thursday",
+        "time_slot": "11:00 AM – 12:00 PM",
+        "affected_ids": [
+          "tt_1792533347930_9",
+          "tt_1792533354233_14"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 11:00 AM on Thursday: \"Mathematics\" (Section A) and \"Compilers\" (Section A)."
+      }
+    ],
+    "unscheduled_classes": [],
+    "entry_count": 63,
+    "working_days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "working_days_per_week": 5,
+    "day_periods": {
+      "Monday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Tuesday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Wednesday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Thursday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Friday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ]
+    },
+    "period_counts": {
+      "Monday": 5,
+      "Tuesday": 5,
+      "Wednesday": 5,
+      "Thursday": 5,
+      "Friday": 5
+    },
+    "breaks": [],
+    "teacher_workload": {
+      "by_day": {
+        "Monday": {
+          "day": "Monday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 6,
+              "periods": 6,
+              "total_minutes": 360,
+              "teaching_time": "6 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "08:00:00",
+                  "end_time": "09:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Impossible",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 14,
+          "total_periods": 14
+        },
+        "Tuesday": {
+          "day": "Tuesday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 5,
+              "periods": 5,
+              "total_minutes": 300,
+              "teaching_time": "5 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 5,
+              "periods": 5,
+              "total_minutes": 300,
+              "teaching_time": "5 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 14,
+          "total_periods": 14
+        },
+        "Wednesday": {
+          "day": "Wednesday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 5,
+              "periods": 5,
+              "total_minutes": 300,
+              "teaching_time": "5 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_RoomConf",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section B",
+                  "department": "TestDept_RoomConf",
+                  "start_time": "10:15:00",
+                  "end_time": "11:15:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 13,
+          "total_periods": 13
+        },
+        "Thursday": {
+          "day": "Thursday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 12,
+          "total_periods": 12
+        },
+        "Friday": {
+          "day": "Friday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 2,
+              "periods": 2,
+              "total_minutes": 120,
+              "teaching_time": "2 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Recovery",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 10,
+          "total_periods": 10
+        }
+      },
+      "weekly_summary": [
+        {
+          "teacher_name": "Dr. Alan Turing",
+          "weekly_classes": 22,
+          "weekly_periods": 22,
+          "weekly_minutes": 1320,
+          "total_teaching_time": "22h",
+          "average_per_day": "4.4",
+          "daily_breakdown": {
+            "Monday": 6,
+            "Tuesday": 4,
+            "Wednesday": 4,
+            "Thursday": 4,
+            "Friday": 4
+          }
+        },
+        {
+          "teacher_name": "Dr. Grace Hopper",
+          "weekly_classes": 21,
+          "weekly_periods": 21,
+          "weekly_minutes": 1260,
+          "total_teaching_time": "21h",
+          "average_per_day": "4.2",
+          "daily_breakdown": {
+            "Monday": 4,
+            "Tuesday": 5,
+            "Wednesday": 4,
+            "Thursday": 4,
+            "Friday": 4
+          }
+        },
+        {
+          "teacher_name": "Dr. Ada Lovelace",
+          "weekly_classes": 20,
+          "weekly_periods": 20,
+          "weekly_minutes": 1200,
+          "total_teaching_time": "20h",
+          "average_per_day": "4.0",
+          "daily_breakdown": {
+            "Monday": 4,
+            "Tuesday": 5,
+            "Wednesday": 5,
+            "Thursday": 4,
+            "Friday": 2
+          }
+        }
+      ],
+      "working_days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    "sections": [
+      "Section A"
+    ],
+    "teachers": [
+      {
+        "teacher_id": "teacher_1792516713479_4",
+        "teacher_name": "Dr. Alan Turing",
+        "is_na": false,
+        "subjectPreference": "Explicit",
+        "assigned_subject": "Algorithms",
+        "assigned_subjects": [
+          "algorithms"
+        ],
+        "specialization": "",
+        "department": "General",
+        "working_days_per_week": 5,
+        "availability": {}
+      },
+      {
+        "teacher_id": "teacher_1792533338469_2",
+        "teacher_name": "Dr. Grace Hopper",
+        "is_na": false,
+        "subjectPreference": "Explicit",
+        "assigned_subject": "Compilers",
+        "assigned_subjects": [
+          "compilers"
+        ],
+        "specialization": "",
+        "department": "General",
+        "working_days_per_week": 5,
+        "availability": {}
+      },
+      {
+        "teacher_id": "teacher_1792533338469_3",
+        "teacher_name": "Dr. Ada Lovelace",
+        "is_na": false,
+        "subjectPreference": "Explicit",
+        "assigned_subject": "Mathematics",
+        "assigned_subjects": [
+          "mathematics"
+        ],
+        "specialization": "",
+        "department": "General",
+        "working_days_per_week": 5,
+        "availability": {}
+      }
+    ],
+    "subjects": [
+      "Algorithms",
+      "Compilers",
+      "Mathematics"
+    ],
+    "rooms": [
+      {
+        "room_number": "Room 101",
+        "room_type": "Classroom"
+      },
+      {
+        "room_number": "Room 102",
+        "room_type": "Classroom"
+      }
+    ],
+    "room_type": "Both",
+    "lab_classes": [],
+    "entries": [
+      {
+        "timetable_id": "tt_1792533352337_1",
+        "department": "TestDept_DeptB",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 1,
+        "start_time": "08:00:00",
+        "end_time": "09:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347616_1",
+        "department": "TestDept_Impossible",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "chmj9pupi4a",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Monday: \"Algorithms\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_6",
+        "department": "TestDept_Recovery",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Monday: \"Algorithms\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_2",
+        "department": "TestDept_DeptB",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_1",
+        "department": "TestDept_Persist",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Monday: \"Algorithms\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_11",
+        "department": "TestDept_DeptA",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_9",
+        "department": "TestDept_Recovery",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Monday: \"Algorithms\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_6",
+        "department": "TestDept_Persist",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_1",
+        "department": "TestDept_DeptA",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 11:00 AM on Monday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_2",
+        "department": "TestDept_Recovery",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 11:00 AM on Monday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_11",
+        "department": "TestDept_Persist",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_6",
+        "department": "TestDept_DeptA",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 01:00 PM on Monday: \"Mathematics\" (Section A) and \"Algorithms\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_7",
+        "department": "TestDept_Recovery",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 01:00 PM on Monday: \"Mathematics\" (Section A) and \"Algorithms\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_1",
+        "department": "TestDept_Recovery",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_7",
+        "department": "TestDept_Persist",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Tuesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_3",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_5",
+        "department": "TestDept_Recovery",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Tuesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_2",
+        "department": "TestDept_Persist",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Tuesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_7",
+        "department": "TestDept_DeptA",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_15",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Tuesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_12",
+        "department": "TestDept_Persist",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_2",
+        "department": "TestDept_DeptA",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 11:00 AM on Tuesday: \"Compilers\" (Section A) and \"Algorithms\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_10",
+        "department": "TestDept_Recovery",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 11:00 AM on Tuesday: \"Compilers\" (Section A) and \"Algorithms\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_12",
+        "department": "TestDept_DeptA",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_4",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 01:00 PM on Tuesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_8",
+        "department": "TestDept_Recovery",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 01:00 PM on Tuesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_5",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_3",
+        "department": "TestDept_Recovery",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kjsi9jgh0n",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_13",
+        "department": "TestDept_Persist",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_6",
+        "department": "TestDept_DeptB",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_11",
+        "department": "TestDept_Recovery",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "id": "rc_test_1",
+        "timetable_id": "rc_test_1",
+        "day": "Wednesday",
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "room_name": "Room 101",
+        "room_type": "Classroom",
+        "department": "TestDept_RoomConf",
+        "has_conflict": true,
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section B)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_9",
+        "department": "TestDept_DeptB",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "id": "rc_test_2",
+        "timetable_id": "rc_test_2",
+        "day": "Wednesday",
+        "period_number": 2,
+        "start_time": "10:15:00",
+        "end_time": "11:15:00",
+        "section": "Section B",
+        "course_name": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "room_name": "Room 101",
+        "room_type": "Classroom",
+        "department": "TestDept_RoomConf",
+        "has_conflict": true,
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section B).",
+          "Room Room 101 is assigned to two classes at 10:15 AM on Wednesday: \"Compilers\" (Section B) and \"Algorithms\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_3",
+        "department": "TestDept_Persist",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_13",
+        "department": "TestDept_Recovery",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:15 AM on Wednesday: \"Compilers\" (Section B) and \"Algorithms\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_8",
+        "department": "TestDept_Persist",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_3",
+        "department": "TestDept_DeptA",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_8",
+        "department": "TestDept_DeptA",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 02:00 PM on Wednesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_7",
+        "department": "TestDept_DeptB",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_12",
+        "department": "TestDept_Recovery",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 02:00 PM on Wednesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_4",
+        "department": "TestDept_Persist",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_8",
+        "department": "TestDept_DeptB",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Thursday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_15",
+        "department": "TestDept_Recovery",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 09:00 AM on Thursday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_14",
+        "department": "TestDept_Persist",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_4",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_9",
+        "department": "TestDept_Persist",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 11:00 AM on Thursday: \"Mathematics\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_13",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_14",
+        "department": "TestDept_Recovery",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "9aahajn6n0e",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 11:00 AM on Thursday: \"Mathematics\" (Section A) and \"Compilers\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_9",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_10",
+        "department": "TestDept_DeptB",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_14",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_12",
+        "department": "TestDept_DeptB",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_10",
+        "department": "TestDept_Persist",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_11",
+        "department": "TestDept_DeptB",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_5",
+        "department": "TestDept_Persist",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_10",
+        "department": "TestDept_DeptA",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_15",
+        "department": "TestDept_Persist",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_5",
+        "department": "TestDept_DeptA",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_15",
+        "department": "TestDept_DeptA",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_13",
+        "department": "TestDept_DeptB",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_14",
+        "department": "TestDept_DeptB",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533354233_4",
+        "department": "TestDept_Recovery",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "kjsi9jgh0n",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      }
+    ]
+  },
+  {
+    "version_id": "gen_1792533352338_spw1p",
+    "timestamp": "2026-10-20T21:55:52.338Z",
+    "created_at": "2026-10-20T21:55:52.338Z",
+    "is_active": false,
+    "department": "TestDept_DeptB",
+    "status": "WARNING",
+    "summary": {
+      "total_required": 15,
+      "successfully_scheduled": 14,
+      "requiring_attention": 1,
+      "detected_conflicts": 1
+    },
+    "conflicts": [
+      {
+        "id": "room_conflict_tt_1792533347930_2_tt_1792533352337_15",
+        "type": "room_conflict",
+        "day": "Tuesday",
+        "time_slot": "10:00 AM – 11:00 AM",
+        "affected_ids": [
+          "tt_1792533347930_2",
+          "tt_1792533352337_15"
+        ],
+        "room": "Room 101",
+        "title": "Room Conflict: Room 101",
+        "description": "Room Room 101 is assigned to two classes at 10:00 AM on Tuesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+      }
+    ],
+    "unscheduled_classes": [],
+    "entry_count": 48,
+    "working_days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "working_days_per_week": 5,
+    "day_periods": {
+      "Monday": [
+        {
+          "period": 1,
+          "start_time": "08:00:00",
+          "end_time": "09:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        }
+      ],
+      "Tuesday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Wednesday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Thursday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ],
+      "Friday": [
+        {
+          "period": 1,
+          "start_time": "09:00:00",
+          "end_time": "10:00:00",
+          "is_break": false
+        },
+        {
+          "period": 2,
+          "start_time": "10:00:00",
+          "end_time": "11:00:00",
+          "is_break": false
+        },
+        {
+          "period": 3,
+          "start_time": "11:00:00",
+          "end_time": "12:00:00",
+          "is_break": false
+        },
+        {
+          "period": 4,
+          "start_time": "13:00:00",
+          "end_time": "14:00:00",
+          "is_break": false
+        },
+        {
+          "period": 5,
+          "start_time": "14:00:00",
+          "end_time": "15:00:00",
+          "is_break": false
+        }
+      ]
+    },
+    "period_counts": {
+      "Monday": 2,
+      "Tuesday": 5,
+      "Wednesday": 5,
+      "Thursday": 5,
+      "Friday": 5
+    },
+    "breaks": [],
+    "teacher_workload": {
+      "by_day": {
+        "Monday": {
+          "day": "Monday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 2,
+              "periods": 2,
+              "total_minutes": 120,
+              "teaching_time": "2 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "08:00:00",
+                  "end_time": "09:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Impossible",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 9,
+          "total_periods": 9
+        },
+        "Tuesday": {
+          "day": "Tuesday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 10,
+          "total_periods": 10
+        },
+        "Wednesday": {
+          "day": "Wednesday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_RoomConf",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section B",
+                  "department": "TestDept_RoomConf",
+                  "start_time": "10:15:00",
+                  "end_time": "11:15:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 10,
+          "total_periods": 10
+        },
+        "Thursday": {
+          "day": "Thursday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 10,
+          "total_periods": 10
+        },
+        "Friday": {
+          "day": "Friday",
+          "teachers": [
+            {
+              "teacher_name": "Dr. Ada Lovelace",
+              "classes": 2,
+              "periods": 2,
+              "total_minutes": 120,
+              "teaching_time": "2 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Mathematics",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Alan Turing",
+              "classes": 3,
+              "periods": 3,
+              "total_minutes": 180,
+              "teaching_time": "3 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Algorithms",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "13:00:00",
+                  "end_time": "14:00:00",
+                  "period_number": 4,
+                  "is_lab": false
+                }
+              ]
+            },
+            {
+              "teacher_name": "Dr. Grace Hopper",
+              "classes": 4,
+              "periods": 4,
+              "total_minutes": 240,
+              "teaching_time": "4 Hours",
+              "is_free": false,
+              "sessions": [
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "09:00:00",
+                  "end_time": "10:00:00",
+                  "period_number": 1,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_Persist",
+                  "start_time": "10:00:00",
+                  "end_time": "11:00:00",
+                  "period_number": 2,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptA",
+                  "start_time": "11:00:00",
+                  "end_time": "12:00:00",
+                  "period_number": 3,
+                  "is_lab": false
+                },
+                {
+                  "subject": "Compilers",
+                  "section": "Section A",
+                  "department": "TestDept_DeptB",
+                  "start_time": "14:00:00",
+                  "end_time": "15:00:00",
+                  "period_number": 5,
+                  "is_lab": false
+                }
+              ]
+            }
+          ],
+          "total_classes": 9,
+          "total_periods": 9
+        }
+      },
+      "weekly_summary": [
+        {
+          "teacher_name": "Dr. Alan Turing",
+          "weekly_classes": 17,
+          "weekly_periods": 17,
+          "weekly_minutes": 1020,
+          "total_teaching_time": "17h",
+          "average_per_day": "3.4",
+          "daily_breakdown": {
+            "Monday": 4,
+            "Tuesday": 3,
+            "Wednesday": 3,
+            "Thursday": 4,
+            "Friday": 3
+          }
+        },
+        {
+          "teacher_name": "Dr. Grace Hopper",
+          "weekly_classes": 16,
+          "weekly_periods": 16,
+          "weekly_minutes": 960,
+          "total_teaching_time": "16h",
+          "average_per_day": "3.2",
+          "daily_breakdown": {
+            "Monday": 3,
+            "Tuesday": 3,
+            "Wednesday": 3,
+            "Thursday": 3,
+            "Friday": 4
+          }
+        },
+        {
+          "teacher_name": "Dr. Ada Lovelace",
+          "weekly_classes": 15,
+          "weekly_periods": 15,
+          "weekly_minutes": 900,
+          "total_teaching_time": "15h",
+          "average_per_day": "3.0",
+          "daily_breakdown": {
+            "Monday": 2,
+            "Tuesday": 4,
+            "Wednesday": 4,
+            "Thursday": 3,
+            "Friday": 2
+          }
+        }
+      ],
+      "working_days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    "sections": [
+      "Section A"
+    ],
+    "teachers": [
+      {
+        "teacher_id": "teacher_1792516713479_4",
+        "teacher_name": "Dr. Alan Turing",
+        "is_na": false,
+        "subjectPreference": "Explicit",
+        "assigned_subject": "Algorithms",
+        "assigned_subjects": [
+          "algorithms"
+        ],
+        "specialization": "",
+        "department": "General",
+        "working_days_per_week": 5,
+        "availability": {}
+      },
+      {
+        "teacher_id": "teacher_1792533338469_2",
+        "teacher_name": "Dr. Grace Hopper",
+        "is_na": false,
+        "subjectPreference": "Explicit",
+        "assigned_subject": "Compilers",
+        "assigned_subjects": [
+          "compilers"
+        ],
+        "specialization": "",
+        "department": "General",
+        "working_days_per_week": 5,
+        "availability": {}
+      },
+      {
+        "teacher_id": "teacher_1792533338469_3",
+        "teacher_name": "Dr. Ada Lovelace",
+        "is_na": false,
+        "subjectPreference": "Explicit",
+        "assigned_subject": "Mathematics",
+        "assigned_subjects": [
+          "mathematics"
+        ],
+        "specialization": "",
+        "department": "General",
+        "working_days_per_week": 5,
+        "availability": {}
+      }
+    ],
+    "subjects": [
+      "Algorithms",
+      "Compilers",
+      "Mathematics"
+    ],
+    "rooms": [
+      {
+        "room_number": "Room 101",
+        "room_type": "Classroom"
+      },
+      {
+        "room_number": "Room 102",
+        "room_type": "Classroom"
+      }
+    ],
+    "room_type": "Both",
+    "lab_classes": [],
+    "entries": [
+      {
+        "timetable_id": "tt_1792533352337_1",
+        "department": "TestDept_DeptB",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 1,
+        "start_time": "08:00:00",
+        "end_time": "09:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347616_1",
+        "department": "TestDept_Impossible",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "chmj9pupi4a",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_2",
+        "department": "TestDept_DeptB",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_1",
+        "department": "TestDept_Persist",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_11",
+        "department": "TestDept_DeptA",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_6",
+        "department": "TestDept_Persist",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_1",
+        "department": "TestDept_DeptA",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_11",
+        "department": "TestDept_Persist",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_6",
+        "department": "TestDept_DeptA",
+        "day": "Monday",
+        "day_name": "Monday",
+        "day_of_week": 1,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_7",
+        "department": "TestDept_Persist",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_3",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_2",
+        "department": "TestDept_Persist",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Tuesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_7",
+        "department": "TestDept_DeptA",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_15",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": true,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ],
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Tuesday: \"Compilers\" (Section A) and \"Mathematics\" (Section A)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_12",
+        "department": "TestDept_Persist",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_2",
+        "department": "TestDept_DeptA",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_12",
+        "department": "TestDept_DeptA",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_4",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_5",
+        "department": "TestDept_DeptB",
+        "day": "Tuesday",
+        "day_name": "Tuesday",
+        "day_of_week": 2,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_13",
+        "department": "TestDept_Persist",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_6",
+        "department": "TestDept_DeptB",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "id": "rc_test_1",
+        "timetable_id": "rc_test_1",
+        "day": "Wednesday",
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "room_name": "Room 101",
+        "room_type": "Classroom",
+        "department": "TestDept_RoomConf",
+        "has_conflict": true,
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section B)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_9",
+        "department": "TestDept_DeptB",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "id": "rc_test_2",
+        "timetable_id": "rc_test_2",
+        "day": "Wednesday",
+        "period_number": 2,
+        "start_time": "10:15:00",
+        "end_time": "11:15:00",
+        "section": "Section B",
+        "course_name": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "room_name": "Room 101",
+        "room_type": "Classroom",
+        "department": "TestDept_RoomConf",
+        "has_conflict": true,
+        "conflict_details": [
+          "Room Room 101 is assigned to two classes at 10:00 AM on Wednesday: \"Algorithms\" (Section A) and \"Compilers\" (Section B)."
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_3",
+        "department": "TestDept_Persist",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_8",
+        "department": "TestDept_Persist",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_3",
+        "department": "TestDept_DeptA",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_8",
+        "department": "TestDept_DeptA",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_7",
+        "department": "TestDept_DeptB",
+        "day": "Wednesday",
+        "day_name": "Wednesday",
+        "day_of_week": 3,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_4",
+        "department": "TestDept_Persist",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_8",
+        "department": "TestDept_DeptB",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_14",
+        "department": "TestDept_Persist",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_4",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_9",
+        "department": "TestDept_Persist",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_13",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_9",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_10",
+        "department": "TestDept_DeptB",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_14",
+        "department": "TestDept_DeptA",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_12",
+        "department": "TestDept_DeptB",
+        "day": "Thursday",
+        "day_name": "Thursday",
+        "day_of_week": 4,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_10",
+        "department": "TestDept_Persist",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_11",
+        "department": "TestDept_DeptB",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 1,
+        "start_time": "09:00:00",
+        "end_time": "10:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_5",
+        "department": "TestDept_Persist",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "kwbuv0kmzq",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_10",
+        "department": "TestDept_DeptA",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 2,
+        "start_time": "10:00:00",
+        "end_time": "11:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533347930_15",
+        "department": "TestDept_Persist",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "wzuy5y4ekp",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_5",
+        "department": "TestDept_DeptA",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 3,
+        "start_time": "11:00:00",
+        "end_time": "12:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 102",
+        "room_id": "spnwikolvo",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533349032_15",
+        "department": "TestDept_DeptA",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Mathematics",
+        "subject": "Mathematics",
+        "teacher_name": "Dr. Ada Lovelace",
+        "teacher_id": "teacher_1792533338469_3",
+        "room_name": "Room 101",
+        "room_id": "ygmcqr3an2",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_13",
+        "department": "TestDept_DeptB",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 4,
+        "start_time": "13:00:00",
+        "end_time": "14:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Algorithms",
+        "subject": "Algorithms",
+        "teacher_name": "Dr. Alan Turing",
+        "teacher_id": "teacher_1792516713479_4",
+        "room_name": "Room 102",
+        "room_id": "fyzg4t2x8r5",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      },
+      {
+        "timetable_id": "tt_1792533352337_14",
+        "department": "TestDept_DeptB",
+        "day": "Friday",
+        "day_name": "Friday",
+        "day_of_week": 5,
+        "period_number": 5,
+        "start_time": "14:00:00",
+        "end_time": "15:00:00",
+        "class_name": "Section A",
+        "section": "Section A",
+        "course_name": "Compilers",
+        "subject": "Compilers",
+        "teacher_name": "Dr. Grace Hopper",
+        "teacher_id": "teacher_1792533338469_2",
+        "room_name": "Room 101",
+        "room_id": "irsrmgnqsm",
+        "room_type": "Classroom",
+        "session_type": "THEORY",
+        "duration": 1,
+        "is_lab": false,
+        "working_days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "has_conflict": false,
+        "is_shared": false,
+        "sections_list": [
+          "Section A"
+        ]
+      }
+    ]
+  }
+]

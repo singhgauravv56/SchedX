@@ -10,9 +10,9 @@ async function verifyFeaturesPage() {
   const htmlPath = path.join(__dirname, '..', 'public', 'features.html');
   const html = fs.readFileSync(htmlPath, 'utf8');
 
-  const cardCount = (html.match(/class=\"zigzag-card\"/g) || []).length;
-  console.log(`[HTML] Zigzag Card Count: ${cardCount} (Expected: 8) -> ${cardCount === 8 ? '✅ PASS' : '❌ FAIL'}`);
-  if (cardCount !== 8) allPassed = false;
+  const cardCount = (html.match(/<article[^>]*class="[^"]*zigzag-card/g) || []).length;
+  console.log(`[HTML] Zigzag Card Count: ${cardCount} (Expected: 9) -> ${cardCount === 9 ? '✅ PASS' : '❌ FAIL'}`);
+  if (cardCount !== 9) allPassed = false;
 
   const htmlChecks = [
     { name: 'Zigzag Timeline Container', ok: html.includes('features-zigzag-timeline') },
@@ -24,10 +24,12 @@ async function verifyFeaturesPage() {
     { name: 'Card 05 - Conflict Prevention (openRulesModal)', ok: html.includes('openRulesModal()') },
     { name: 'Card 06 - Day-by-Day Layout (/generate)', ok: html.includes('Day-by-Day Schedule Layout') },
     { name: 'Card 07 - Live Class Monitor (openCurrentClassModal)', ok: html.includes('openCurrentClassModal()') },
-    { name: 'Card 08 - Persistence (openStorageModal)', ok: html.includes('openStorageModal()') },
+    { name: 'Card 08 - Persistence (openPersistenceModal)', ok: html.includes('openPersistenceModal()') || html.includes('openStorageModal()') },
+    { name: 'Card 09 - Storage Dashboard (openStorageViewerModal)', ok: html.includes('openStorageViewerModal()') && html.includes('<h3>Storage</h3>') },
     { name: 'Modal #rulesModal present', ok: html.includes('id=\"rulesModal\"') },
     { name: 'Modal #currentClassModal present', ok: html.includes('id=\"currentClassModal\"') },
     { name: 'Modal #storageModal present', ok: html.includes('id=\"storageModal\"') },
+    { name: 'Modal #storageViewerModal present', ok: html.includes('id=\"storageViewerModal\"') },
     { name: 'Keyboard accessibility (onkeydown & tabindex)', ok: html.includes('onkeydown') && html.includes('tabindex=\"0\"') }
   ];
 

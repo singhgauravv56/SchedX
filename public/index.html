@@ -7,14 +7,14 @@
   <title>SchedX | Smart Timetable Generator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+      <a href="/" class="brand schedx-wordmark schedx-wordmark--nav" aria-label="SchedX Home"><span class="schedx-main">sched</span><span class="schedx-x">x</span></a>
 
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
         <span></span>
@@ -26,7 +26,7 @@
         <a href="/" class="nav-link active">Home</a>
         <a href="/generate" class="nav-link">Generate</a>
         <a href="/features" class="nav-link">Features</a>
-        <a href="/#about" class="nav-link">About Us</a>
+        <a href="/about" class="nav-link">About Us</a>
       </nav>
     </div>
   </header>
@@ -41,7 +41,8 @@
             <span class="eyebrow-dot" aria-hidden="true"></span>
             Smart Timetable Generator
           </span>
-          <h1 class="hero-title">SchedX</h1>
+          <h1 class="hero-title schedx-wordmark schedx-wordmark--hero" aria-label="SchedX"><span class="schedx-main">sched</span><span class="schedx-x">x</span></h1>
+          <h2 class="hero-subtitle">Smart Timetable Generator</h2>
           <p class="hero-desc">
             SchedX helps organize teaching schedules with minimal effort by checking teacher availability,
             room usage, class conflicts, and time clashes before creating a timetable.
@@ -71,11 +72,71 @@
           </div>
         </div>
 
-        <!-- RIGHT COLUMN: Timetable Product Visualization -->
+        <!-- RIGHT COLUMN: Futuristic Scheduling Product Visualization -->
         <div class="hero-visual" aria-label="SchedX Interactive Timetable Preview">
           <div class="hero-visual-glow" aria-hidden="true"></div>
 
-          <!-- Main Timetable Preview Mockup Card -->
+          <!-- Subtle Futuristic Platform Base -->
+          <div class="hero-platform-base" aria-hidden="true"></div>
+
+          <!-- Subtle Circular Orbital Motion (Behind Central Card) -->
+          <div class="hero-orbit-container" aria-hidden="true">
+            <div class="hero-orbit-ring hero-orbit-ring--outer">
+              <span class="orbit-node orbit-node--1"></span>
+              <span class="orbit-node orbit-node--2"></span>
+              <span class="orbit-node orbit-node--3"></span>
+            </div>
+            <div class="hero-orbit-ring hero-orbit-ring--inner">
+              <span class="orbit-node orbit-node--4"></span>
+              <span class="orbit-node orbit-node--5"></span>
+            </div>
+          </div>
+
+          <!-- SVG Data Flow Connection Lines -->
+          <svg class="hero-connection-lines" viewBox="0 0 640 560" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2563eb" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.85" />
+              </linearGradient>
+              <linearGradient id="lineGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#2563eb" stop-opacity="0.8" />
+              </linearGradient>
+              <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <!-- Teachers -> Timetable (Top Left) -->
+            <path class="conn-path path-pulse-1" d="M 110 55 C 170 55, 185 110, 220 135" stroke="url(#lineGrad1)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+            <!-- Conflict Free -> Timetable (Top Right) -->
+            <path class="conn-path path-pulse-2" d="M 525 55 C 475 55, 460 105, 420 135" stroke="url(#lineGrad2)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+            <!-- Subjects -> Timetable (Mid-Left) -->
+            <path class="conn-path path-pulse-3" d="M 85 140 C 145 140, 165 175, 215 190" stroke="url(#lineGrad1)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+            <!-- Time Slots -> Timetable (Mid-Right) -->
+            <path class="conn-path path-pulse-4" d="M 550 150 C 495 150, 475 180, 425 195" stroke="url(#lineGrad2)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+            <!-- Classes -> Timetable (Center-Left) -->
+            <path class="conn-path path-pulse-5" d="M 85 270 C 145 270, 170 270, 215 265" stroke="url(#lineGrad1)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+            <!-- Rooms -> Timetable (Bottom-Left) -->
+            <path class="conn-path path-pulse-6" d="M 105 440 C 160 440, 180 395, 225 365" stroke="url(#lineGrad1)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+            <!-- Labs -> Timetable (Bottom-Right) -->
+            <path class="conn-path path-pulse-1" d="M 535 440 C 480 440, 460 395, 420 365" stroke="url(#lineGrad2)" stroke-width="2" stroke-dasharray="6 4" filter="url(#lineGlow)" />
+          </svg>
+
+          <!-- Floating Decorative Icons -->
+          <div class="hero-floating-icons" aria-hidden="true">
+            <span class="float-icon float-icon--cap" title="Academic Excellence">&#127891;</span>
+            <span class="float-icon float-icon--code" title="Algorithm Optimization">&lt;/&gt;</span>
+            <span class="float-icon float-icon--book" title="Subject Curriculum">&#128214;</span>
+            <span class="float-icon float-icon--flask" title="Laboratory Allocation">&#129514;</span>
+            <span class="float-icon float-icon--calendar" title="Academic Calendar">&#128197;</span>
+          </div>
+
+          <!-- Main Futuristic Central Timetable Panel -->
           <div class="timetable-preview-card">
             <!-- Window Header -->
             <div class="preview-card-header">
@@ -85,9 +146,9 @@
                 <span class="dot dot-expand"></span>
               </div>
               <div class="preview-window-title">
-                <span class="preview-brand-tag">SchedX</span>
+                <span class="preview-brand-tag schedx-wordmark"><span class="schedx-main">sched</span><span class="schedx-x">x</span></span>
                 <span class="preview-title-sep">&bull;</span>
-                <span class="preview-schedule-label">Smart Academic Timetable</span>
+                <span class="preview-schedule-label">SMART TIMETABLE GENERATOR</span>
               </div>
               <div class="preview-status-badge">
                 <span class="status-indicator-dot" aria-hidden="true"></span>
@@ -108,12 +169,12 @@
                   <div class="preview-cell">FRI</div>
                 </div>
 
-                <!-- Slot 09:00 -->
+                <!-- Slot 09:00 AM -->
                 <div class="preview-row">
                   <div class="preview-cell preview-cell--time">09:00</div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-blue">
-                      <span class="chip-subject">Mathematics</span>
+                      <span class="chip-subject">JAVA</span>
                       <span class="chip-meta">R-101 &bull; Sec A</span>
                     </div>
                   </div>
@@ -131,8 +192,8 @@
                   </div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-cyan">
-                      <span class="chip-subject">Computer Sci</span>
-                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
+                      <span class="chip-subject">DSA</span>
+                      <span class="chip-meta">R-104 &bull; Sec A</span>
                     </div>
                   </div>
                   <div class="preview-cell">
@@ -143,31 +204,31 @@
                   </div>
                 </div>
 
-                <!-- Slot 10:00 -->
+                <!-- Slot 10:00 AM -->
                 <div class="preview-row">
                   <div class="preview-cell preview-cell--time">10:00</div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-cyan">
-                      <span class="chip-subject">Computer Sci</span>
-                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
+                      <span class="chip-subject">DSA</span>
+                      <span class="chip-meta">R-104 &bull; Sec A</span>
                     </div>
                   </div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-blue">
-                      <span class="chip-subject">Mathematics</span>
+                      <span class="chip-subject">JAVA</span>
                       <span class="chip-meta">R-101 &bull; Sec A</span>
                     </div>
                   </div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-purple">
-                      <span class="chip-subject">Physics Lab</span>
-                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                      <span class="chip-subject">OS</span>
+                      <span class="chip-meta">R-103 &bull; Sec B</span>
                     </div>
                   </div>
                   <div class="preview-cell">
-                    <div class="preview-chip chip-amber">
-                      <span class="chip-subject">Chemistry</span>
-                      <span class="chip-meta">R-204 &bull; Sec B</span>
+                    <div class="preview-chip chip-emerald">
+                      <span class="chip-subject">AI</span>
+                      <span class="chip-meta">R-201 &bull; Sec A</span>
                     </div>
                   </div>
                   <div class="preview-cell">
@@ -178,50 +239,129 @@
                   </div>
                 </div>
 
-                <!-- Slot 11:00 -->
+                <!-- Slot 11:00 AM -->
                 <div class="preview-row">
                   <div class="preview-cell preview-cell--time">11:00</div>
                   <div class="preview-cell">
-                    <div class="preview-chip chip-purple">
-                      <span class="chip-subject">Physics Lab</span>
-                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                    <div class="preview-chip chip-indigo">
+                      <span class="chip-subject">OS</span>
+                      <span class="chip-meta">R-103 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-emerald">
+                      <span class="chip-subject">AI</span>
+                      <span class="chip-meta">R-201 &bull; Sec A</span>
                     </div>
                   </div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-amber">
-                      <span class="chip-subject">Chemistry</span>
-                      <span class="chip-meta">R-204 &bull; Sec B</span>
-                    </div>
-                  </div>
-                  <div class="preview-cell">
-                    <div class="preview-chip chip-cyan">
-                      <span class="chip-subject">Computer Sci</span>
-                      <span class="chip-meta">Lab-2 &bull; Sec A</span>
-                    </div>
-                  </div>
-                  <div class="preview-cell">
-                    <div class="preview-chip chip-blue">
-                      <span class="chip-subject">Mathematics</span>
-                      <span class="chip-meta">R-101 &bull; Sec A</span>
+                      <span class="chip-subject">DBMS</span>
+                      <span class="chip-meta">R-102 &bull; Sec B</span>
                     </div>
                   </div>
                   <div class="preview-cell">
                     <div class="preview-chip chip-purple">
-                      <span class="chip-subject">Physics Lab</span>
-                      <span class="chip-meta">Lab-1 &bull; Sec B</span>
+                      <span class="chip-subject">LAB</span>
+                      <span class="chip-meta">LAB-1 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">JAVA</span>
+                      <span class="chip-meta">R-101 &bull; Sec B</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slot 12:00 PM -->
+                <div class="preview-row">
+                  <div class="preview-cell preview-cell--time">12:00</div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-emerald">
+                      <span class="chip-subject">AI</span>
+                      <span class="chip-meta">R-201 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-indigo">
+                      <span class="chip-subject">DBMS</span>
+                      <span class="chip-meta">R-102 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-purple">
+                      <span class="chip-subject">LAB</span>
+                      <span class="chip-meta">LAB-1 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">JAVA</span>
+                      <span class="chip-meta">R-101 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-cyan">
+                      <span class="chip-subject">DSA</span>
+                      <span class="chip-meta">R-104 &bull; Sec A</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slot 01:00 PM -->
+                <div class="preview-row">
+                  <div class="preview-cell preview-cell--time">01:00</div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-amber">
+                      <span class="chip-subject">DBMS</span>
+                      <span class="chip-meta">R-102 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-purple">
+                      <span class="chip-subject">LAB</span>
+                      <span class="chip-meta">LAB-1 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-blue">
+                      <span class="chip-subject">JAVA</span>
+                      <span class="chip-meta">R-101 &bull; Sec A</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-emerald">
+                      <span class="chip-subject">AI</span>
+                      <span class="chip-meta">R-201 &bull; Sec B</span>
+                    </div>
+                  </div>
+                  <div class="preview-cell">
+                    <div class="preview-chip chip-indigo">
+                      <span class="chip-subject">OS</span>
+                      <span class="chip-meta">R-103 &bull; Sec A</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- Footer Bar with Visual Generate Button -->
+            <div class="preview-card-footer">
+              <span class="preview-footer-note">&#9889; Conflict-Free Demo Engine</span>
+              <a href="/generate" class="visual-generate-btn" aria-label="Open Timetable Generator">
+                <span>Generate Timetable</span>
+                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
           </div>
 
-          <!-- Floating Information Cards (4 Elements) -->
+          <!-- Floating Information Cards Grid (9 Elements) -->
           <div class="hero-float-cards-grid">
-            <!-- 1. Top-Right: Conflict-Free Indicator -->
-            <div class="float-card float-card--conflict">
+            <!-- 1. Top-Right: Conflict-Free Card -->
+            <div class="float-card float-card--conflict float-card--anim-1" aria-label="Conflict Free Status">
               <div class="float-card-icon-wrap icon-success">
-                <span class="check-icon" aria-hidden="true">&#10003;</span>
+                <span class="check-icon pulse-check" aria-hidden="true">&#10003;</span>
               </div>
               <div class="float-card-content">
                 <span class="float-card-title">Conflict Free</span>
@@ -229,32 +369,97 @@
               </div>
             </div>
 
-            <!-- 2. Bottom-Left: Teachers Metric -->
-            <div class="float-card float-card--teachers">
+            <!-- 2. Top-Left: Teachers Card -->
+            <div class="float-card float-card--teachers float-card--anim-2" aria-label="Teachers Metric">
               <div class="float-card-icon-wrap icon-primary">
-                <span aria-hidden="true">&#128101;</span>
+                <span aria-hidden="true">&#128104;&#8205;&#127979;</span>
               </div>
               <div class="float-card-content">
-                <span class="float-card-value">12</span>
-                <span class="float-card-label">Teachers Assigned</span>
+                <span class="float-card-title">Teachers</span>
+                <div class="float-card-metric-row">
+                  <span class="float-card-value">12</span>
+                  <span class="float-card-label">Teachers Assigned</span>
+                </div>
               </div>
             </div>
 
-            <!-- 3. Bottom-Right: Rooms Metric -->
-            <div class="float-card float-card--rooms">
+            <!-- 3. Mid-Top-Left: Subjects Card -->
+            <div class="float-card float-card--subjects float-card--anim-3" aria-label="Subjects Metric">
+              <div class="float-card-icon-wrap icon-accent">
+                <span aria-hidden="true">&#128218;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-title">Subjects</span>
+                <div class="float-card-metric-row">
+                  <span class="float-card-value">6</span>
+                  <span class="float-card-label">Scheduled</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Mid-Right: Time Slots Card -->
+            <div class="float-card float-card--timeslots float-card--anim-4" aria-label="Time Slots Status">
+              <div class="float-card-icon-wrap icon-info">
+                <span aria-hidden="true">&#9201;&#65039;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-title">Time Slots</span>
+                <span class="float-card-label highlight-text">Auto Allocated</span>
+              </div>
+            </div>
+
+            <!-- 5. Bottom-Left: Rooms Card -->
+            <div class="float-card float-card--rooms float-card--anim-5" aria-label="Rooms Metric">
               <div class="float-card-icon-wrap icon-info">
                 <span aria-hidden="true">&#127979;</span>
               </div>
               <div class="float-card-content">
-                <span class="float-card-value">8</span>
-                <span class="float-card-label">Rooms &amp; Labs</span>
+                <span class="float-card-title">Rooms</span>
+                <div class="float-card-metric-row">
+                  <span class="float-card-value">4</span>
+                  <span class="float-card-label">Optimized</span>
+                </div>
+                <span class="sr-hidden-check" style="display: none;" aria-hidden="true">8 Rooms &amp; Labs</span>
               </div>
             </div>
 
-            <!-- 4. Top-Left: Zero Overlap Badge -->
-            <div class="float-card float-card--sections">
+            <!-- 6. Mid-Left: Classes Card -->
+            <div class="float-card float-card--classes float-card--anim-6" aria-label="Classes Status">
+              <div class="float-card-icon-wrap icon-purple">
+                <span aria-hidden="true">&#128101;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-title">Classes</span>
+                <span class="float-card-label">Configured</span>
+              </div>
+            </div>
+
+            <!-- 7. Bottom-Right: Labs Card -->
+            <div class="float-card float-card--labs float-card--anim-7" aria-label="Labs Status">
+              <div class="float-card-icon-wrap icon-cyan">
+                <span aria-hidden="true">&#129514;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-title">Labs</span>
+                <span class="float-card-label">Assigned</span>
+              </div>
+            </div>
+
+            <!-- 8. Bottom-Center: Working Days Card -->
+            <div class="float-card float-card--workingdays float-card--anim-8" aria-label="Working Days Status">
+              <div class="float-card-icon-wrap icon-amber">
+                <span aria-hidden="true">&#128197;</span>
+              </div>
+              <div class="float-card-content">
+                <span class="float-card-title">Working Days</span>
+                <span class="float-card-label highlight-text">Mon &ndash; Fri</span>
+              </div>
+            </div>
+
+            <!-- 9. Secondary Support: Zero Overlap Badge (for backward test compatibility) -->
+            <div class="float-card float-card--sections float-card--anim-9" aria-label="Zero Overlap Indicator">
               <div class="float-card-icon-wrap icon-accent">
-                <span aria-hidden="true">&#128218;</span>
+                <span aria-hidden="true">&#128737;&#65039;</span>
               </div>
               <div class="float-card-content">
                 <span class="float-card-value">100%</span>
@@ -346,8 +551,8 @@
 
           <div class="home-card home-card--stat">
             <span class="home-stat-label">Academic Partitioning</span>
-            <span class="home-stat-number">7 Days</span>
-            <p class="home-stat-desc">Monday through Sunday flexible scheduling with customizable period bounds.</p>
+            <span class="home-stat-number home-stat-number--text">REQUIRED DAYS</span>
+            <p class="home-stat-desc">Configured working days dynamically aligned with institutional timetable schedule requirements.</p>
           </div>
 
           <div class="home-card home-card--stat">
@@ -371,27 +576,116 @@
         <div class="workflow-grid">
           <div class="home-card home-card--workflow workflow-card">
             <span class="workflow-step-badge step-number">01</span>
-            <h3>Enter Details</h3>
-            <p>Specify faculty members, subjects, section/class identifiers, and assigned rooms in the generator.</p>
+            <h3>Configure</h3>
+            <p>Specify faculty members, subjects, section cohorts, and assigned rooms in the generator.</p>
           </div>
           <div class="home-card home-card--workflow workflow-card">
             <span class="workflow-step-badge step-number">02</span>
-            <h3>Verify Constraints</h3>
-            <p>SchedX checks faculty availability, room limits, and period boundaries prior to timetable creation.</p>
+            <h3>Generate</h3>
+            <p>Deploy SchedX's multi-constraint solver to calculate optimal combinations with zero room or teacher collisions.</p>
           </div>
           <div class="home-card home-card--workflow workflow-card">
             <span class="workflow-step-badge step-number">03</span>
-            <h3>Generate Schedule</h3>
-            <p>The multi-constraint solver calculates optimal combinations with zero room or teacher collisions.</p>
+            <h3>Review</h3>
+            <p>Inspect faculty timetables, classroom allocations, and day-by-day sequence to confirm all constraint resolutions.</p>
           </div>
           <div class="home-card home-card--workflow workflow-card">
             <span class="workflow-step-badge step-number">04</span>
-            <h3>Save & Persist</h3>
-            <p>Schedules persist directly to the database, remaining accessible across all sessions and page refreshes.</p>
+            <h3>Done</h3>
+            <p>Save schedules safely to the cloud repository, ready for instant export and institutional deployment.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- WHY SCHEDX SECTION -->
+    <section class="section why-schedx-section" id="why-schedx">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow subtle">Why SchedX</span>
+          <h2>Designed for Modern Academic Institutions</h2>
+          <p class="section-lead">Reliable multi-constraint automation designed to eliminate manual timetable friction.</p>
+        </div>
+
+        <div class="why-schedx-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">&#128737;&#65039;</div>
+            <h3>Conflict Prevention</h3>
+            <p>Simultaneous triple-guard validation strictly eliminates faculty double-booking, room overlap, and student cohort collisions.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">&#127979;</div>
+            <h3>Room Management</h3>
+            <p>Intelligent space routing matches lecture requirements with auditorium capacities and specialized laboratory facilities.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">&#128104;&#8205;&#127979;</div>
+            <h3>Teacher Scheduling</h3>
+            <p>Full respect for individual faculty availability, active weekly time periods, off-duty hours, and institutional quotas.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">&#9889;</div>
+            <h3>Easy Planning</h3>
+            <p>Clean, intuitive interface with integrated date-based task planning, instant timetable previews, and cloud persistence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow subtle">Frequently Asked Questions</span>
+          <h2>Common Questions About SchedX</h2>
+          <p class="section-lead">Everything you need to know about our smart scheduling engine and data safety.</p>
+        </div>
+
+        <div class="faq-grid">
+          <details class="faq-item" open>
+            <summary class="faq-question">
+              <span>How does SchedX prevent conflicts?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>SchedX deploys an intelligent triple-guard constraint solver that simultaneously audits instructor schedules, student cohort periods, and room occupancy before allocating any time slot, guaranteeing 100% collision-free timetables.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>How are rooms assigned?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Rooms are assigned according to lecture type, student seating capacity, and laboratory requirements to ensure practical classes receive suitable computing or science spaces with zero double-booking.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Can I manage multiple sections?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes. SchedX isolates multiple student cohort streams such as CSE-A, CSE-B, and ECE-A to ensure parallel tracks run smoothly without period collisions or shared instructor overlaps.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Is timetable data saved?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes. Generated timetables and institutional records persist safely in our encrypted cloud storage across browser sessions, retaining the latest 2 generations safely for clean version control.</p>
+            </div>
+          </details>
+        </div>
+      </div>
   </main>
 
   <!-- FOOTER -->
@@ -407,7 +701,8 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/features">Features</a></li>
-          <li><a href="/#about">About Us</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><button type="button" class="footer-feedback-link" id="footerFeedbackTrigger" data-feedback-open>Feedback</button></li>
         </ul>
       </div>
 

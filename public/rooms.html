@@ -7,19 +7,19 @@
   <title>Room Availability | SchedX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+      <a href="/" class="brand schedx-wordmark schedx-wordmark--nav" aria-label="SchedX Home"><span class="schedx-main">sched</span><span class="schedx-x">x</span></a>
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-link">Home</a>
         <a href="/generate" class="nav-link">Generate</a>
         <a href="/features" class="nav-link active">Features</a>
-        <a href="/#about" class="nav-link">About Us</a>
+        <a href="/about" class="nav-link">About Us</a>
       </nav>
     </div>
   </header>
@@ -27,10 +27,19 @@
   <main>
     <section class="section rooms-section">
       <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow subtle">Room Management</span>
-          <h1>Room Availability</h1>
-          <p class="section-description">Manage classrooms and laboratories stored in Supabase PostgreSQL for timetable scheduling.</p>
+        <!-- UNIQUE PAGE HEADING: ROOMS -->
+        <div class="page-heading-wrapper page-heading--rooms">
+          <div class="heading-eyebrow-wrap">
+            <span class="eyebrow eyebrow--rooms">
+              <span class="eyebrow-accent-icon" aria-hidden="true">&#127979;</span>
+              FACILITIES &amp; INFRASTRUCTURE
+            </span>
+          </div>
+          <h1 class="page-title page-title--rooms">ROOM AVAILABILITY</h1>
+          <div class="heading-accent-line heading-accent-line--rooms" aria-hidden="true"></div>
+          <p class="page-subtitle page-subtitle--rooms">
+            Manage classrooms, laboratories, and student seating capacities for optimal scheduling
+          </p>
         </div>
 
         <section class="form-section">
@@ -99,6 +108,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/features">Features</a></li>
           <li><a href="/#about">About Us</a></li>
+          <li><button type="button" class="footer-feedback-link" id="footerFeedbackTrigger" data-feedback-open>Feedback</button></li>
         </ul>
       </div>
 

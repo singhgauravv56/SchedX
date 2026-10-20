@@ -1,0 +1,40 @@
+[
+  {
+    "id": "t_1",
+    "teacher_id": "t_1",
+    "name": "Rahul",
+    "teacher_name": "Rahul",
+    "assigned_subject": "DBMS",
+    "assigned_subjects": [
+      "dbms",
+      "dsa"
+    ],
+    "specialization": "Computer Science",
+    "working_days_per_week": 5
+  },
+  {
+    "id": "t_2",
+    "teacher_id": "t_2",
+    "name": "Aman",
+    "teacher_name": "Aman",
+    "assigned_subject": "DBMS",
+    "assigned_subjects": [
+      "dbms",
+      "java"
+    ],
+    "specialization": "Computer Science",
+    "working_days_per_week": 5
+  },
+  {
+    "id": "t_3",
+    "teacher_id": "t_3",
+    "name": "Prof. Sharma",
+    "teacher_name": "Prof. Sharma",
+    "assigned_subject": "Web Tech",
+    "assigned_subjects": [
+      "web tech"
+    ],
+    "specialization": "Information Technology",
+    "working_days_per_week": 5
+  }
+]

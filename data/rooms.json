@@ -1,0 +1,47 @@
+[
+  {
+    "id": "101",
+    "room_id": "101",
+    "room_name": "101",
+    "room_number": "101",
+    "room_type": "Classroom",
+    "capacity": 60,
+    "availability": "Available"
+  },
+  {
+    "id": "102",
+    "room_id": "102",
+    "room_name": "102",
+    "room_number": "102",
+    "room_type": "Classroom",
+    "capacity": 70,
+    "availability": "Available"
+  },
+  {
+    "id": "103",
+    "room_id": "103",
+    "room_name": "103",
+    "room_number": "103",
+    "room_type": "Classroom",
+    "capacity": 50,
+    "availability": "Available"
+  },
+  {
+    "id": "Lab-1",
+    "room_id": "Lab-1",
+    "room_name": "Lab-1",
+    "room_number": "Lab-1",
+    "room_type": "Laboratory",
+    "capacity": 40,
+    "availability": "Available"
+  },
+  {
+    "id": "Lab-2",
+    "room_id": "Lab-2",
+    "room_name": "Lab-2",
+    "room_number": "Lab-2",
+    "room_type": "Laboratory",
+    "capacity": 45,
+    "availability": "Available"
+  }
+]

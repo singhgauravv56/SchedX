@@ -15,3 +15,14 @@ desktop.ini
 .idea/
 *.sw?
 .git-sync.lock
+
+# Test browser automation profiles and temporary caches
+scratch_chrome_*/
+*.crdownload
+
+# Local backup and temporary data files
+*.backup.json
+data/*.backup.json
+
+# IDE & AI Assistant temporary scratch directories
+.gemini/

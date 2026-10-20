@@ -1,0 +1,147 @@
+[
+  {
+    "id": "cse",
+    "name": "Computer Science & Engineering",
+    "code": "CSE"
+  },
+  {
+    "id": "it",
+    "name": "Information Technology",
+    "code": "IT"
+  },
+  {
+    "id": "ece",
+    "name": "Electronics & Communication",
+    "code": "ECE"
+  },
+  {
+    "id": "me",
+    "name": "Mechanical Engineering",
+    "code": "ME"
+  },
+  {
+    "id": "ce",
+    "name": "Civil Engineering",
+    "code": "CE"
+  },
+  {
+    "id": "dept_1791113995516_ki4t",
+    "name": "Electrical & Electronics Engineering",
+    "code": "EEE"
+  },
+  {
+    "id": "dept_1791364859846_btpt",
+    "name": "CSE",
+    "code": "C"
+  },
+  {
+    "id": "dept_1791483440532_5m8l",
+    "name": "political",
+    "code": "P"
+  },
+  {
+    "id": "dept_1791810376267_zjua",
+    "name": "Computer Science",
+    "code": "CS"
+  },
+  {
+    "id": "dept_1792169535243_z2wr",
+    "name": "Computer Science and Engineering",
+    "code": "CSAE"
+  },
+  {
+    "id": "dept_1792188182014_e60i",
+    "name": "TestDept_Basic",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188182352_jllr",
+    "name": "TestDept_FlexStart",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188182691_3kxu",
+    "name": "TestDept_FlexEnd",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188183022_15mf",
+    "name": "TestDept_EarlyStart",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188183868_squr",
+    "name": "TestDept_LateEnd",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188192132_mbng",
+    "name": "TestDept_DayPeriodCounts",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188192569_gt0m",
+    "name": "TestDept_PromptMatrix",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188193000_2dng",
+    "name": "TestDept_Breaks",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188193355_j8x7",
+    "name": "TestDept_Lab",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188195540_0s4b",
+    "name": "TestDept_TeacherConflict",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188195927_1w75",
+    "name": "TestDept_RoomConflict",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188196328_llxc",
+    "name": "TestDept_Impossible",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188196728_8565",
+    "name": "TestDept_Persist",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188197166_ngw7",
+    "name": "TestDept_DeptA",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188197632_2685",
+    "name": "TestDept_DeptB",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792188428964_wybq",
+    "name": "TestDept_Recovery",
+    "code": "T"
+  },
+  {
+    "id": "dept_1792190634142_yr0y",
+    "name": "Incomplete Dept",
+    "code": "ID"
+  },
+  {
+    "id": "dept_1792192279756_6tff",
+    "name": "CSE_8Period_Dept",
+    "code": "C"
+  },
+  {
+    "id": "dept_1792196122455_6yp0",
+    "name": "Capacity Overload Test",
+    "code": "COT"
+  }
+]

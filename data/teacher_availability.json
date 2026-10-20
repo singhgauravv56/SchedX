@@ -1,0 +1,102 @@
+[
+  {
+    "availability_id": "avail_1792057947733_t53p",
+    "teacher_name": "Prof. Diary Test 7730",
+    "specialization": "Vintage Architecture",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "09:00:00",
+    "end_time": "10:00:00",
+    "is_available": true
+  },
+  {
+    "availability_id": "avail_1792057947733_fyck",
+    "teacher_name": "Prof. Diary Test 7730",
+    "specialization": "Vintage Architecture",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "10:00:00",
+    "end_time": "11:00:00",
+    "is_available": true
+  },
+  {
+    "availability_id": "avail_1792057947733_rw96",
+    "teacher_name": "Prof. Diary Test 7730",
+    "specialization": "Vintage Architecture",
+    "day": "Wednesday",
+    "day_of_week": 3,
+    "start_time": "11:00:00",
+    "end_time": "12:00:00",
+    "is_available": true
+  },
+  {
+    "availability_id": "avail_1792061336540_2d1o",
+    "teacher_name": "Dr. Sharma",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "09:00:00",
+    "end_time": "10:00:00",
+    "is_available": false
+  },
+  {
+    "availability_id": "avail_1792061336540_jn5m",
+    "teacher_name": "Dr. Sharma",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "10:00:00",
+    "end_time": "11:00:00",
+    "is_available": false
+  },
+  {
+    "availability_id": "avail_1792192579171_rmz7",
+    "teacher_name": "Prof. Blocked",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "09:00:00",
+    "end_time": "10:00:00",
+    "is_available": false
+  },
+  {
+    "availability_id": "avail_1792192579171_wp47",
+    "teacher_name": "Prof. Blocked",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "10:00:00",
+    "end_time": "11:00:00",
+    "is_available": false
+  },
+  {
+    "availability_id": "avail_1792192603701_cj3s",
+    "teacher_name": "Rahul",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "09:00:00",
+    "end_time": "10:00:00",
+    "is_available": false
+  },
+  {
+    "availability_id": "avail_1792192603701_oggi",
+    "teacher_name": "Rahul",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "10:00:00",
+    "end_time": "11:00:00",
+    "is_available": false
+  },
+  {
+    "availability_id": "avail_1792192603701_d8qv",
+    "teacher_name": "Rahul",
+    "specialization": "",
+    "day": "Monday",
+    "day_of_week": 1,
+    "start_time": "11:00:00",
+    "end_time": "12:00:00",
+    "is_available": false
+  }
+]

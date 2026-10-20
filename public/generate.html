@@ -7,14 +7,14 @@
   <title>Generate Timetable | SchedX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=2.2">
 </head>
 <body>
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+      <a href="/" class="brand schedx-wordmark schedx-wordmark--nav" aria-label="SchedX Home"><span class="schedx-main">sched</span><span class="schedx-x">x</span></a>
 
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
         <span></span>
@@ -26,7 +26,7 @@
         <a href="/" class="nav-link">Home</a>
         <a href="/generate" class="nav-link active">Generate</a>
         <a href="/features" class="nav-link">Features</a>
-        <a href="/#about" class="nav-link">About Us</a>
+        <a href="/about" class="nav-link">About Us</a>
       </nav>
     </div>
   </header>
@@ -34,122 +34,869 @@
   <main>
     <section class="section generate-section">
       <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow subtle">Generate</span>
-          <h2>Build a timetable in minutes</h2>
+        <!-- UNIQUE PAGE HEADING: GENERATE -->
+        <div class="page-heading-wrapper page-heading--generate">
+          <h1 class="page-title page-title--generate">GENERATE TIMETABLE</h1>
         </div>
 
-        <section class="form-section">
-          <h2>Generate Timetable</h2>
-          <p class="section-description">Fill in all the information below to generate a timetable. All data will be saved to Supabase.</p>
-
-          <form id="timetableForm" class="form-grid">
-            <div class="form-group">
-              <div class="teacher-header-controls" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                <label for="teacherCount" style="margin-bottom: 0;">Number of Teachers <span class="required">*</span></label>
-                <button type="button" id="addTeacherBtn" class="btn btn-secondary btn-sm" aria-label="Add Teacher">+ Add Teacher</button>
+        <section class="generate-workbench-section">
+          <!-- 8-PERIOD DAILY WORKFLOW QUICK LAUNCH & GUIDE BANNER -->
+          <div class="template-quickstart-banner" id="templateQuickstartBanner">
+            <div class="template-banner-content">
+              <div class="template-banner-icon" aria-hidden="true">⚡</div>
+              <div class="template-banner-text">
+                <h2 class="template-banner-title">8-Period Daily Classes Template &amp; Working Example</h2>
+                <p class="template-banner-desc">
+                  Generate a 100% clash-free 8-period daily schedule. Click <strong>"⚡ Load 8-Period Example"</strong> to auto-fill a balanced schedule across all 10 steps, or view the timing rules guide.
+                </p>
               </div>
-              <input type="number" id="teacherCount" min="1" max="50" step="1" placeholder="e.g., 3" required>
-              <small class="form-help">Enter the number of teachers or click "+ Add Teacher" to create teacher name fields.</small>
             </div>
+            <div class="template-banner-actions">
+              <button type="button" id="load8PeriodExampleBtn" class="btn btn-primary btn-sm" title="Auto-fill complete clash-free 8-period setup for all 10 steps">
+                ⚡ Load 8-Period Example
+              </button>
+              <button type="button" id="toggle8PeriodGuideBtn" class="btn btn-secondary btn-sm" aria-expanded="false" aria-controls="guide8PeriodCard" title="View step-by-step rules and data layout for 8 period daily classes">
+                <span id="guideBtnText">📖 View Setup Guide ▼</span>
+              </button>
+            </div>
+          </div>
 
-            <div class="teacher-fields" id="teacherFields" aria-live="polite"></div>
-
-            <div class="subjects-section-wrapper" style="grid-column: 1 / -1;">
-              <div class="subjects-header">
+          <!-- COLLAPSIBLE 8-PERIOD SETUP GUIDE -->
+          <div class="eight-period-guide-card" id="guide8PeriodCard" style="display: none;" role="region" aria-label="8-Period Setup Guide">
+            <div class="guide-card-header">
+              <div class="guide-header-title-wrap">
+                <span class="guide-icon" aria-hidden="true">📚</span>
                 <div>
-                  <label class="subjects-section-label" for="addSubjectBtn">Subjects / Courses <span class="required">*</span></label>
-                  <div class="max-subjects-badge" id="maxSubjectsBadge" aria-live="polite">
-                    Maximum allowed: <strong id="maxSubjectsAllowed">3</strong> subjects (Number of Teachers + 2)
+                  <h3 class="guide-card-heading">How to Fill Required Info for 8-Period Daily Classes (Zero Conflicts)</h3>
+                  <p class="guide-card-sub">Follow these 4 golden rules to guarantee clean, clash-free timetable generation.</p>
+                </div>
+              </div>
+              <button type="button" id="close8PeriodGuideBtn" class="btn-close-guide" aria-label="Close guide">&times;</button>
+            </div>
+            <div class="guide-card-body">
+              <div class="guide-rules-grid">
+                <div class="guide-rule-item">
+                  <div class="guide-rule-badge">Rule 1</div>
+                  <strong class="guide-rule-title">Faculty Count &ge; Section Count</strong>
+                  <p class="guide-rule-text">If 2 sections need classes simultaneously, you need at least 2&ndash;4 teachers available. For 4 sections, configure at least 4&ndash;5 teachers so no teacher is double-booked.</p>
+                </div>
+                <div class="guide-rule-item">
+                  <div class="guide-rule-badge">Rule 2</div>
+                  <strong class="guide-rule-title">Room Count &ge; Section Count</strong>
+                  <p class="guide-rule-text">Each simultaneous class requires a distinct classroom. For 2 sections, provide at least 2 classrooms + 1 lab (e.g. Room 201, Room 202, Lab-A).</p>
+                </div>
+                <div class="guide-rule-item">
+                  <div class="guide-rule-badge">Rule 3</div>
+                  <strong class="guide-rule-title">The 4 &ndash; Break &ndash; 4 Pattern</strong>
+                  <p class="guide-rule-text">4 morning periods (09:00&ndash;12:20), 40-minute Lunch Break (12:20&ndash;13:00), 4 afternoon periods (13:00&ndash;16:20). Total = 8 periods per day.</p>
+                </div>
+                <div class="guide-rule-item">
+                  <div class="guide-rule-badge">Rule 4</div>
+                  <strong class="guide-rule-title">Multi-Teacher High Demand</strong>
+                  <p class="guide-rule-text">If a core subject like DBMS is needed across multiple sections, qualify at least 2 teachers for it to avoid bottlenecks and overlaps.</p>
+                </div>
+              </div>
+
+              <div class="guide-quick-table-wrap">
+                <h4 class="guide-table-heading">Standard 8-Period Schedule Breakdown (Monday &ndash; Friday)</h4>
+                <div class="guide-table-responsive">
+                  <table class="guide-table">
+                    <thead>
+                      <tr>
+                        <th>Period</th>
+                        <th>Time Window (12h)</th>
+                        <th>Duration</th>
+                        <th>Suggested Allocation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><strong>Period 1</strong></td><td>09:00 AM &ndash; 09:50 AM</td><td>50 mins</td><td>Theory Lecture / Practical Lab Block (P1-P2)</td></tr>
+                      <tr><td><strong>Period 2</strong></td><td>09:50 AM &ndash; 10:40 AM</td><td>50 mins</td><td>Theory Lecture / Practical Lab Block (P1-P2)</td></tr>
+                      <tr><td><strong>Period 3</strong></td><td>10:40 AM &ndash; 11:30 AM</td><td>50 mins</td><td>Theory Lecture</td></tr>
+                      <tr><td><strong>Period 4</strong></td><td>11:30 AM &ndash; 12:20 PM</td><td>50 mins</td><td>Theory Lecture</td></tr>
+                      <tr class="guide-lunch-row"><td><strong>LUNCH BREAK</strong></td><td><strong>12:20 PM &ndash; 01:00 PM</strong></td><td>40 mins</td><td><strong>Campus-wide Lunch (Zero Teaching Slots)</strong></td></tr>
+                      <tr><td><strong>Period 5</strong></td><td>01:00 PM &ndash; 01:50 PM</td><td>50 mins</td><td>Theory Lecture / Afternoon Lab Block (P5-P6)</td></tr>
+                      <tr><td><strong>Period 6</strong></td><td>01:50 PM &ndash; 02:40 PM</td><td>50 mins</td><td>Theory Lecture / Afternoon Lab Block (P5-P6)</td></tr>
+                      <tr><td><strong>Period 7</strong></td><td>02:40 PM &ndash; 03:30 PM</td><td>50 mins</td><td>Theory Lecture</td></tr>
+                      <tr><td><strong>Period 8</strong></td><td>03:30 PM &ndash; 04:20 PM</td><td>50 mins</td><td>Theory Lecture / Remedial / Tutorial</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="guide-footer-action">
+                <button type="button" id="applyGuide8PeriodBtn" class="btn btn-primary btn-sm">⚡ Auto-Fill This 8-Period Configuration Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="generate-form-wrapper">
+            <form id="timetableForm" class="generate-steps-form" novalidate>
+              <!-- STEP 1: DEPARTMENT (Requirements 3, 4, 5, 65) -->
+              <div class="form-step-card" id="stepDepartmentCard">
+                <div class="step-card-header">
+                  <div class="step-badge">01</div>
+                  <div class="step-header-text">
+                    <h3>DEPARTMENT</h3>
+                    <p class="step-desc">Enter a new department or select an existing saved department for this timetable.</p>
                   </div>
                 </div>
-                <button type="button" id="addSubjectBtn" class="btn btn-secondary btn-sm" aria-label="Add Subject">
-                  + Add Subject
-                </button>
-              </div>
-              <div class="subject-fields-list" id="subjectFields" aria-live="polite"></div>
-            </div>
+                <div class="step-card-body">
+                  <div class="department-grid-box">
+                    <div class="form-group department-entry-group">
+                      <label for="departmentNameInput" class="inner-field-label">Department Name <span class="required">*</span></label>
+                      <div class="department-input-action-row">
+                        <input type="text" id="departmentNameInput" class="department-name-input" placeholder="e.g., Computer Science & Engineering" value="Computer Science & Engineering" required aria-label="Department Name">
+                        <button type="button" id="saveDepartmentBtn" class="btn btn-secondary btn-sm save-dept-btn" title="Save this department to department catalog">Save Department</button>
+                      </div>
+                      <small class="form-help">Enter a department manually or choose from saved departments.</small>
+                    </div>
 
-            <!-- CLASSES / SECTIONS SECTION -->
-            <div class="sections-section-wrapper" style="grid-column: 1 / -1;">
-              <div class="sections-header">
-                <div>
-                  <label class="sections-section-label" for="addSectionBtn">Classes / Sections <span class="required">*</span></label>
-                  <small class="form-help" style="display: block; margin-top: 2px;">Add the classes or sections to be scheduled (e.g., CSE-A, CSE-B).</small>
+                    <div class="form-group department-select-group">
+                      <div class="dept-select-header-row">
+                        <label for="departmentSelect" class="inner-field-label">Existing Department</label>
+                        <button type="button" id="newDepartmentBtn" class="btn btn-primary btn-sm new-dept-btn" title="Create a new department">+ New Department</button>
+                      </div>
+                      <select id="departmentSelect" class="department-select" required aria-label="Select Department">
+                        <option value="">-- Select Existing Department --</option>
+                        <option value="Computer Science & Engineering" selected>Computer Science & Engineering</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Electronics & Communication">Electronics & Communication</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                      </select>
+                      <small class="form-help">Selecting a saved department loads its settings and timetable context.</small>
+                    </div>
+                  </div>
                 </div>
-                <button type="button" id="addSectionBtn" class="btn btn-secondary btn-sm" aria-label="Add Section">
-                  + Add Section
-                </button>
               </div>
-              <div class="section-fields-list" id="sectionFields" aria-live="polite"></div>
-            </div>
 
-            <!-- ROOMS SECTION -->
-            <div class="rooms-section-wrapper" style="grid-column: 1 / -1;">
-              <div class="rooms-header">
-                <div>
-                  <label class="rooms-section-label" for="addRoomBtn">Rooms <span class="required">*</span></label>
-                  <small class="form-help" style="display: block; margin-top: 2px;">Add physical rooms and laboratories available for scheduling.</small>
+              <!-- STEP 2: TEACHERS & ASSIGNED SUBJECTS -->
+              <div class="form-step-card" id="stepTeachersCard">
+                <div class="step-card-header">
+                  <div class="step-badge">02</div>
+                  <div class="step-header-text">
+                    <h3>Teachers & Assigned Subjects</h3>
+                    <p class="step-desc">Configure teaching faculty and explicitly assign each teacher to their valid subject from the subjects list.</p>
+                  </div>
                 </div>
-                <button type="button" id="addRoomBtn" class="btn btn-secondary btn-sm" aria-label="Add Room">
-                  + Add Room
-                </button>
+                <div class="step-card-body">
+                  <div class="form-group">
+                    <div class="teacher-header-controls">
+                      <label for="teacherCount">Number of Teachers <span class="required">*</span></label>
+                      <button type="button" id="addTeacherBtn" class="btn btn-secondary btn-sm" aria-label="Add Teacher">+ Add Teacher</button>
+                    </div>
+                    <input type="number" id="teacherCount" min="1" max="50" step="1" value="3" placeholder="e.g., 3" required>
+                    <small class="form-help">Enter total count or click "+ Add Teacher" to define faculty names and their assigned subjects.</small>
+                  </div>
+                  <div class="teacher-fields" id="teacherFields" aria-live="polite"></div>
+                </div>
               </div>
-              <div class="room-fields-list" id="roomFields" aria-live="polite"></div>
-            </div>
 
-            <div class="form-group">
-              <label for="roomType">Room Type Requirement <span class="required">*</span></label>
-              <select id="roomType" required>
-                <option value="">-- Select Room Type --</option>
-                <option value="Classroom">Classroom</option>
-                <option value="Laboratory">Laboratory</option>
-                <option value="Both">Both (Classroom & Laboratory)</option>
-              </select>
-              <small class="form-help">Scheduling filter: restrict timetable to Classroom, Laboratory, or Both.</small>
-            </div>
+              <!-- STEP 3: SUBJECTS -->
+              <div class="form-step-card" id="stepSubjectsCard">
+                <div class="step-card-header">
+                  <div class="step-badge">03</div>
+                  <div class="step-header-text">
+                    <h3>Subjects</h3>
+                    <p class="step-desc">Academic courses and laboratory subjects to be scheduled across the week.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="subjects-header-row">
+                    <div class="max-subjects-badge" id="maxSubjectsBadge" aria-live="polite">
+                      Maximum allowed: <strong id="maxSubjectsAllowed">3</strong> subjects (Number of Teachers + 2)
+                    </div>
+                    <button type="button" id="addSubjectBtn" class="btn btn-secondary btn-sm" aria-label="Add Subject">+ Add Subject</button>
+                  </div>
+                  <div class="subject-fields-list" id="subjectFields" aria-live="polite"></div>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="workingDays">Number of Working Days Per Week <span class="required">*</span></label>
-              <input type="number" id="workingDays" min="1" max="7" placeholder="e.g., 5 (Mon-Fri)" value="5" required>
-            </div>
+              <!-- STEP 4: CLASSES / SECTIONS -->
+              <div class="form-step-card" id="stepSectionsCard">
+                <div class="step-card-header">
+                  <div class="step-badge">04</div>
+                  <div class="step-header-text">
+                    <h3>Classes / Sections</h3>
+                    <p class="step-desc">Student cohorts and class groups (e.g., CSE-A, CSE-B) requiring independent clash-free schedules.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="sections-header-row">
+                    <span class="step-sublabel">Configured Student Cohorts</span>
+                    <button type="button" id="addSectionBtn" class="btn btn-secondary btn-sm" aria-label="Add Section">+ Add Section</button>
+                  </div>
+                  <div class="section-fields-list" id="sectionFields" aria-live="polite"></div>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="startTime">Working Start Time (HH:MM) <span class="required">*</span></label>
-              <input type="time" id="startTime" value="09:00" required>
-            </div>
+              <!-- STEP 5: ROOMS -->
+              <div class="form-step-card" id="stepRoomsCard">
+                <div class="step-card-header">
+                  <div class="step-badge">05</div>
+                  <div class="step-header-text">
+                    <h3>Rooms</h3>
+                    <p class="step-desc">Classroom and lab facilities available on campus for lecture allocation.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="rooms-header-row">
+                    <span class="step-sublabel">Campus Spaces & Labs</span>
+                    <button type="button" id="addRoomBtn" class="btn btn-secondary btn-sm" aria-label="Add Room">+ Add Room</button>
+                  </div>
+                  <div class="room-fields-list" id="roomFields" aria-live="polite"></div>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="endTime">Working End Time (HH:MM) <span class="required">*</span></label>
-              <input type="time" id="endTime" value="16:00" required>
-            </div>
+              <!-- STEP 6: PERIODS & TIME SPAN (Requirements 10-18, 63) -->
+              <div class="form-step-card" id="stepPeriodsCard">
+                <div class="step-card-header">
+                  <div class="step-badge">06</div>
+                  <div class="step-header-text">
+                    <h3>PERIODS & TIME SPAN</h3>
+                    <p class="step-desc">Configure day-specific period counts (e.g. Mon: 5, Tue: 7, Wed: 4) and custom period intervals with precise minute start and end times in 12-hour AM/PM format.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="periods-config-header">
+                    <div class="periods-quick-controls">
+                      <span class="step-sublabel">Day-Specific Period Allocation (HH:MM AM/PM)</span>
+                      <button type="button" id="load8PeriodTemplateBtn" class="btn btn-primary btn-sm" title="Apply standard 8-period daily schedule (8 periods/day with lunch break) across all working days">⚡ 8-Period Daily Template</button>
+                      <button type="button" id="autoSyncPeriodsBtn" class="btn btn-secondary btn-sm" title="Reset all periods to standard 1-hour intervals">↺ Reset to Default Spans</button>
+                    </div>
+                    <p class="form-help">Each day can have a different number of periods. Precise start and end minutes are preserved throughout generation.</p>
+                  </div>
 
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Generate Timetable</button>
-              <button type="reset" class="btn btn-secondary">Clear Form</button>
-            </div>
-          </form>
+                  <!-- PERIOD CONFIGURATION COPY TOOL (Requirement 2) -->
+                  <div class="copy-config-panel copy-config-panel--periods" id="periodsCopyPanel">
+                    <div class="copy-config-header">
+                      <div class="copy-config-title-wrap">
+                        <span class="copy-icon" aria-hidden="true">📋</span>
+                        <div>
+                          <h4 class="copy-config-heading">Copy Period Configuration</h4>
+                          <p class="copy-config-sub">Replicate period timings across days without configuring each day separately.</p>
+                        </div>
+                      </div>
+                      <button type="button" id="togglePeriodCopyBtn" class="btn btn-secondary btn-sm toggle-copy-btn" aria-expanded="false" aria-controls="periodCopyContent">
+                        <span class="toggle-copy-text">Copy Configuration ▼</span>
+                      </button>
+                    </div>
 
-          <div id="message" class="message hidden"></div>
+                    <div class="copy-config-content" id="periodCopyContent" style="display: none;">
+                      <div class="copy-selection-grid">
+                        <div class="copy-field-group">
+                          <label for="copyPeriodSourceDay" class="copy-field-label">Copy From Day <span class="required">*</span></label>
+                          <select id="copyPeriodSourceDay" class="copy-select-input" aria-label="Source day to copy periods from">
+                            <!-- Populated with active working days -->
+                          </select>
+                          <small class="form-help">Source schedule to duplicate</small>
+                        </div>
+
+                        <div class="copy-field-group copy-field-group--dest">
+                          <label class="copy-field-label">Copy To Days <span class="required">*</span></label>
+                          <div class="dest-days-chips-row" id="copyPeriodDestDays" role="group" aria-label="Destination days to copy periods to">
+                            <!-- Destination day toggle chips -->
+                          </div>
+                          <small class="form-help">Select one or more destination days</small>
+                        </div>
+                      </div>
+
+                      <div class="copy-modes-box">
+                        <span class="copy-mode-title">Select Copy Mode:</span>
+                        <div class="copy-mode-options">
+                          <label class="copy-mode-radio">
+                            <input type="radio" name="periodCopyMode" value="complete" checked>
+                            <span class="radio-custom"></span>
+                            <span class="mode-text">
+                              <strong>Mode A: Complete Period Configuration</strong>
+                              <small>Copies period count, all start/end times, and period spans</small>
+                            </span>
+                          </label>
+                          <label class="copy-mode-radio">
+                            <input type="radio" name="periodCopyMode" value="timing_only">
+                            <span class="radio-custom"></span>
+                            <span class="mode-text">
+                              <strong>Mode B: Timing Only</strong>
+                              <small>Copies timing pattern to existing slots without changing destination period count</small>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="copy-actions-footer">
+                        <button type="button" id="executeCopyPeriodBtn" class="btn btn-primary btn-sm btn-copy-action">
+                          <span>📋 Copy Configuration</span>
+                        </button>
+                        <span class="copy-status-msg" id="periodCopyStatusMsg" aria-live="polite"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="day-periods-grid" id="dayPeriodsContainer" aria-live="polite">
+                    <!-- Day period cards dynamically rendered here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 7: BREAK MANAGEMENT (Requirements Part 2-9) -->
+              <div class="form-step-card" id="stepBreaksCard">
+                <div class="step-card-header">
+                  <div class="step-badge">07</div>
+                  <div class="step-header-text">
+                    <h3>BREAK MANAGEMENT</h3>
+                    <p class="step-desc">Configure day-specific intervals for short breaks, tea, and lunch breaks. SchedX automatically adapts teaching periods around breaks.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="breaks-header-row">
+                    <span class="step-sublabel">Configured Schedule Breaks</span>
+                    <div class="breaks-actions-group">
+                      <button type="button" id="addCommonBreakBtn" class="btn btn-secondary btn-sm" title="Add standard Lunch Break (13:00–14:00) to all active working days">☕ Add Lunch Break (All Days)</button>
+                      <button type="button" id="addBreakBtn" class="btn btn-secondary btn-sm" aria-label="Add Break">+ Add Break</button>
+                    </div>
+                  </div>
+                  <p class="form-help">Breaks can be configured individually per day or across all days. Teaching slots automatically recalculate around configured breaks.</p>
+
+                  <!-- BREAK CONFIGURATION COPY TOOL (Requirement 3) -->
+                  <div class="copy-config-panel copy-config-panel--breaks" id="breaksCopyPanel">
+                    <div class="copy-config-header">
+                      <div class="copy-config-title-wrap">
+                        <span class="copy-icon" aria-hidden="true">☕</span>
+                        <div>
+                          <h4 class="copy-config-heading">Copy Break Configuration</h4>
+                          <p class="copy-config-sub">Replicate configured tea, lunch, and short breaks across working days.</p>
+                        </div>
+                      </div>
+                      <button type="button" id="toggleBreakCopyBtn" class="btn btn-secondary btn-sm toggle-copy-btn" aria-expanded="false" aria-controls="breakCopyContent">
+                        <span class="toggle-copy-text">Copy Break Configuration ▼</span>
+                      </button>
+                    </div>
+
+                    <div class="copy-config-content" id="breakCopyContent" style="display: none;">
+                      <div class="copy-selection-grid">
+                        <div class="copy-field-group">
+                          <label for="copyBreakSourceDay" class="copy-field-label">Copy From Day <span class="required">*</span></label>
+                          <select id="copyBreakSourceDay" class="copy-select-input" aria-label="Source day to copy breaks from">
+                            <!-- Populated with active working days -->
+                          </select>
+                          <small class="form-help">Source day with configured breaks</small>
+                        </div>
+
+                        <div class="copy-field-group copy-field-group--dest">
+                          <label class="copy-field-label">Copy To Days <span class="required">*</span></label>
+                          <div class="dest-days-chips-row" id="copyBreakDestDays" role="group" aria-label="Destination days to copy breaks to">
+                            <!-- Destination day toggle chips -->
+                          </div>
+                          <small class="form-help">Select one or more destination days</small>
+                        </div>
+                      </div>
+
+                      <div class="copy-modes-box">
+                        <span class="copy-mode-title">Select Copy Mode:</span>
+                        <div class="copy-mode-options">
+                          <label class="copy-mode-radio">
+                            <input type="radio" name="breakCopyMode" value="all" checked>
+                            <span class="radio-custom"></span>
+                            <span class="mode-text">
+                              <strong>Mode A: Copy All Breaks</strong>
+                              <small>Replicates every configured break on source day</small>
+                            </span>
+                          </label>
+                          <label class="copy-mode-radio">
+                            <input type="radio" name="breakCopyMode" value="selected">
+                            <span class="radio-custom"></span>
+                            <span class="mode-text">
+                              <strong>Mode B: Copy Selected Breaks</strong>
+                              <small>Pick specific individual breaks to replicate</small>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div id="breakSelectableList" class="break-selectable-checklist" style="display: none;">
+                        <!-- Individual break checkboxes rendered here when Mode B is active -->
+                      </div>
+
+                      <div class="copy-actions-footer">
+                        <button type="button" id="executeCopyBreakBtn" class="btn btn-primary btn-sm btn-copy-action">
+                          <span>☕ Copy Break Configuration</span>
+                        </button>
+                        <span class="copy-status-msg" id="breakCopyStatusMsg" aria-live="polite"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="breaks-list-container" id="breaksListContainer" aria-live="polite">
+                    <!-- Break item cards dynamically rendered here -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 8: LAB CLASSES (Requirements 19-26, 64) -->
+              <div class="form-step-card" id="stepLabClassesCard">
+                <div class="step-card-header">
+                  <div class="step-badge">08</div>
+                  <div class="step-header-text">
+                    <h3>LAB CLASSES</h3>
+                    <p class="step-desc">Define practical laboratory sessions supporting multiple working days, multiple sections, and configurable scheduling modes.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="lab-classes-header-row">
+                    <span class="step-sublabel">Configured Practical Lab Sessions</span>
+                    <button type="button" id="addLabClassBtn" class="btn btn-secondary btn-sm" aria-label="Add Lab Class">+ Add Lab Class</button>
+                  </div>
+                  <div class="lab-classes-list" id="labClassFields" aria-live="polite"></div>
+                </div>
+              </div>
+
+              <!-- STEP 9: WORKING DAYS / SCHEDULE SETTINGS (Requirements 13, 24) -->
+              <div class="form-step-card" id="stepWorkingDaysCard">
+                <div class="step-card-header">
+                  <div class="step-badge">09</div>
+                  <div class="step-header-text">
+                    <h3>WORKING DAYS / SCHEDULE SETTINGS</h3>
+                    <p class="step-desc">Configure institutional working days and default schedule operating hours.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="requirements-grid">
+                    <div class="form-group working-days-group">
+                      <div class="working-days-header-row">
+                        <label for="workingDays">Weekly Working Days <span class="required">*</span></label>
+                        <div class="working-days-presets" role="group" aria-label="Working day presets">
+                          <button type="button" class="btn-day-preset active" data-preset="5">Mon–Fri (5d)</button>
+                          <button type="button" class="btn-day-preset" data-preset="6">Mon–Sat (6d)</button>
+                          <button type="button" class="btn-day-preset" data-preset="7">All (7d)</button>
+                        </div>
+                      </div>
+                      <div class="working-day-pills-row" id="workingDayPills" role="group" aria-label="Select Working Days">
+                        <button type="button" class="day-toggle-pill active" data-day="Monday" aria-pressed="true">Mon</button>
+                        <button type="button" class="day-toggle-pill active" data-day="Tuesday" aria-pressed="true">Tue</button>
+                        <button type="button" class="day-toggle-pill active" data-day="Wednesday" aria-pressed="true">Wed</button>
+                        <button type="button" class="day-toggle-pill active" data-day="Thursday" aria-pressed="true">Thu</button>
+                        <button type="button" class="day-toggle-pill active" data-day="Friday" aria-pressed="true">Fri</button>
+                        <button type="button" class="day-toggle-pill" data-day="Saturday" aria-pressed="false">Sat</button>
+                        <button type="button" class="day-toggle-pill" data-day="Sunday" aria-pressed="false">Sun</button>
+                      </div>
+                      <input type="number" id="workingDays" min="1" max="7" value="5" required style="display: none;">
+                      <small class="form-help">Click day pills to toggle active working days. Periods & Time Span adapts dynamically.</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="startTime">Default Day Start (HH:MM) <span class="required">*</span></label>
+                      <input type="time" id="startTime" value="09:00" required>
+                      <small class="form-help" id="startTime12Preview">Default period template start: <strong id="startTimeDisplay">09:00 AM</strong> (Days in Step 06 can be customized freely)</small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="endTime">Default Day End (HH:MM) <span class="required">*</span></label>
+                      <input type="time" id="endTime" value="16:00" required>
+                      <small class="form-help" id="endTime12Preview">Default period template end: <strong id="endTimeDisplay">04:00 PM</strong> (Days in Step 06 can be customized freely)</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 10: GENERATE TIMETABLE ACTION CARD (Requirements 32, 62) -->
+              <div class="form-step-card form-step-card--action" id="stepGenerateCard">
+                <div class="step-card-header">
+                  <div class="step-badge step-badge--action">10</div>
+                  <div class="step-header-text">
+                    <h3>GENERATE TIMETABLE</h3>
+                    <p class="step-desc">Deploy SchedX's multi-constraint solver to calculate your academic schedule with conflict-aware warnings and persist to storage.</p>
+                  </div>
+                </div>
+                <div class="step-card-body">
+                  <div class="generate-action-content">
+                    <div class="generate-btn-wrap">
+                      <button type="submit" class="btn btn-primary btn-generate-primary" id="generateSubmitBtn">
+                        <span class="btn-spinner" aria-hidden="true"></span>
+                        <span class="btn-text">GENERATE TIMETABLE</span>
+                      </button>
+                      <button type="reset" class="btn btn-secondary btn-generate-reset" id="generateResetBtn">
+                        Clear Form
+                      </button>
+                    </div>
+                    <div id="message" class="message hidden" aria-live="polite"></div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </section>
 
-        <!-- GENERATED TIMETABLE SECTION (DAY-BY-DAY) -->
+        <!-- GENERATED TIMETABLE SECTION (DAY-BY-DAY & CURRENT CLASS) -->
         <section class="timetable-section" id="timetableSection" style="display: none;">
           <div class="timetable-header">
             <div>
-              <h2>Generated Timetable</h2>
-              <p class="section-description" style="margin-top: 4px; margin-bottom: 0;">Conflict-free academic schedule organized day-by-day.</p>
+              <span class="eyebrow subtle">Schedule Output</span>
+              <h2 id="timetableMainHeading" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span>Generated Timetable</span>
+                <span id="editModeHeaderBadge" class="edit-mode-badge" style="display: none;">✏️ EDIT MODE ACTIVE</span>
+              </h2>
+              <p class="section-description" id="timetableSubHeading" style="margin-top: 4px; margin-bottom: 0;">Academic schedule organized day-by-day with real-time conflict inspection and manual editing.</p>
             </div>
-            <div class="timetable-actions">
-              <button id="refreshBtn" class="btn btn-secondary" type="button">↻ Refresh</button>
-              <button id="clearBtn" class="btn btn-danger" type="button">Clear Timetable</button>
+            <div class="timetable-header-right">
+              <div class="timetable-dept-filter-wrap" id="timetableDeptFilterWrap">
+                <label for="timetableDeptFilter" class="dept-filter-label">Department:</label>
+                <select id="timetableDeptFilter" class="timetable-dept-select" aria-label="Filter timetable by department">
+                  <option value="all">All Departments</option>
+                </select>
+              </div>
+              <div class="timetable-actions">
+                <button id="editTimetableBtn" class="btn btn-secondary btn-sm" type="button" onclick="toggleTimetableEditMode()" style="display: inline-flex; align-items: center; gap: 4px;">✎ Edit</button>
+                <button id="downloadPdfBtn" class="btn btn-primary btn-sm" type="button" style="display: inline-flex; align-items: center; gap: 4px;">📥 Download PDF</button>
+                <button id="refreshBtn" class="btn btn-secondary btn-sm" type="button">↻ Refresh</button>
+                <button id="clearBtn" class="btn btn-danger btn-sm" type="button">Clear Timetable</button>
+              </div>
             </div>
           </div>
 
+          <!-- Interactive Edit Mode Indicator Banner -->
+          <div id="timetableEditModeBanner" class="timetable-edit-banner" style="display: none;" role="region" aria-live="polite">
+            <div class="edit-banner-content">
+              <div class="edit-banner-info">
+                <span class="edit-banner-icon" aria-hidden="true">✏️</span>
+                <div>
+                  <strong>Interactive Edit Mode Active</strong>
+                  <p>Click any timetable cell or row to edit day, time, teacher, subject, room, or section. Changes update live.</p>
+                </div>
+              </div>
+              <div class="edit-banner-actions">
+                <button type="button" class="btn btn-sm btn-primary" id="openFirstEditBannerBtn" onclick="openFirstEditableEntry()" style="display: inline-flex; align-items: center; gap: 4px;">✏️ Edit First Class</button>
+                <button type="button" class="btn btn-sm btn-success" id="doneEditingBannerBtn" onclick="toggleTimetableEditMode(false)">✓ Done Editing</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Class Banner / Card -->
+          <div class="current-class-wrapper" id="currentClassWrapper"></div>
+
+          <!-- Timetable Generation Summary & Legend Card -->
+          <div class="timetable-summary-card" id="timetableSummaryCard" style="display: none;">
+            <div class="summary-card-header">
+              <div class="summary-title-wrap">
+                <span class="summary-icon" aria-hidden="true">📊</span>
+                <h4>Timetable Generation Summary</h4>
+              </div>
+              <div class="summary-status-pill" id="summaryStatusPill">Valid Timetable</div>
+            </div>
+            <div class="summary-metrics-grid">
+              <div class="summary-metric-box">
+                <span class="metric-num" id="metricTotalClasses">0</span>
+                <span class="metric-label">Total Required</span>
+              </div>
+              <div class="summary-metric-box success">
+                <span class="metric-num" id="metricScheduledClasses">0</span>
+                <span class="metric-label">Successfully Scheduled</span>
+              </div>
+              <div class="summary-metric-box warning" id="metricAttentionBox">
+                <span class="metric-num" id="metricAttentionClasses">0</span>
+                <span class="metric-label">Requiring Attention</span>
+              </div>
+              <div class="summary-metric-box danger" id="metricConflictsBox">
+                <span class="metric-num" id="metricDetectedConflicts">0</span>
+                <span class="metric-label">Detected Conflicts</span>
+              </div>
+            </div>
+            <div class="timetable-legend-row" role="region" aria-label="Timetable Color Legend">
+              <span class="legend-heading">Legend:</span>
+              <span class="legend-chip legend-chip--conflict"><span class="legend-color-dot dot-conflict"></span> Red: Scheduling Conflict</span>
+              <span class="legend-chip legend-chip--valid"><span class="legend-color-dot dot-valid"></span> Blue/Neutral: Valid Assignment</span>
+              <span class="legend-chip legend-chip--free"><span class="legend-color-dot dot-free"></span> Gray: Free Period</span>
+              <span class="legend-chip legend-chip--attention"><span class="legend-color-dot dot-attention"></span> Amber: Unscheduled / Needs Attention</span>
+            </div>
+          </div>
+
+          <!-- 4. ACTUAL GENERATED TIMETABLE (Appears between Summary and Conflict section) -->
+          <!-- Day Tabs Navigation Bar (Requirement 45) -->
+          <div class="timetable-day-tabs" id="timetableDayTabs" role="tablist" aria-label="Filter timetable by day"></div>
+
+          <!-- Daywise Timetable Cards Container -->
           <div class="daywise-timetable-container" id="daywiseTimetableContainer">
             <!-- Rendered day cards injected dynamically -->
           </div>
+
+          <!-- 5. Scheduling Conflicts Detected section -->
+          <!-- Conflict Warning Banner & Navigation Panel -->
+          <div class="timetable-conflict-panel" id="timetableConflictPanel" style="display: none;" role="alert" aria-live="polite">
+            <div class="conflict-panel-header">
+              <div class="conflict-panel-title">
+                <span class="conflict-alert-icon" aria-hidden="true">⚠️</span>
+                <strong>Scheduling Conflicts Detected</strong>
+              </div>
+              <span class="conflict-panel-count" id="conflictPanelCount">0 Conflicts</span>
+            </div>
+            <p class="conflict-panel-instructions">
+              The timetable contains overlapping assignments highlighted in red below. Click any conflict to navigate directly to the affected cell or click <strong>"✎ Edit"</strong> to manually adjust day, time, or teacher.
+            </p>
+            <div class="conflict-items-list" id="conflictItemsList">
+              <!-- Dynamically populated conflict entries -->
+            </div>
+          </div>
+
+          <!-- 6. Remaining existing content -->
+          <!-- Unscheduled Classes Card -->
+          <div class="unscheduled-classes-card" id="unscheduledClassesCard" style="display: none;" role="region" aria-label="Unscheduled Classes">
+            <div class="unscheduled-card-header">
+              <div class="unscheduled-title-wrap">
+                <span class="unscheduled-icon" aria-hidden="true">📋</span>
+                <h4>UNSCHEDULED CLASSES</h4>
+              </div>
+              <span class="unscheduled-badge" id="unscheduledCountBadge">0 Pending</span>
+            </div>
+            <p class="unscheduled-intro">The following classes could not be scheduled conflict-free within current schedule bounds:</p>
+            <div class="unscheduled-items-grid" id="unscheduledItemsGrid">
+              <!-- Dynamically populated unscheduled items -->
+            </div>
+          </div>
+
+          <!-- Saved Timetables Quick Access Bar (Requirements 7, 33, 35) -->
+          <div class="saved-timetables-card" id="savedTimetablesCard">
+            <div class="saved-timetables-header">
+              <div class="saved-tt-title-group">
+                <span class="saved-tt-icon" aria-hidden="true">🏛️</span>
+                <h4 class="saved-tt-title">SAVED TIMETABLES</h4>
+              </div>
+              <span class="saved-tt-badge" id="savedDeptCountBadge">0 Saved</span>
+            </div>
+            <div class="saved-timetables-list" id="savedTimetablesList" role="region" aria-label="Saved Department Timetables">
+              <!-- Dynamically populated department cards -->
+            </div>
+          </div>
+
+          <!-- TEACHER WORKLOAD SECTION (Requirements Part 14-23) -->
+          <div class="teacher-workload-section" id="teacherWorkloadSection" style="display: none;">
+            <div class="teacher-workload-header">
+              <div class="workload-title-group">
+                <span class="eyebrow subtle">Faculty Analytics</span>
+                <h3 class="teacher-workload-title">TEACHER WORKLOAD</h3>
+                <p class="section-description">Daily class counts, teaching periods used, and total contact hours per faculty member across all departments.</p>
+              </div>
+              <div class="workload-view-toggle">
+                <button type="button" class="btn btn-secondary btn-sm active" id="workloadDailyViewBtn">Daily Breakdown</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="workloadWeeklyViewBtn">Weekly Summary</button>
+              </div>
+            </div>
+            <div class="teacher-workload-container" id="teacherWorkloadContainer" aria-live="polite">
+              <!-- Rendered workload per day tables and cards -->
+            </div>
+          </div>
         </section>
+
+        <!-- ==============================================================================
+             SCHEDX TO DO — CALENDAR-BASED DATE-WISE TASK PLANNER
+             ============================================================================== -->
+        <section class="schedx-todo-section" id="schedxTodoSection" aria-labelledby="todoSectionHeading">
+          <div class="todo-section-header">
+            <span class="eyebrow subtle">Productivity Planner</span>
+            <h2 id="todoSectionHeading">SCHEDX TO DO</h2>
+            <p class="section-description">
+              Interactive date-wise academic planner to organize lecture preparation, laboratory schedules, and faculty assignments.
+            </p>
+          </div>
+
+          <div class="todo-planner-card">
+            <!-- LEFT COLUMN: CALENDAR -->
+            <div class="todo-calendar-column">
+              <div class="todo-calendar-header">
+                <div class="calendar-nav-left">
+                  <button type="button" class="todo-nav-btn" id="todoPrevMonthBtn" aria-label="Previous month">
+                    <span aria-hidden="true">‹</span>
+                  </button>
+                  <h3 class="todo-month-year" id="todoMonthYear" aria-live="polite">Month Year</h3>
+                  <button type="button" class="todo-nav-btn" id="todoNextMonthBtn" aria-label="Next month">
+                    <span aria-hidden="true">›</span>
+                  </button>
+                </div>
+                <button type="button" class="btn btn-secondary btn-sm todo-today-btn" id="todoTodayBtn">
+                  Today
+                </button>
+              </div>
+
+              <!-- Weekdays Row -->
+              <div class="todo-weekdays-grid" aria-hidden="true">
+                <span>MON</span>
+                <span>TUE</span>
+                <span>WED</span>
+                <span>THU</span>
+                <span>FRI</span>
+                <span>SAT</span>
+                <span>SUN</span>
+              </div>
+
+              <!-- Date Cells Grid -->
+              <div class="todo-days-grid" id="todoCalendarGrid" role="grid" aria-label="Calendar dates">
+                <!-- Dynamically populated -->
+              </div>
+
+              <div class="todo-calendar-legend">
+                <div class="legend-item"><span class="legend-dot today-dot"></span> Today</div>
+                <div class="legend-item"><span class="legend-dot task-dot"></span> Tasks Pending</div>
+                <div class="legend-item"><span class="legend-dot done-dot"></span> All Done</div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: SELECTED DATE TASKS -->
+            <div class="todo-tasks-column">
+              <div class="todo-tasks-header">
+                <div>
+                  <span class="todo-date-eyebrow">Selected Date</span>
+                  <h3 class="todo-selected-date-title" id="todoSelectedDateTitle">Date</h3>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" id="todoOpenAddBtn" aria-label="Add task for selected date">
+                  + Add Task
+                </button>
+              </div>
+
+              <!-- Tasks List Container -->
+              <div class="todo-tasks-container" id="todoTasksContainer">
+                <div class="todo-loading-state" id="todoLoadingState" style="display: none;">
+                  <span class="todo-spinner"></span> Loading tasks...
+                </div>
+
+                <div class="todo-empty-state" id="todoEmptyState" style="display: none;">
+                  <div class="empty-icon-box" aria-hidden="true">📋</div>
+                  <h4>No tasks for this day</h4>
+                  <p>Plan your lectures, prep materials, or assignments for this date.</p>
+                  <button type="button" class="btn btn-secondary btn-sm" id="todoEmptyAddBtn">+ Add Task</button>
+                </div>
+
+                <div class="todo-tasks-list" id="todoTasksList" role="list">
+                  <!-- Task Cards dynamically injected -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ADD / EDIT TASK MODAL -->
+        <div id="todoTaskModal" class="modal todo-modal" onclick="closeTodoModal(event)" role="dialog" aria-modal="true" aria-labelledby="todoModalTitle">
+          <div class="todo-modal-box" onclick="event.stopPropagation()">
+            <div class="todo-modal-header">
+              <h3 id="todoModalTitle">Add Task</h3>
+              <button type="button" class="modal-close-btn" onclick="closeTodoModal()" aria-label="Close dialog">✕</button>
+            </div>
+
+            <form id="todoTaskForm" class="todo-modal-form" onsubmit="handleSaveTask(event)">
+              <input type="hidden" id="todoEditingId" value="">
+
+              <div class="todo-form-group">
+                <label for="todoInputTitle">Task Title <span class="required">*</span></label>
+                <input type="text" id="todoInputTitle" maxlength="200" placeholder="e.g., Prepare Operating Systems lecture notes" required autocomplete="off">
+                <small class="form-help">Maximum 200 characters.</small>
+              </div>
+
+              <div class="todo-form-row">
+                <div class="todo-form-group">
+                  <label for="todoInputTime">Time (Optional)</label>
+                  <input type="time" id="todoInputTime">
+                </div>
+
+                <div class="todo-form-group">
+                  <label for="todoInputPriority">Priority</label>
+                  <select id="todoInputPriority">
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="todo-form-group">
+                <label for="todoInputDesc">Description / Notes (Optional)</label>
+                <textarea id="todoInputDesc" rows="3" maxlength="1000" placeholder="Add specific notes, lab references, or student reminders..."></textarea>
+              </div>
+
+              <div class="todo-modal-actions">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="closeTodoModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-sm" id="todoSaveSubmitBtn">Save Task</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- EDIT TIMETABLE ENTRY MODAL (Requirements 10-15, 47) -->
+        <div id="editTimetableModal" class="modal edit-timetable-modal" onclick="closeEditTimetableModal(event)" role="dialog" aria-modal="true" aria-labelledby="editTimetableModalTitle" style="display: none;">
+          <div class="edit-modal-box" onclick="event.stopPropagation()">
+            <div class="edit-modal-header">
+              <div class="edit-modal-header-text">
+                <span class="eyebrow subtle">Schedule Editor</span>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <h3 id="editTimetableModalTitle" style="margin: 0;">Edit Timetable Entry</h3>
+                  <span id="editModalDirtyBadge" class="dirty-badge" style="display: none; background: #fef3c7; color: #b45309; padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(217,119,6,0.3);">● Unsaved Changes</span>
+                </div>
+              </div>
+              <button type="button" class="modal-close-btn" onclick="closeEditTimetableModal()" aria-label="Close dialog">✕</button>
+            </div>
+
+            <form id="editTimetableForm" class="edit-timetable-form" onsubmit="handleSaveEditEntry(event)">
+              <input type="hidden" id="editEntryId" value="">
+              <input type="hidden" id="editEntryDepartment" value="">
+              <input type="hidden" id="editEntrySessionType" value="THEORY">
+              <input type="hidden" id="editEntryDuration" value="1">
+
+              <div class="edit-modal-grid">
+                <!-- Department Context -->
+                <div class="edit-form-group edit-col-full">
+                  <label for="editEntryDeptDisplay">Department</label>
+                  <input type="text" id="editEntryDeptDisplay" readonly class="edit-readonly-input" value="General">
+                </div>
+
+                <!-- Day Selection -->
+                <div class="edit-form-group">
+                  <label for="editEntryDay">Day <span class="required">*</span></label>
+                  <select id="editEntryDay" required></select>
+                  <small class="form-help">Configured academic working day.</small>
+                </div>
+
+                <!-- Time Slot -->
+                <div class="edit-form-group">
+                  <label for="editEntryTimeSlot">Time Slot <span class="required">*</span></label>
+                  <select id="editEntryTimeSlot" required></select>
+                  <small class="form-help">Scheduled class period.</small>
+                </div>
+
+                <!-- Section / Class -->
+                <div class="edit-form-group">
+                  <label for="editEntrySection">Section / Class <span class="required">*</span></label>
+                  <select id="editEntrySection" required></select>
+                  <small class="form-help">Student cohort.</small>
+                </div>
+
+                <!-- Subject / Course -->
+                <div class="edit-form-group">
+                  <label for="editEntrySubject">Subject / Course <span class="required">*</span></label>
+                  <select id="editEntrySubject" required></select>
+                  <small class="form-help">Academic course.</small>
+                </div>
+
+                <!-- Teacher (Dynamically Filtered to Subject) -->
+                <div class="edit-form-group">
+                  <label for="editEntryTeacher">Teacher <span class="required">*</span></label>
+                  <select id="editEntryTeacher" required></select>
+                  <small class="form-help">Faculty assigned to this subject.</small>
+                </div>
+
+                <!-- Room -->
+                <div class="edit-form-group">
+                  <label for="editEntryRoom">Room <span class="required">*</span></label>
+                  <select id="editEntryRoom" required></select>
+                  <small class="form-help">Campus space or lab.</small>
+                </div>
+              </div>
+
+              <!-- Live Validation / Conflict Warning Banner -->
+              <div id="editEntryFeedback" class="edit-feedback-alert" style="display: none;" role="alert"></div>
+
+              <div class="edit-modal-actions">
+                <button type="button" class="btn btn-secondary btn-sm" onclick="closeEditTimetableModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-sm" id="saveEditEntryBtn">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -168,6 +915,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/features">Features</a></li>
           <li><a href="/#about">About Us</a></li>
+          <li><button type="button" class="footer-feedback-link" id="footerFeedbackTrigger" data-feedback-open>Feedback</button></li>
         </ul>
       </div>
 
@@ -194,6 +942,7 @@
     </div>
   </footer>
 
-  <script src="/script.js"></script>
+  <script src="/script.js?v=2.2"></script>
+  <script src="/todo.js"></script>
 </body>
 </html>

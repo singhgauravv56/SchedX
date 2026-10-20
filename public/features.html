@@ -7,14 +7,40 @@
   <title>Features | SchedX Smart Timetable</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
+  <style>
+    .storage-detail-modal-box {
+      max-width: 1040px;
+      max-height: 90vh;
+      overflow-y: auto;
+      width: 96%;
+    }
+    .storage-timetable-grid-table th,
+    .storage-timetable-grid-table td {
+      padding: 8px 10px;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    }
+    .storage-timetable-grid-table th {
+      background: var(--bg-card-header, rgba(255, 255, 255, 0.04));
+      font-weight: 600;
+      color: var(--text-heading, #fff);
+    }
+    .storage-timetable-grid-table td.storage-cell-lecture {
+      background: var(--bg-card, rgba(255, 255, 255, 0.02));
+    }
+    .storage-timetable-grid-table td.storage-cell-free {
+      background: transparent;
+      color: var(--text-muted, #94a3b8);
+      text-align: center;
+    }
+  </style>
 </head>
-<body>
+<body class="features-page">
   <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="/" class="brand" aria-label="SchedX home">SchedX</a>
+      <a href="/" class="brand schedx-wordmark schedx-wordmark--nav" aria-label="SchedX Home"><span class="schedx-main">sched</span><span class="schedx-x">x</span></a>
 
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
         <span></span>
@@ -26,7 +52,7 @@
         <a href="/" class="nav-link">Home</a>
         <a href="/generate" class="nav-link">Generate</a>
         <a href="/features" class="nav-link active" aria-current="page">Features</a>
-        <a href="/#about" class="nav-link">About Us</a>
+        <a href="/about" class="nav-link">About Us</a>
       </nav>
     </div>
   </header>
@@ -34,12 +60,11 @@
   <main>
     <section class="section features-section">
       <div class="container">
-        <!-- INTRO HEADER -->
-        <div class="section-heading center">
-          <span class="eyebrow subtle">Platform Capabilities</span>
-          <h2>Built for Smarter Academic Scheduling</h2>
-          <p class="features-intro-subtitle">
-            Explore the core architectural components that eliminate teacher overlaps, class clashes, and room scheduling conflicts across your entire institution.
+        <!-- UNIQUE PAGE HEADING: FEATURES -->
+        <div class="page-heading-wrapper page-heading--features">
+          <h1 class="page-title page-title--features">FEATURES</h1>
+          <p class="page-subtitle page-subtitle--features">
+            Everything you need for smarter scheduling — Powerful tools for academic planning
           </p>
         </div>
 
@@ -47,197 +72,1466 @@
         <div class="features-zigzag-timeline">
           <div class="features-zigzag-list" role="list">
             
-            <!-- 01: Smart Timetable Engine (LEFT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="window.location='/generate'" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/generate'"
-                     aria-label="Feature 01: Smart Timetable Engine">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">01</span>
-                  <span class="feature-tag">AUTOMATION</span>
+            <!-- ROW 01: Feature 01 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="1">
+              <!-- 01: Smart Timetable Engine (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openEngineModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openEngineModal()"
+                       aria-label="Feature 01: Smart Timetable Engine">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">01</span>
+                    <span class="feature-tag">AUTOMATION</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">⚡</div>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">⚡</div>
-              </div>
-              <h3>Smart Timetable Engine</h3>
-              <p>
-                Automatically creates an optimal, conflict-free academic schedule across sections, rooms, and teachers in seconds using our intelligent constraint solver.
-              </p>
-              <div class="zigzag-cta">
-                <span>Generate Timetable</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
-
-            <!-- 02: Teacher Availability Tracking (RIGHT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="window.location='/teacher-availability'" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/teacher-availability'"
-                     aria-label="Feature 02: Teacher Availability Tracking">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">02</span>
-                  <span class="feature-tag">FACULTY</span>
+                <h3>Smart Timetable Engine</h3>
+                <p>
+                  Automatically creates an optimal, conflict-free academic schedule across sections, rooms, and teachers in seconds using our intelligent scheduling engine.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Explore Engine Workflow</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">👩‍🏫</div>
-              </div>
-              <h3>Teacher Availability Tracking</h3>
-              <p>
-                Configure weekly working days and specific active time periods per instructor to prevent scheduling lectures during off-duty or unavailable hours.
-              </p>
-              <div class="zigzag-cta">
-                <span>Manage Availability</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
+              </article>
 
-            <!-- 03: Section & Class Organization (LEFT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="window.location='/generate#timetableForm'" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/generate#timetableForm'"
-                     aria-label="Feature 03: Section and Class Organization">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">03</span>
-                  <span class="feature-tag">COHORTS</span>
+              <!-- VISUAL 01: Automated Timetable Engine Preview (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="1">
+                <div class="zigzag-visual-container visual--timetable-engine" aria-label="Smart Timetable Generation Demonstration">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-cyan"></span>
+                      <span class="visual-badge-label">AUTOMATION ENGINE</span>
+                    </div>
+                    <span class="visual-metric-pill">&#9889; Optimized in 0.4s</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-time-headers">
+                      <span>09:00 AM</span>
+                      <span>10:00 AM</span>
+                      <span>11:00 AM</span>
+                    </div>
+                    <div class="mock-schedule-row">
+                      <span class="mock-day-tag">MON</span>
+                      <div class="mock-slot-chip chip-blue">
+                        <strong>JAVA</strong>
+                        <small>R-101 • Sharma</small>
+                      </div>
+                      <div class="mock-slot-chip chip-cyan">
+                        <strong>DSA</strong>
+                        <small>R-104 • Mehta</small>
+                      </div>
+                      <div class="mock-slot-chip chip-purple">
+                        <strong>AI</strong>
+                        <small>R-201 • Rao</small>
+                      </div>
+                    </div>
+                    <div class="mock-schedule-row">
+                      <span class="mock-day-tag">TUE</span>
+                      <div class="mock-slot-chip chip-purple">
+                        <strong>DBMS</strong>
+                        <small>R-102 • Verma</small>
+                      </div>
+                      <div class="mock-slot-chip chip-blue">
+                        <strong>LAB</strong>
+                        <small>Sys-1 • Patel</small>
+                      </div>
+                      <div class="mock-slot-chip chip-cyan">
+                        <strong>OS</strong>
+                        <small>R-103 • Sharma</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; 0 Clashes Detected</span>
+                    <span class="visual-status-sub">Multi-Constraint Solver Active</span>
+                  </div>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">📚</div>
               </div>
-              <h3>Section & Class Organization</h3>
-              <p>
-                Define multiple academic sections with isolated weekly schedules, ensuring student cohorts never experience double-booked lecture periods.
-              </p>
-              <div class="zigzag-cta">
-                <span>Configure Sections</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
+            </div>
 
-            <!-- 04: Room & Laboratory Management (RIGHT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="window.location='/rooms'" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/rooms'"
-                     aria-label="Feature 04: Room and Laboratory Management">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">04</span>
-                  <span class="feature-tag">INFRASTRUCTURE</span>
+            <!-- ROW 02: Feature 02 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="2">
+              <!-- VISUAL 02: Faculty Availability Matrix (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="2">
+                <div class="zigzag-visual-container visual--teacher-avail" aria-label="Faculty Weekly Availability Matrix">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-blue"></span>
+                      <span class="visual-badge-label">FACULTY AVAILABILITY</span>
+                    </div>
+                    <span class="visual-metric-pill">Dr. Amit Sharma</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-avail-grid">
+                      <div class="mock-avail-day-row">
+                        <span class="mock-avail-day">MON</span>
+                        <span class="mock-avail-slot is-active">&#10003; 09:00 - 12:00</span>
+                        <span class="mock-avail-slot is-active">&#10003; 13:00 - 16:00</span>
+                      </div>
+                      <div class="mock-avail-day-row">
+                        <span class="mock-avail-day">TUE</span>
+                        <span class="mock-avail-slot is-active">&#10003; 09:00 - 12:00</span>
+                        <span class="mock-avail-slot is-active">&#10003; 13:00 - 15:00</span>
+                      </div>
+                      <div class="mock-avail-day-row">
+                        <span class="mock-avail-day">WED</span>
+                        <span class="mock-avail-slot is-active">&#10003; 09:00 - 13:00</span>
+                        <span class="mock-avail-slot is-off">Off-Duty</span>
+                      </div>
+                      <div class="mock-avail-day-row">
+                        <span class="mock-avail-day">THU</span>
+                        <span class="mock-avail-slot is-active">&#10003; 10:00 - 14:00</span>
+                        <span class="mock-avail-slot is-active">&#10003; 14:00 - 17:00</span>
+                      </div>
+                      <div class="mock-avail-day-row">
+                        <span class="mock-avail-day">FRI</span>
+                        <span class="mock-avail-slot is-active">&#10003; 09:00 - 12:00</span>
+                        <span class="mock-avail-slot is-active">&#10003; 13:00 - 15:00</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill info-status">&#9200; 18 / 20 hrs Quota</span>
+                    <span class="visual-status-sub">&#10003; Schedule Collision Guard</span>
+                  </div>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">🏫</div>
               </div>
-              <h3>Room & Laboratory Management</h3>
-              <p>
-                Manage classrooms and specialized science labs, track student seating capacities, and filter schedules based on classroom or laboratory needs.
-              </p>
-              <div class="zigzag-cta">
-                <span>Manage Rooms</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
 
-            <!-- 05: 3-Way Collision Prevention (LEFT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="openRulesModal()" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')openRulesModal()"
-                     aria-label="Feature 05: 3-Way Collision Prevention">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">05</span>
-                  <span class="feature-tag">CONSTRAINTS</span>
+              <!-- 02: Teacher Availability Tracking (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="window.location='/teacher-availability'" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/teacher-availability'"
+                       aria-label="Feature 02: Teacher Availability Tracking">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">02</span>
+                    <span class="feature-tag">FACULTY</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">👩‍🏫</div>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">🛡️</div>
-              </div>
-              <h3>3-Way Collision Prevention</h3>
-              <p>
-                Our bounded backtracking solver simultaneously audits teacher clashes, room overlaps, and section collisions with zero tolerance for conflicts.
-              </p>
-              <div class="zigzag-cta">
-                <span>Inspect Solver Rules</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
-
-            <!-- 06: Day-by-Day Schedule Layout (RIGHT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="window.location='/generate'" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/generate'"
-                     aria-label="Feature 06: Day-by-Day Schedule Layout">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">06</span>
-                  <span class="feature-tag">ACADEMIC CALENDAR</span>
+                <h3>Teacher Availability Tracking</h3>
+                <p>
+                  Configure weekly working days and specific active time periods per instructor to prevent scheduling lectures during off-duty or unavailable hours.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Manage Availability</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">📅</div>
-              </div>
-              <h3>Day-by-Day Schedule Layout</h3>
-              <p>
-                Explore timetable schedules partitioned cleanly from Monday through Sunday, organized in strict chronological sequence for clear daily visibility.
-              </p>
-              <div class="zigzag-cta">
-                <span>View Timetable Layout</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
+              </article>
+            </div>
 
-            <!-- 07: Live Class Monitor (LEFT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="openCurrentClassModal()" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')openCurrentClassModal()"
-                     aria-label="Feature 07: Live Class Monitor">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">07</span>
-                  <span class="feature-tag">REAL-TIME STATUS</span>
+            <!-- ROW 03: Feature 03 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="3">
+              <!-- 03: Section & Class Organization (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openSectionOrgModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openSectionOrgModal()"
+                       aria-label="Feature 03: Section and Class Organization">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">03</span>
+                    <span class="feature-tag">COHORTS</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">📚</div>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">📡</div>
-              </div>
-              <h3>Live Class Monitor</h3>
-              <p>
-                Instantly query active lectures across all rooms and sections with real-time class, instructor, room, and period interval information.
-              </p>
-              <div class="zigzag-cta">
-                <span>Check Live Status</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
-
-            <!-- 08: Cloud & Offline Persistence (RIGHT) -->
-            <article class="zigzag-card" role="listitem" tabindex="0" 
-                     onclick="openStorageModal()" 
-                     onkeydown="if(event.key==='Enter'||event.key===' ')openStorageModal()"
-                     aria-label="Feature 08: Cloud and Offline Persistence">
-              <div class="zigzag-card-header">
-                <div class="zigzag-meta">
-                  <span class="feature-number">08</span>
-                  <span class="feature-tag">PERSISTENCE</span>
+                <h3>Section & Class Organization</h3>
+                <p>
+                  Define multiple academic sections with isolated weekly schedules, ensuring student cohorts never experience double-booked lecture periods.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Explore Section Organization</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
                 </div>
-                <div class="zigzag-icon-box" aria-hidden="true">☁️</div>
-              </div>
-              <h3>Cloud & Offline Data Persistence</h3>
-              <p>
-                Timetables and institutional configuration persist reliably in Supabase PostgreSQL cloud database, backed by automated local JSON caching.
-              </p>
-              <div class="zigzag-cta">
-                <span>Verify Storage Status</span>
-                <span class="cta-arrow" aria-hidden="true">→</span>
-              </div>
-            </article>
+              </article>
 
+              <!-- VISUAL 03: Multi-Cohort Stream Isolation (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="3">
+                <div class="zigzag-visual-container visual--sections-org" aria-label="Multi-Cohort Section Isolation Architecture">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-purple"></span>
+                      <span class="visual-badge-label">COHORT ISOLATION</span>
+                    </div>
+                    <span class="visual-metric-pill">3 Active Cohorts</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-cohort-track">
+                      <div class="mock-cohort-badge badge-cse-a">
+                        <span>CSE-A</span>
+                        <small>60 Students</small>
+                      </div>
+                      <div class="mock-cohort-timeline">
+                        <span class="cohort-block">DSA [R-101]</span>
+                        <span class="cohort-block">OS [R-103]</span>
+                        <span class="cohort-block">Math [R-104]</span>
+                      </div>
+                    </div>
+                    <div class="mock-cohort-track">
+                      <div class="mock-cohort-badge badge-cse-b">
+                        <span>CSE-B</span>
+                        <small>58 Students</small>
+                      </div>
+                      <div class="mock-cohort-timeline">
+                        <span class="cohort-block">CN [R-104]</span>
+                        <span class="cohort-block">DBMS [R-102]</span>
+                        <span class="cohort-block">Web [Lab-1]</span>
+                      </div>
+                    </div>
+                    <div class="mock-cohort-track">
+                      <div class="mock-cohort-badge badge-ece-a">
+                        <span>ECE-A</span>
+                        <small>55 Students</small>
+                      </div>
+                      <div class="mock-cohort-timeline">
+                        <span class="cohort-block">Circuits [R-201]</span>
+                        <span class="cohort-block">Micro [Lab-2]</span>
+                        <span class="cohort-block">Signals [R-101]</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; 0 Cohort Overlaps</span>
+                    <span class="visual-status-sub">Independent Parallel Streams</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 04: Feature 04 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="4">
+              <!-- VISUAL 04: Room & Laboratory Management (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="4">
+                <div class="zigzag-visual-container visual--rooms-mgmt" aria-label="Campus Facility and Lab Allocation Board">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-cyan"></span>
+                      <span class="visual-badge-label">CAMPUS FACILITIES</span>
+                    </div>
+                    <span class="visual-metric-pill">4 Optimized Spaces</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-facility-grid">
+                      <div class="mock-facility-card">
+                        <div class="facility-card-top">
+                          <span class="facility-icon">&#127979;</span>
+                          <strong>Room-101</strong>
+                          <span class="facility-tag tag-lecture">Lecture Hall</span>
+                        </div>
+                        <div class="facility-meta">
+                          <span>Capacity: 70 seats</span>
+                          <span class="facility-state occupied">&#9679; Occ: CSE-A</span>
+                        </div>
+                        <div class="facility-features">Projector • Sound • AC</div>
+                      </div>
+                      <div class="mock-facility-card">
+                        <div class="facility-card-top">
+                          <span class="facility-icon">&#129514;</span>
+                          <strong>Lab-1</strong>
+                          <span class="facility-tag tag-lab">Computing Lab</span>
+                        </div>
+                        <div class="facility-meta">
+                          <span>Capacity: 40 PCs</span>
+                          <span class="facility-state occupied">&#9679; Occ: CSE-B</span>
+                        </div>
+                        <div class="facility-features">Gigabit LAN • Dev Tools</div>
+                      </div>
+                      <div class="mock-facility-card">
+                        <div class="facility-card-top">
+                          <span class="facility-icon">&#127979;</span>
+                          <strong>Room-104</strong>
+                          <span class="facility-tag tag-lecture">Smart Classroom</span>
+                        </div>
+                        <div class="facility-meta">
+                          <span>Capacity: 65 seats</span>
+                          <span class="facility-state available">&#9679; Available</span>
+                        </div>
+                        <div class="facility-features">Digital Board • Wi-Fi</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill info-status">&#128202; 92% Utilization Match</span>
+                    <span class="visual-status-sub">&#10003; Classroom vs Lab Auto-Routing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 04: Room & Laboratory Management (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="window.location='/rooms'" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/rooms'"
+                       aria-label="Feature 04: Room and Laboratory Management">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">04</span>
+                    <span class="feature-tag">FACILITIES</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">🏫</div>
+                </div>
+                <h3>Room & Laboratory Management</h3>
+                <p>
+                  Manage classrooms and specialized science labs, track student seating capacities, and filter schedules based on classroom or laboratory needs.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Manage Rooms</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 05: Feature 05 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="5">
+              <!-- 05: 3-Way Collision Prevention (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openRulesModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openRulesModal()"
+                       aria-label="Feature 05: 3-Way Collision Prevention">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">05</span>
+                    <span class="feature-tag">CONSTRAINTS</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">🛡️</div>
+                </div>
+                <h3>3-Way Collision Prevention</h3>
+                <p>
+                  Our intelligent collision prevention engine simultaneously audits teacher clashes, room overlaps, and section collisions to keep your schedules conflict-free.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Inspect Conflict Rules</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 05: 3-Way Collision Shield & Guard Monitor (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="5">
+                <div class="zigzag-visual-container visual--collision-guard" aria-label="Simultaneous 3-Way Collision Prevention Verification">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-emerald"></span>
+                      <span class="visual-badge-label">CONSTRAINT SOLVER</span>
+                    </div>
+                    <span class="visual-metric-pill">&#128737;&#65039; Triple-Guard Active</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-guard-list">
+                      <div class="mock-guard-card guard-pass">
+                        <div class="guard-card-left">
+                          <span class="guard-icon">&#128104;&#8205;&#127979;</span>
+                          <div>
+                            <strong>1. Faculty Guard</strong>
+                            <small>No double-booked instructor hours</small>
+                          </div>
+                        </div>
+                        <span class="guard-badge-ok">&#10003; 0 Clashes</span>
+                      </div>
+                      <div class="mock-guard-card guard-pass">
+                        <div class="guard-card-left">
+                          <span class="guard-icon">&#128101;</span>
+                          <div>
+                            <strong>2. Cohort Guard</strong>
+                            <small>Zero concurrent section overlaps</small>
+                          </div>
+                        </div>
+                        <span class="guard-badge-ok">&#10003; 0 Clashes</span>
+                      </div>
+                      <div class="mock-guard-card guard-pass">
+                        <div class="guard-card-left">
+                          <span class="guard-icon">&#127979;</span>
+                          <div>
+                            <strong>3. Facility Guard</strong>
+                            <small>Strict single occupancy per room</small>
+                          </div>
+                        </div>
+                        <span class="guard-badge-ok">&#10003; 0 Clashes</span>
+                      </div>
+                    </div>
+                    <div class="mock-sim-alert">
+                      <span class="sim-pill">Simulated Collision</span>
+                      <span class="sim-text">Room overlap resolved &rarr; Auto-routed to R-104</span>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; 100% Constraints Satisfied</span>
+                    <span class="visual-status-sub">Zero Overlap Guaranteed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 06: Feature 06 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="6">
+              <!-- VISUAL 06: Chronological Day-by-Day Layout (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="6">
+                <div class="zigzag-visual-container visual--day-by-day" aria-label="Chronological Day-by-Day Schedule View">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-amber"></span>
+                      <span class="visual-badge-label">ACADEMIC TIMELINE</span>
+                    </div>
+                    <span class="visual-metric-pill">Mon – Fri Sequence</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-day-tabs" role="tablist">
+                      <span class="mock-tab is-selected">MON</span>
+                      <span class="mock-tab">TUE</span>
+                      <span class="mock-tab">WED</span>
+                      <span class="mock-tab">THU</span>
+                      <span class="mock-tab">FRI</span>
+                    </div>
+                    <div class="mock-day-periods">
+                      <div class="mock-period-row">
+                        <span class="period-time">09:00 AM</span>
+                        <div class="period-chip chip-blue">
+                          <strong>Object Oriented Programming</strong>
+                          <small>Room-101 • Section A</small>
+                        </div>
+                      </div>
+                      <div class="mock-period-row">
+                        <span class="period-time">10:00 AM</span>
+                        <div class="period-chip chip-cyan">
+                          <strong>Computer Architecture</strong>
+                          <small>Room-103 • Section A</small>
+                        </div>
+                      </div>
+                      <div class="mock-period-row">
+                        <span class="period-time">11:00 AM</span>
+                        <div class="period-chip chip-purple">
+                          <strong>Discrete Mathematics</strong>
+                          <small>Room-104 • Section A</small>
+                        </div>
+                      </div>
+                      <div class="mock-period-row break-row">
+                        <span class="period-time">12:00 PM</span>
+                        <div class="period-chip chip-break">
+                          <span>&#9749; Institutional Lunch Break</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; 100% Week Planned</span>
+                    <span class="visual-status-sub">Chronological Period Sequencing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 06: Day-by-Day Schedule Layout (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openDayLayoutModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openDayLayoutModal()"
+                       aria-label="Feature 06: Day-by-Day Schedule Layout">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">06</span>
+                    <span class="feature-tag">ACADEMIC CALENDAR</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">📅</div>
+                </div>
+                <h3>Day-by-Day Schedule Layout</h3>
+                <p>
+                  Explore timetable schedules partitioned cleanly from Monday through Sunday, organized in strict chronological sequence for clear daily visibility.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Explore Day-by-Day Layout</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 07: Feature 07 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="7">
+              <!-- 07: Live Class Monitor (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openCurrentClassModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openCurrentClassModal()"
+                       aria-label="Feature 07: Live Class Monitor">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">07</span>
+                    <span class="feature-tag">REAL-TIME STATUS</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">📡</div>
+                </div>
+                <h3>Live Class Monitor</h3>
+                <p>
+                  Instantly query active lectures across all rooms and sections with real-time class, instructor, room, and period interval information.
+                </p>
+                <div class="zigzag-cta">
+                  <span>Check Live Status</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 07: Live Class Radar Monitor (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="7">
+                <div class="zigzag-visual-container visual--live-monitor" aria-label="Real-Time Active Class Radar Display">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-radar-pulse"></span>
+                      <span class="visual-badge-label">CAMPUS RADAR</span>
+                    </div>
+                    <span class="visual-live-indicator">&#9679; LIVE NOW</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-live-card">
+                      <div class="mock-live-subject">Operating Systems &amp; Kernels</div>
+                      <div class="mock-live-location">
+                        <span>&#127979; Room-103</span>
+                        <span>&#8226;</span>
+                        <span>Main Science Block</span>
+                      </div>
+                      <div class="mock-live-faculty">
+                        <span>&#128104;&#8205;&#127979; Prof. Rajesh Verma</span>
+                        <span class="faculty-dept">Dept of CSE</span>
+                      </div>
+                      <div class="mock-live-progress-wrap">
+                        <div class="live-progress-bar">
+                          <div class="live-progress-fill" style="width: 70%;"></div>
+                        </div>
+                        <div class="live-progress-labels">
+                          <span>10:00 AM</span>
+                          <span>35 min elapsed (70%)</span>
+                          <span>11:00 AM</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mock-upcoming-preview">
+                      <span class="upcoming-label">UP NEXT:</span>
+                      <span class="upcoming-text">11:00 AM &bull; Database Management in Room-102</span>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#9679; Active Lecture Verified</span>
+                    <span class="visual-status-sub">Instant Campus Query</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 08: Feature 08 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="8">
+              <!-- VISUAL 08: Secure Cloud & Data Persistence (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="8">
+                <div class="zigzag-visual-container visual--cloud-persistence" aria-label="Secure Cloud Data Persistence Concept">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-blue"></span>
+                      <span class="visual-badge-label">PERSISTENCE REPOSITORY</span>
+                    </div>
+                    <span class="visual-metric-pill">Session-Ready</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-cloud-sync-hero">
+                      <div class="cloud-sync-icon" aria-hidden="true">&#9729;&#65039;</div>
+                      <div class="cloud-sync-meta">
+                        <strong>Institutional Setup Synchronized</strong>
+                        <small>Data automatically available on your return</small>
+                      </div>
+                    </div>
+                    <div class="mock-sync-entities-grid">
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#128104;&#8205;&#127979;</span>
+                        <span class="entity-name">Teachers</span>
+                        <span class="entity-status">&#10003; Synced</span>
+                      </div>
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#128214;</span>
+                        <span class="entity-name">Subjects</span>
+                        <span class="entity-status">&#10003; Synced</span>
+                      </div>
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#128101;</span>
+                        <span class="entity-name">Sections</span>
+                        <span class="entity-status">&#10003; Synced</span>
+                      </div>
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#127979;</span>
+                        <span class="entity-name">Rooms</span>
+                        <span class="entity-status">&#10003; Synced</span>
+                      </div>
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#9200;</span>
+                        <span class="entity-name">Time Slots</span>
+                        <span class="entity-status">&#10003; Synced</span>
+                      </div>
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#128197;</span>
+                        <span class="entity-name">Availability</span>
+                        <span class="entity-status">&#10003; Synced</span>
+                      </div>
+                      <div class="sync-entity-item">
+                        <span class="entity-icon">&#128197;</span>
+                        <span class="entity-name">Timetables</span>
+                        <span class="entity-status">&#10003; Saved</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Encrypted &amp; Persistent</span>
+                    <span class="visual-status-sub">No Repetitive Re-entry Needed</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 08: Cloud & Data Persistence (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openPersistenceModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openPersistenceModal()"
+                       aria-label="Feature 08: Cloud and Data Persistence">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">08</span>
+                    <span class="feature-tag">PERSISTENCE</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">☁️</div>
+                </div>
+                <h3>Cloud & Data Persistence</h3>
+                <p>
+                  Keep your scheduling information available across sessions so you don't have to repeatedly recreate your setup.
+                </p>
+
+                <div class="persistence-supported-types" aria-label="Supported Data Types">
+                  <span class="type-pill">👨‍🏫 Teachers</span>
+                  <span class="type-pill">📖 Subjects</span>
+                  <span class="type-pill">👥 Classes & Sections</span>
+                  <span class="type-pill">🏫 Rooms</span>
+                  <span class="type-pill">⏰ Time Slots</span>
+                  <span class="type-pill">🗓️ Availability</span>
+                  <span class="type-pill">📅 Generated Schedules</span>
+                </div>
+
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Your scheduling setup remains available when you return to SchedX</li>
+                  <li><span class="benefit-check">✓</span> Eliminates repetitive manual data entry</li>
+                  <li><span class="benefit-check">✓</span> View Feature 09 — Storage to see what is currently stored</li>
+                </ul>
+
+                <div class="zigzag-cta">
+                  <span>Learn About Data Persistence</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 09: Feature 09 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="9">
+              <!-- 09: Storage Dashboard (LEFT) -->
+              <article class="zigzag-card storage-feature-card" role="listitem" tabindex="0" 
+                       onclick="openStorageViewerModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openStorageViewerModal()"
+                       aria-label="Feature 09: Storage">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">09</span>
+                    <span class="feature-tag">STORAGE REPOSITORY</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">🗄️</div>
+                </div>
+                <h3>Storage</h3>
+                <p>
+                  Live overview of institutional scheduling records and generated timetable versions currently stored in SchedX.
+                </p>
+
+                <!-- Live Storage Metric Grid -->
+                <div class="storage-card-dashboard" id="storageCardDashboard">
+                  <div class="storage-card-loading" id="storageCardLoading" aria-live="polite">
+                    <span class="storage-spinner"></span> Loading stored data...
+                  </div>
+
+                  <div class="storage-card-metrics" id="storageCardMetrics" style="display: none;">
+                    <div class="storage-metric-row">
+                      <span class="storage-metric-label">👨‍🏫 Teachers</span>
+                      <span class="storage-metric-val" id="statTeachers">--</span>
+                    </div>
+                    <div class="storage-metric-row">
+                      <span class="storage-metric-label">📖 Subjects</span>
+                      <span class="storage-metric-val" id="statSubjects">--</span>
+                    </div>
+                    <div class="storage-metric-row">
+                      <span class="storage-metric-label">👥 Sections</span>
+                      <span class="storage-metric-val" id="statSections">--</span>
+                    </div>
+                    <div class="storage-metric-row">
+                      <span class="storage-metric-label">🏫 Rooms</span>
+                      <span class="storage-metric-val" id="statRooms">--</span>
+                    </div>
+                    <div class="storage-metric-row highlight-row">
+                      <span class="storage-metric-label">📅 Timetable Versions</span>
+                      <span class="storage-metric-val" id="statTimetables">--</span>
+                    </div>
+                    <div class="storage-last-gen-row">
+                      <span class="last-gen-label">Last Generated:</span>
+                      <span class="last-gen-val" id="statLastGen">--</span>
+                    </div>
+                  </div>
+
+                  <div class="storage-card-empty" id="storageCardEmpty" style="display: none;">
+                    <p>No timetable data stored yet. Generate your first timetable to view live storage metrics.</p>
+                    <a href="/generate" class="btn btn-secondary btn-sm" onclick="event.stopPropagation()">Generate Timetable</a>
+                  </div>
+
+                  <div class="storage-card-error" id="storageCardError" style="display: none;">
+                    <p>Something went wrong while loading this information. Please try again.</p>
+                    <button type="button" class="btn-retry-storage" onclick="event.stopPropagation(); fetchStorageData();">↻ Retry</button>
+                  </div>
+                </div>
+
+                <!-- Retention Rule Notice -->
+                <div class="storage-retention-badge">
+                  <span>🕒</span>
+                  <span>Timetable history: Latest 2 generations retained</span>
+                </div>
+
+                <div class="zigzag-cta">
+                  <span>View Stored Data</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 09: Storage Archive Repository (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="9">
+                <div class="zigzag-visual-container visual--storage-repo" aria-label="Institutional Stored Data Records Overview">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-cyan"></span>
+                      <span class="visual-badge-label">STORED DATA OVERVIEW</span>
+                    </div>
+                    <span class="visual-metric-pill">&#128190; Active Archive</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-storage-vault">
+                      <div class="mock-storage-item">
+                        <div class="storage-item-left">
+                          <span class="storage-folder-icon">&#128193;</span>
+                          <span class="storage-folder-name">Faculty Profiles</span>
+                        </div>
+                        <span class="storage-folder-count" id="visualStatTeachers">12 Records</span>
+                      </div>
+                      <div class="mock-storage-item">
+                        <div class="storage-item-left">
+                          <span class="storage-folder-icon">&#128193;</span>
+                          <span class="storage-folder-name">Course Curriculums</span>
+                        </div>
+                        <span class="storage-folder-count" id="visualStatSubjects">6 Subjects</span>
+                      </div>
+                      <div class="mock-storage-item">
+                        <div class="storage-item-left">
+                          <span class="storage-folder-icon">&#128193;</span>
+                          <span class="storage-folder-name">Section Cohorts</span>
+                        </div>
+                        <span class="storage-folder-count" id="visualStatSections">3 Sections</span>
+                      </div>
+                      <div class="mock-storage-item">
+                        <div class="storage-item-left">
+                          <span class="storage-folder-icon">&#128193;</span>
+                          <span class="storage-folder-name">Campus Rooms &amp; Labs</span>
+                        </div>
+                        <span class="storage-folder-count" id="visualStatRooms">4 Spaces</span>
+                      </div>
+                      <div class="mock-storage-item highlight-item">
+                        <div class="storage-item-left">
+                          <span class="storage-folder-icon">&#128197;</span>
+                          <span class="storage-folder-name">Timetable Versions</span>
+                        </div>
+                        <span class="storage-folder-count count-highlight" id="visualStatTimetables">2 Saved Generations</span>
+                      </div>
+                    </div>
+                    <div class="mock-retention-rule-note">
+                      <span>&#9200;</span>
+                      <small>Retention Guard: Latest 2 Timetable Versions Retained</small>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Safe Version Retention</span>
+                    <span class="visual-status-sub">Institutional Storage Safe</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 10: Feature 10 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="10">
+              <!-- VISUAL 10: Smart Subject Distribution Across Days (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="10">
+                <div class="zigzag-visual-container visual--subject-dist" aria-label="Smart Subject Distribution Across Days">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-cyan"></span>
+                      <span class="visual-badge-label">CURRICULUM DISTRIBUTION</span>
+                    </div>
+                    <span class="visual-metric-pill">Spread-Optimized</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-subdist-header">DBMS (4 sessions/week) — Day-wise Pacing</div>
+                    <div class="mock-subdist-week-grid">
+                      <div class="subdist-day-col">
+                        <span class="subdist-day-label">MON</span>
+                        <div class="subdist-slot-chip is-subject">
+                          <strong>DBMS</strong>
+                          <small>10:00</small>
+                        </div>
+                      </div>
+                      <div class="subdist-day-col">
+                        <span class="subdist-day-label">TUE</span>
+                        <div class="subdist-slot-chip is-gap">—</div>
+                      </div>
+                      <div class="subdist-day-col">
+                        <span class="subdist-day-label">WED</span>
+                        <div class="subdist-slot-chip is-subject">
+                          <strong>DBMS</strong>
+                          <small>11:00</small>
+                        </div>
+                      </div>
+                      <div class="subdist-day-col">
+                        <span class="subdist-day-label">THU</span>
+                        <div class="subdist-slot-chip is-subject">
+                          <strong>DBMS</strong>
+                          <small>09:00</small>
+                        </div>
+                      </div>
+                      <div class="subdist-day-col">
+                        <span class="subdist-day-label">FRI</span>
+                        <div class="subdist-slot-chip is-gap">—</div>
+                      </div>
+                      <div class="subdist-day-col">
+                        <span class="subdist-day-label">SAT</span>
+                        <div class="subdist-slot-chip is-subject">
+                          <strong>DBMS</strong>
+                          <small>10:00</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mock-subdist-callout">
+                      <span>✓ Balanced Spread: Prevents 4 repetitive sessions on Monday</span>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Day-Load Balanced</span>
+                    <span class="visual-status-sub">Constraint-Aware Subject Pacing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 10: Smart Subject Distribution (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openSubjectDistModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openSubjectDistModal()"
+                       aria-label="Feature 10: Smart Subject Distribution">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">10</span>
+                    <span class="feature-tag">BALANCED SPREAD</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">⚖️</div>
+                </div>
+                <h3>Smart Subject Distribution</h3>
+                <p>
+                  SchedX can intelligently distribute required subject sessions across available days while respecting scheduling constraints, avoiding repetitive same-day clustering.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Weekly subject requirements distributed across days</li>
+                  <li><span class="benefit-check">✓</span> Reduced same-day subject clustering</li>
+                  <li><span class="benefit-check">✓</span> Balanced student cognitive pacing</li>
+                  <li><span class="benefit-check">✓</span> Multi-constraint-aware spread engine</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Explore Subject Distribution</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 11: Feature 11 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="11">
+              <!-- 11: Fixed & Locked Classes (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openLockedClassesModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openLockedClassesModal()"
+                       aria-label="Feature 11: Fixed and Locked Classes">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">11</span>
+                    <span class="feature-tag">SCHEDULE ANCHORS</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">🔒</div>
+                </div>
+                <h3>Fixed & Locked Classes</h3>
+                <p>
+                  Preserve critical lab sessions and priority lectures at fixed times. When new schedules are generated, anchored sessions remain locked while remaining classes fill around them.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Lock designated classes, labs, and time spans</li>
+                  <li><span class="benefit-check">✓</span> Preserve fixed assigned teachers and rooms</li>
+                  <li><span class="benefit-check">✓</span> Unchanged across schedule regenerations</li>
+                  <li><span class="benefit-check">✓</span> Generates remaining timetable around locked classes</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Inspect Slot Locking</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 11: Fixed Class Anchor Visual (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="11">
+                <div class="zigzag-visual-container visual--locked-classes" aria-label="Fixed and Locked Class Slot Anchor">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-amber"></span>
+                      <span class="visual-badge-label">TIME SLOT ANCHOR</span>
+                    </div>
+                    <span class="visual-metric-pill">&#128274; Locked Slot</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-locked-card">
+                      <div class="locked-card-top">
+                        <span class="locked-class-name">DBMS Practical Lab</span>
+                        <span class="locked-badge-pill">&#128274; LOCKED</span>
+                      </div>
+                      <div class="locked-class-meta">Monday • 10:00 AM – 12:00 PM • Lab-1</div>
+                      <div class="locked-class-footer">
+                        <span>&#128104;&#8205;&#127979; Rahul (CSE Dept)</span>
+                        <span>Preserved on Regeneration</span>
+                      </div>
+                    </div>
+                    <div class="mock-locked-timeline">
+                      <div class="locked-timeline-item dynamic">09:00 AM<br>Dynamic</div>
+                      <div class="locked-timeline-item locked">10:00–12:00<br>DBMS Lab 🔒</div>
+                      <div class="locked-timeline-item break">12:00 PM<br>Break ☕</div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill info-status">&#10003; Anchor Preserved</span>
+                    <span class="visual-status-sub">Builds Around Fixed Classes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 12: Feature 12 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="12">
+              <!-- VISUAL 12: Faculty Daily Teaching Workload Overview (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="12">
+                <div class="zigzag-visual-container visual--teacher-workload" aria-label="Faculty Daily Teaching Workload Overview">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-blue"></span>
+                      <span class="visual-badge-label">WORKLOAD AUDIT</span>
+                    </div>
+                    <span class="visual-metric-pill">Daily Balance</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-workload-board">
+                      <div class="mock-workload-row">
+                        <div class="mock-workload-info">
+                          <span class="workload-teacher-name">Rahul</span>
+                          <span class="workload-count-badge">Mon: 4 • Tue: 3</span>
+                        </div>
+                        <div class="mock-workload-bar-wrap">
+                          <div class="mock-workload-bar">
+                            <div class="mock-workload-bar-fill" style="width: 75%;"></div>
+                          </div>
+                          <span class="mock-workload-days-mini">7 sessions/wk</span>
+                        </div>
+                      </div>
+                      <div class="mock-workload-row">
+                        <div class="mock-workload-info">
+                          <span class="workload-teacher-name">Aman</span>
+                          <span class="workload-count-badge">Mon: 3 • Tue: 4</span>
+                        </div>
+                        <div class="mock-workload-bar-wrap">
+                          <div class="mock-workload-bar">
+                            <div class="mock-workload-bar-fill" style="width: 75%;"></div>
+                          </div>
+                          <span class="mock-workload-days-mini">7 sessions/wk</span>
+                        </div>
+                      </div>
+                      <div class="mock-workload-row">
+                        <div class="mock-workload-info">
+                          <span class="workload-teacher-name">Priya</span>
+                          <span class="workload-count-badge">Mon: 2 • Tue: 3</span>
+                        </div>
+                        <div class="mock-workload-bar-wrap">
+                          <div class="mock-workload-bar">
+                            <div class="mock-workload-bar-fill" style="width: 55%;"></div>
+                          </div>
+                          <span class="mock-workload-days-mini">5 sessions/wk</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Workload Balanced</span>
+                    <span class="visual-status-sub">Prevents Faculty Overload</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 12: Teacher Workload (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openWorkloadModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openWorkloadModal()"
+                       aria-label="Feature 12: Teacher Workload">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">12</span>
+                    <span class="feature-tag">FACULTY BALANCE</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">📊</div>
+                </div>
+                <h3>Teacher Workload</h3>
+                <p>
+                  Provides a comprehensive day-wise overview of lectures and practicals handled by each teacher, helping administrators ensure balanced teaching assignments across the week.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Day-wise overview of teacher class counts</li>
+                  <li><span class="benefit-check">✓</span> Balanced workload distribution across week</li>
+                  <li><span class="benefit-check">✓</span> Automated tracking of lecture and lab hours</li>
+                  <li><span class="benefit-check">✓</span> Cross-department faculty visibility</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>View Workload Overview</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 13: Feature 13 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="13">
+              <!-- 13: Free Period Optimization (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openFreePeriodsModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openFreePeriodsModal()"
+                       aria-label="Feature 13: Free Period Optimization">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">13</span>
+                    <span class="feature-tag">SCHEDULE EFFICIENCY</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">⏱️</div>
+                </div>
+                <h3>Free Period Optimization</h3>
+                <p>
+                  SchedX groups academic sessions purposefully to reduce awkward gaps in student and faculty schedules, creating compact, practical teaching days without violating hard constraints.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Compact chronological class sequencing</li>
+                  <li><span class="benefit-check">✓</span> Reduced fragmented schedule idle time</li>
+                  <li><span class="benefit-check">✓</span> Protects designated lunch and tea breaks</li>
+                  <li><span class="benefit-check">✓</span> Never overrides teacher, room, or section constraints</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Explore Optimization Demo</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 13: Free Period Optimization Comparison (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="13">
+                <div class="zigzag-visual-container visual--free-periods" aria-label="Free Period Optimization Comparison">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-purple"></span>
+                      <span class="visual-badge-label">GAP REDUCTION</span>
+                    </div>
+                    <span class="visual-metric-pill">Compact Sequencing</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-free-opt-wrap">
+                      <div class="mock-opt-case poor">
+                        <div class="mock-opt-title">
+                          <span>Fragmented (Less Ideal)</span>
+                          <span>⚠️ 2 Unplanned Gaps</span>
+                        </div>
+                        <div class="mock-opt-timeline">
+                          <span class="opt-slot cls">09–10<br>Class</span>
+                          <span class="opt-slot cls">10–11<br>Class</span>
+                          <span class="opt-slot gap">11–12<br>Free</span>
+                          <span class="opt-slot gap">12–13<br>Free</span>
+                          <span class="opt-slot cls">13–14<br>Class</span>
+                        </div>
+                      </div>
+                      <div class="mock-opt-case optimized">
+                        <div class="mock-opt-title">
+                          <span>SchedX Preferred (Compacted)</span>
+                          <span>✓ Consolidated</span>
+                        </div>
+                        <div class="mock-opt-timeline">
+                          <span class="opt-slot cls">09–10<br>Class</span>
+                          <span class="opt-slot cls">10–11<br>Class</span>
+                          <span class="opt-slot cls">11–12<br>Class</span>
+                          <span class="opt-slot brk">12–13<br>Break ☕</span>
+                          <span class="opt-slot cls">13–14<br>Class</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Practical Sequencing</span>
+                    <span class="visual-status-sub">Hard Constraints Preserved</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 14: Feature 14 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="14">
+              <!-- VISUAL 14: Room Capacity and Facility Matching (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="14">
+                <div class="zigzag-visual-container visual--smart-room" aria-label="Room Capacity and Facility Matching">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-emerald"></span>
+                      <span class="visual-badge-label">ROOM MATCHING</span>
+                    </div>
+                    <span class="visual-metric-pill">Capacity-Aware</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-room-assign-wrap">
+                      <div class="mock-cohort-target">
+                        <span>&#128101; Section Cohort: CSE-A</span>
+                        <strong>65 Students</strong>
+                      </div>
+                      <div class="mock-room-pair">
+                        <div class="mock-room-card suitable">
+                          <div class="room-card-head">
+                            <span>Room 101</span>
+                            <span class="room-eval-badge">&#10003; Suitable</span>
+                          </div>
+                          <div class="room-card-sub">Lecture Hall • 80 Seats</div>
+                          <small style="color: #047857; font-size: 0.64rem;">Ample seating margin</small>
+                        </div>
+                        <div class="mock-room-card unsuitable">
+                          <div class="room-card-head">
+                            <span>Room 102</span>
+                            <span class="room-eval-badge">✗ Too Small</span>
+                          </div>
+                          <div class="room-card-sub">Seminar Hall • 40 Seats</div>
+                          <small style="color: #b91c1c; font-size: 0.64rem;">Insufficient seats</small>
+                        </div>
+                      </div>
+                      <div class="mock-subdist-callout" style="font-size: 0.68rem; padding: 5px 8px;">
+                        <span>&#129514; Lab Auto-Routing: Computing Labs for Software • Specialized Labs for Science</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Space Verified</span>
+                    <span class="visual-status-sub">Classroom vs Lab Auto-Routing</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 14: Smart Room Assignment (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="window.location='/rooms'" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')window.location='/rooms'"
+                       aria-label="Feature 14: Smart Room Assignment">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">14</span>
+                    <span class="feature-tag">FACILITY MATCHING</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">🏛️</div>
+                </div>
+                <h3>Smart Room Assignment</h3>
+                <p>
+                  SchedX evaluates room capacity, room category, and designated availability to automatically seat cohorts into appropriately sized classrooms and laboratories.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Cohort size seating capacity matching</li>
+                  <li><span class="benefit-check">✓</span> Automatic classroom vs lab routing</li>
+                  <li><span class="benefit-check">✓</span> Dedicated computer and science lab allocation</li>
+                  <li><span class="benefit-check">✓</span> Room availability schedule adherence</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Manage Campus Spaces</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 15: Feature 15 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="15">
+              <!-- 15: Section Workload (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openSectionWorkloadModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openSectionWorkloadModal()"
+                       aria-label="Feature 15: Section Workload">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">15</span>
+                    <span class="feature-tag">COHORT BALANCING</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">👥</div>
+                </div>
+                <h3>Section Workload</h3>
+                <p>
+                  Monitor and balance daily academic periods across student sections to avoid heavily overloaded days and maintain steady learning paces throughout the academic week.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Section-wise daily period load tracking</li>
+                  <li><span class="benefit-check">✓</span> Avoids student academic fatigue</li>
+                  <li><span class="benefit-check">✓</span> Balanced distribution of theory and practicals</li>
+                  <li><span class="benefit-check">✓</span> Enforces day-specific period limits</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Explore Section Workload</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 15: Section Daily Workload Distribution (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="15">
+                <div class="zigzag-visual-container visual--section-workload" aria-label="Section Daily Workload Distribution">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-cyan"></span>
+                      <span class="visual-badge-label">COHORT LOAD MONITOR</span>
+                    </div>
+                    <span class="visual-metric-pill">CSE-A Pace</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-sec-workload-board">
+                      <div class="mock-sec-day-row">
+                        <span class="mock-sec-day-name">MON</span>
+                        <div class="mock-sec-bar-wrap">
+                          <div class="mock-sec-bar-fill" style="width: 85%;"></div>
+                        </div>
+                        <span class="mock-sec-count">6 classes</span>
+                      </div>
+                      <div class="mock-sec-day-row">
+                        <span class="mock-sec-day-name">TUE</span>
+                        <div class="mock-sec-bar-wrap">
+                          <div class="mock-sec-bar-fill" style="width: 85%;"></div>
+                        </div>
+                        <span class="mock-sec-count">6 classes</span>
+                      </div>
+                      <div class="mock-sec-day-row">
+                        <span class="mock-sec-day-name">WED</span>
+                        <div class="mock-sec-bar-wrap">
+                          <div class="mock-sec-bar-fill" style="width: 70%;"></div>
+                        </div>
+                        <span class="mock-sec-count">5 classes</span>
+                      </div>
+                      <div class="mock-sec-day-row">
+                        <span class="mock-sec-day-name">THU</span>
+                        <div class="mock-sec-bar-wrap">
+                          <div class="mock-sec-bar-fill" style="width: 85%;"></div>
+                        </div>
+                        <span class="mock-sec-count">6 classes</span>
+                      </div>
+                      <div class="mock-sec-day-row">
+                        <span class="mock-sec-day-name">FRI</span>
+                        <div class="mock-sec-bar-wrap">
+                          <div class="mock-sec-bar-fill" style="width: 70%;"></div>
+                        </div>
+                        <span class="mock-sec-count">5 classes</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; Balanced Pace</span>
+                    <span class="visual-status-sub">Enforces Day-Specific Limits</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ROW 16: Feature 16 [VISUAL: LEFT] <-> [CARD: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--right-card" data-feature="16">
+              <!-- VISUAL 16: Multiple Timetable Perspectives View (LEFT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--left" data-visual-for="16">
+                <div class="zigzag-visual-container visual--multiple-views" aria-label="Multiple Timetable Perspectives View">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-purple"></span>
+                      <span class="visual-badge-label">PERSPECTIVES</span>
+                    </div>
+                    <span class="visual-metric-pill">Multi-View</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-views-wrap">
+                      <div class="mock-views-tabs">
+                        <span class="mock-view-tab">Dept</span>
+                        <span class="mock-view-tab">Section</span>
+                        <span class="mock-view-tab active">Teacher</span>
+                        <span class="mock-view-tab planned">Room (Planned)</span>
+                      </div>
+                      <div class="mock-view-content-card">
+                        <div class="mock-view-header">
+                          <span>&#128104;&#8205;&#127979; Rahul (Faculty View)</span>
+                          <small style="color: #64748b;">3 Active Days</small>
+                        </div>
+                        <div class="mock-view-entry-list">
+                          <div class="mock-view-entry">
+                            <span>Mon 10:00</span>
+                            <strong>DBMS • Room 102</strong>
+                          </div>
+                          <div class="mock-view-entry">
+                            <span>Tue 11:00</span>
+                            <strong>DSA • Room 104</strong>
+                          </div>
+                          <div class="mock-view-entry">
+                            <span>Wed 09:00</span>
+                            <strong>Java • Room 101</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill info-status">&#10003; 3 Views Active</span>
+                    <span class="visual-status-sub">Room Matrix Perspective Planned</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 16: Multiple Timetable Views (RIGHT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openViewsModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openViewsModal()"
+                       aria-label="Feature 16: Multiple Timetable Views">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">16</span>
+                    <span class="feature-tag">PERSPECTIVES</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">🧭</div>
+                </div>
+                <h3>Multiple Timetable Views</h3>
+                <p>
+                  Inspect the same generated timetable from diverse operational perspectives—by department, student section, faculty member, or facility space—simplifying coordination for all stakeholders.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> Department-level master timetable view</li>
+                  <li><span class="benefit-check">✓</span> Section-specific student schedule view</li>
+                  <li><span class="benefit-check">✓</span> Teacher-specific personalized view</li>
+                  <li><span class="benefit-check">✓</span> Room &amp; laboratory view (Planned)</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Explore Timetable Views</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- ROW 17: Feature 17 [CARD: LEFT] <-> [VISUAL: RIGHT] -->
+            <div class="features-zigzag-row features-zigzag-row--left-card" data-feature="17">
+              <!-- 17: Timetable Quality (LEFT) -->
+              <article class="zigzag-card" role="listitem" tabindex="0" 
+                       onclick="openQualityModal()" 
+                       onkeydown="if(event.key==='Enter'||event.key===' ')openQualityModal()"
+                       aria-label="Feature 17: Timetable Quality">
+                <div class="zigzag-card-header">
+                  <div class="zigzag-meta">
+                    <span class="feature-number">17</span>
+                    <span class="feature-tag">QUALITY AUDIT</span>
+                  </div>
+                  <div class="zigzag-icon-box" aria-hidden="true">✨</div>
+                </div>
+                <h3>Timetable Quality</h3>
+                <p>
+                  SchedX evaluates generated timetables against scheduling constraints and operational conditions, verifying conflict-free validity across teachers, rooms, and sections.
+                </p>
+                <ul class="persistence-benefits-list">
+                  <li><span class="benefit-check">✓</span> 100% collision-free rule verification</li>
+                  <li><span class="benefit-check">✓</span> Seating capacity &amp; facility type validation</li>
+                  <li><span class="benefit-check">✓</span> Workload and period limit verification</li>
+                  <li><span class="benefit-check">✓</span> Composite quality score metric (Planned)</li>
+                </ul>
+                <div class="zigzag-cta">
+                  <span>Review Quality Standards</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
+                </div>
+              </article>
+
+              <!-- VISUAL 17: Timetable Quality and Constraint Verification (RIGHT) -->
+              <div class="zigzag-visual-wrap zigzag-visual-wrap--right" data-visual-for="17">
+                <div class="zigzag-visual-container visual--timetable-quality" aria-label="Timetable Quality and Constraint Verification">
+                  <div class="visual-header">
+                    <div class="visual-header-left">
+                      <span class="visual-dot dot-emerald"></span>
+                      <span class="visual-badge-label">CONSTRAINT AUDIT</span>
+                    </div>
+                    <span class="visual-metric-pill">Rule Verification</span>
+                  </div>
+                  <div class="visual-body">
+                    <div class="mock-quality-wrap">
+                      <div class="mock-quality-item">
+                        <div class="mock-quality-left">
+                          <span class="q-icon">&#10003;</span>
+                          <span>Zero Teacher Conflicts</span>
+                        </div>
+                        <span class="mock-quality-badge">Verified</span>
+                      </div>
+                      <div class="mock-quality-item">
+                        <div class="mock-quality-left">
+                          <span class="q-icon">&#10003;</span>
+                          <span>Zero Room Conflicts</span>
+                        </div>
+                        <span class="mock-quality-badge">Verified</span>
+                      </div>
+                      <div class="mock-quality-item">
+                        <div class="mock-quality-left">
+                          <span class="q-icon">&#10003;</span>
+                          <span>Zero Section Collisions</span>
+                        </div>
+                        <span class="mock-quality-badge">Verified</span>
+                      </div>
+                      <div class="mock-quality-item">
+                        <div class="mock-quality-left">
+                          <span class="q-icon">&#10003;</span>
+                          <span>Room Capacity Respected</span>
+                        </div>
+                        <span class="mock-quality-badge">Verified</span>
+                      </div>
+                      <div class="mock-quality-planned-note">
+                        <span>&#9432;</span>
+                        <small>Composite 0–100 Score Metric: Planned capability</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="visual-footer">
+                    <span class="visual-status-pill success-status">&#10003; 100% Conflict-Free</span>
+                    <span class="visual-status-sub">Zero Hallucinated Metrics</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SUBTLE FINAL CALL TO ACTION -->
+        <div class="features-final-cta-wrap">
+          <div class="features-final-cta-card">
+            <div class="final-cta-content">
+              <span class="final-cta-eyebrow">READY TO GET STARTED?</span>
+              <h2 class="final-cta-title">Ready to build a smarter timetable?</h2>
+              <p class="final-cta-desc">Generate balanced, conflict-free schedules for your departments, faculty, and student sections in seconds.</p>
+            </div>
+            <div class="final-cta-action">
+              <a href="/generate" class="btn btn-primary final-cta-btn">Generate Timetable →</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+
   <!-- MODAL 1: 3-WAY COLLISION RULES INSPECTOR -->
   <div id="rulesModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="rulesModalTitle">
     <div class="feature-modal-box" onclick="event.stopPropagation()">
       <div class="modal-header-row">
         <h3 id="rulesModalTitle">3-Way Collision Prevention</h3>
-        <span class="modal-badge-status">Active Solver</span>
+        <span class="modal-badge-status">Conflict Prevention</span>
       </div>
       <p class="modal-content-body">
-        SchedX enforces three strict simultaneous non-negotiable constraints during timetable generation to ensure 100% conflict-free academic operations:
+        SchedX enforces three strict simultaneous constraints during timetable generation to eliminate academic scheduling conflicts:
       </p>
       <div class="modal-info-grid">
         <div class="modal-rule-item">
@@ -263,7 +1557,7 @@
         </div>
       </div>
       <div class="modal-actions-row">
-        <button type="button" class="btn btn-secondary btn-sm" onclick="testConstraintEngine()">Run Live Constraint Audit</button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="testConstraintEngine()">Verify Conflict Rules</button>
         <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Done</button>
       </div>
     </div>
@@ -277,12 +1571,12 @@
         <span id="currentClassBadge" class="modal-badge-status idle">Checking...</span>
       </div>
       <p class="modal-content-body" id="currentClassIntro">
-        Querying SchedX timetable scheduling database for active ongoing classes at the current time...
+        Checking active classes across all rooms and sections for the current time...
       </p>
       <div class="modal-info-grid" id="currentClassDetails">
         <div class="modal-info-row">
           <span class="modal-info-label">Status:</span>
-          <span class="modal-info-val" id="ccStatus">Connecting to API...</span>
+          <span class="modal-info-val" id="ccStatus">Checking schedule...</span>
         </div>
         <div class="modal-info-row">
           <span class="modal-info-label">Subject / Course:</span>
@@ -304,36 +1598,871 @@
     </div>
   </div>
 
-  <!-- MODAL 3: CLOUD & LOCAL STORAGE STATUS -->
+  <!-- MODAL 3: CLOUD & DATA PERSISTENCE (BOX 8) -->
   <div id="storageModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="storageModalTitle">
     <div class="feature-modal-box" onclick="event.stopPropagation()">
       <div class="modal-header-row">
-        <h3 id="storageModalTitle">Data Persistence Engine</h3>
-        <span class="modal-badge-status">Cloud Connected</span>
+        <h3 id="storageModalTitle">Cloud & Data Persistence</h3>
+        <span class="modal-badge-status">Persistence</span>
       </div>
       <p class="modal-content-body">
-        SchedX employs a dual-tier persistence architecture guaranteeing zero data loss even during network disruptions:
+        Keep your scheduling information available across sessions so you don't have to repeatedly recreate your setup.
       </p>
       <div class="modal-info-grid">
         <div class="modal-info-row">
-          <span class="modal-info-label">Primary Cloud DB:</span>
-          <span class="modal-info-val">Supabase PostgreSQL (Cloud)</span>
+          <span class="modal-info-label">Supported Data:</span>
+          <span class="modal-info-val">Teachers, Subjects, Classes & Sections, Rooms, Time Slots, Generated Schedules</span>
         </div>
         <div class="modal-info-row">
-          <span class="modal-info-label">Resilient Fallback:</span>
-          <span class="modal-info-val">data/timetable_store.json</span>
+          <span class="modal-info-label">Persistence:</span>
+          <span class="modal-info-val">Cloud-based data persistence across sessions</span>
         </div>
         <div class="modal-info-row">
-          <span class="modal-info-label">Synchronized Records:</span>
-          <span class="modal-info-val">Teachers, Rooms, Sections, Schedules</span>
-        </div>
-        <div class="modal-info-row">
-          <span class="modal-info-label">Backend Status:</span>
-          <span class="modal-info-val" id="storageStatusVal">HTTP 200 (Active)</span>
+          <span class="modal-info-label">Key Benefit:</span>
+          <span class="modal-info-val">Your scheduling setup remains available when you return to SchedX</span>
         </div>
       </div>
+      <p class="modal-content-body" style="margin-top: 12px; margin-bottom: 12px; font-size: 0.88rem; color: var(--text-muted);">
+        View Feature 09 — Storage to see what is currently stored.
+      </p>
       <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals(); openStorageViewerModal();">View Stored Data</button>
         <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: STORAGE VIEWER & REPOSITORY DETAILS (BOX 9) -->
+  <div id="storageViewerModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="storageViewerTitle">
+    <div class="feature-modal-box storage-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <div>
+          <h3 id="storageViewerTitle">Stored Scheduling Repository</h3>
+          <p class="modal-subtitle">Live inventory of institutional records and retained schedule versions currently saved in SchedX.</p>
+        </div>
+        <span class="modal-badge-status" id="storageModalBadge">🟢 Active Storage</span>
+      </div>
+
+      <!-- Retention Policy Banner -->
+      <div class="retention-policy-banner">
+        <div class="retention-banner-icon">🛡️</div>
+        <div>
+          <strong>Safe Retention Policy:</strong> SchedX retains strictly the <strong>latest 2 generated timetable versions</strong> (active schedule + immediate prior generation). When a new timetable is generated, older generations are automatically retired. All master records (teachers, subjects, rooms, sections) are permanently retained.
+        </div>
+      </div>
+
+      <!-- Modal Body Sections -->
+      <div class="storage-modal-sections">
+        <!-- Retained Timetable Generations Section -->
+        <div class="storage-section-block">
+          <h4 class="storage-block-title">📅 Retained Timetable Generations (Max 2)</h4>
+          <div id="modalTimetableList" class="modal-timetable-list">
+            <!-- Dynamically populated from /api/storage -->
+          </div>
+        </div>
+
+        <!-- Institutional Records Summary Grid -->
+        <div class="storage-section-block">
+          <h4 class="storage-block-title">🏛️ Institutional Master Records</h4>
+          <div class="storage-inventory-grid">
+            <div class="inventory-card">
+              <div class="inventory-card-header">
+                <span>👨‍🏫 Faculty</span>
+                <span class="inventory-count" id="modalCountTeachers">0</span>
+              </div>
+              <ul class="inventory-items-list" id="modalTeachersList">
+                <li>Loading...</li>
+              </ul>
+            </div>
+
+            <div class="inventory-card">
+              <div class="inventory-card-header">
+                <span>🏫 Rooms</span>
+                <span class="inventory-count" id="modalCountRooms">0</span>
+              </div>
+              <ul class="inventory-items-list" id="modalRoomsList">
+                <li>Loading...</li>
+              </ul>
+            </div>
+
+            <div class="inventory-card">
+              <div class="inventory-card-header">
+                <span>👥 Cohort Sections</span>
+                <span class="inventory-count" id="modalCountSections">0</span>
+              </div>
+              <ul class="inventory-items-list" id="modalSectionsList">
+                <li>Loading...</li>
+              </ul>
+            </div>
+
+            <div class="inventory-card">
+              <div class="inventory-card-header">
+                <span>📖 Subjects</span>
+                <span class="inventory-count" id="modalCountSubjects">0</span>
+              </div>
+              <ul class="inventory-items-list" id="modalSubjectsList">
+                <li>Loading...</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="fetchStorageData(true)">↻ Refresh Storage</button>
+        <a href="/generate" class="btn btn-secondary btn-sm">Generate Timetable</a>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4B: SAVED TIMETABLE DETAIL VIEWER (STORAGE VIEWER EXTENSION) -->
+  <div id="storageTimetableDetailModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="savedTimetableDetailTitle">
+    <div class="feature-modal-box storage-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <div>
+          <h3 id="savedTimetableDetailTitle">Saved Academic Timetable</h3>
+          <p class="modal-subtitle" id="savedTimetableDetailMeta">Retrieved from institutional storage repository.</p>
+        </div>
+        <div class="modal-header-actions" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <a id="detailDownloadPdfBtn" href="#" class="btn btn-primary btn-sm" download style="display: inline-flex; align-items: center; gap: 4px;">
+            📥 Download PDF
+          </a>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="openStorageViewerModal()">← Back to Storage</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()" aria-label="Close">✕</button>
+        </div>
+      </div>
+
+      <!-- Detail Modal Body -->
+      <div id="storageDetailLoading" style="padding: 24px; text-align: center; color: var(--text-muted);">
+        <span class="btn-spinner" style="display: inline-block; width: 20px; height: 20px; border: 2px solid var(--border-color, rgba(255,255,255,0.1)); border-top-color: var(--color-primary, #3b82f6); border-radius: 50%; animation: spin 0.8s linear infinite;" aria-hidden="true"></span>
+        <p style="margin-top: 8px;">Loading saved timetable from storage...</p>
+      </div>
+
+      <div id="storageDetailError" style="display: none; padding: 20px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; color: #ef4444; margin-top: 12px;">
+        Unable to load saved timetable data. Please try again.
+      </div>
+
+      <div id="storageDetailContent" style="display: none; margin-top: 12px;">
+        <!-- Cohort / Section Switcher & Badges -->
+        <div class="storage-detail-filter-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;" id="storageDetailSectionTabs">
+            <!-- Dynamically populated section buttons -->
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);" id="storageDetailSummaryInfo">
+            <!-- Summary badges -->
+          </div>
+        </div>
+
+        <!-- Timetable Table View -->
+        <div class="storage-timetable-table-wrap" style="overflow-x: auto; border: 1px solid var(--border-color, rgba(255,255,255,0.1)); border-radius: 8px;">
+          <table class="storage-timetable-grid-table" id="storageTimetableGridTable" style="width: 100%; border-collapse: collapse; min-width: 650px; text-align: left; font-size: 0.85rem;">
+            <!-- Populated dynamically -->
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-actions-row" style="margin-top: 18px;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="openStorageViewerModal()">← Back to Storage List</button>
+        <a id="detailDownloadPdfBottomBtn" href="#" class="btn btn-primary btn-sm" download>📥 Download PDF</a>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: FIXED & LOCKED CLASSES INSPECTOR -->
+  <div id="lockedClassesModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="lockedClassesModalTitle">
+    <div class="feature-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="lockedClassesModalTitle">Fixed &amp; Locked Classes</h3>
+        <span class="modal-badge-status">Schedule Anchor</span>
+      </div>
+
+      <div class="rules-modal-body">
+        <p class="modal-intro">
+          Locking enables academic administrators to designate fixed time slots, instructors, and rooms for critical sessions such as laboratory experiments, multi-section assemblies, or visiting faculty lectures.
+        </p>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">1</span>
+            <strong>Permanent Slot Placement</strong>
+          </div>
+          <p>Locked entries maintain their exact day, starting hour, and duration across all subsequent timetable regenerations.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">2</span>
+            <strong>Multi-Resource Lock</strong>
+          </div>
+          <p>Preserves assigned faculty and dedicated room spaces so other sections cannot inadvertently collide with anchored periods.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">3</span>
+            <strong>Constraint-Aware Background Routing</strong>
+          </div>
+          <p>The SchedX scheduling solver automatically populates remaining academic courses around locked blocks without disturbance.</p>
+        </div>
+
+        <div class="storage-notice-box" style="margin-top: 14px;">
+          <span>ℹ️</span>
+          <span>Laboratory day and time-span anchoring is active today. General theory period pinning is planned for upcoming releases.</span>
+        </div>
+      </div>
+
+      <div class="modal-actions-row">
+        <a href="/generate" class="btn btn-secondary btn-sm">Configure in Generator</a>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6: TEACHER WORKLOAD INSPECTOR -->
+  <div id="workloadModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="workloadModalTitle">
+    <div class="feature-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="workloadModalTitle">Teacher Workload Distribution</h3>
+        <span class="modal-badge-status">Workload Analytics</span>
+      </div>
+
+      <div class="rules-modal-body">
+        <p class="modal-intro">
+          SchedX calculates comprehensive day-wise and weekly summaries of teaching hours and sessions assigned to every faculty member, preventing instructor fatigue and uneven schedules.
+        </p>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">1</span>
+            <strong>Day-Wise Session Auditing</strong>
+          </div>
+          <p>Tracks exact lecture and lab sessions assigned on each working day, identifying heavy vs light days.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">2</span>
+            <strong>Continuous Lab Session Accounting</strong>
+          </div>
+          <p>Multi-hour practical blocks are accurately calculated as a unified teaching session while accounting for the full period duration.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">3</span>
+            <strong>Cross-Department Transparency</strong>
+          </div>
+          <p>Shared instructors teaching courses across multiple departments have their cumulative workload unified into a single coherent summary.</p>
+        </div>
+
+        <div class="storage-notice-box" style="margin-top: 14px;">
+          <span>📊</span>
+          <span>View the live Teacher Workload breakdown directly below your generated schedule on the Generate page.</span>
+        </div>
+      </div>
+
+      <div class="modal-actions-row">
+        <a href="/generate" class="btn btn-secondary btn-sm">View Workload on Generator</a>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 7: MULTIPLE TIMETABLE VIEWS -->
+  <div id="viewsModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="viewsModalTitle">
+    <div class="feature-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="viewsModalTitle">Multiple Timetable Perspectives</h3>
+        <span class="modal-badge-status">Perspectives</span>
+      </div>
+
+      <div class="rules-modal-body">
+        <p class="modal-intro">
+          The same underlying schedule data is instantly viewable through different organizational lenses tailored for administrators, teachers, and students.
+        </p>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">1</span>
+            <strong>Department Master View</strong>
+          </div>
+          <p>A unified grid showing all active sections and subjects for an entire academic department.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">2</span>
+            <strong>Section Cohort View</strong>
+          </div>
+          <p>A dedicated student-facing weekly timetable focused solely on a single cohort's classes, classrooms, and break times.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">3</span>
+            <strong>Faculty Personal View</strong>
+          </div>
+          <p>A tailored schedule showing an instructor's individual lectures, lab sessions, free periods, and assigned rooms.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">4</span>
+            <strong>Facility &amp; Room Matrix View (Planned)</strong>
+          </div>
+          <p>A spatial matrix showing room occupancy and free periods across campus to optimize physical space utilization.</p>
+        </div>
+      </div>
+
+      <div class="modal-actions-row">
+        <a href="/generate" class="btn btn-secondary btn-sm">Inspect Schedule Views</a>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 8: TIMETABLE QUALITY INSPECTOR -->
+  <div id="qualityModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="qualityModalTitle">
+    <div class="feature-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="qualityModalTitle">Timetable Quality &amp; Verification</h3>
+        <span class="modal-badge-status">Constraint Audit</span>
+      </div>
+
+      <div class="rules-modal-body">
+        <p class="modal-intro">
+          SchedX validates schedules against strict institutional rules before delivery, ensuring zero collisions and high operational feasibility.
+        </p>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">1</span>
+            <strong>Strict Collision Auditing</strong>
+          </div>
+          <p>Verifies zero teacher double-bookings, zero room concurrent occupancies, and zero section overlaps.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">2</span>
+            <strong>Facility &amp; Capacity Validation</strong>
+          </div>
+          <p>Ensures theoretical classes are routed to classrooms and experimental sessions are strictly placed in laboratories with sufficient seats.</p>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-title-row">
+            <span class="rule-number-badge">3</span>
+            <strong>Break Integrity &amp; Day Limits</strong>
+          </div>
+          <p>Protects institutional meal windows and enforces day-specific period capacities across the academic week.</p>
+        </div>
+
+        <div class="storage-notice-box" style="margin-top: 14px;">
+          <span>ℹ️</span>
+          <span>Conflict-free verification is 100% active. A composite numerical score index (0–100) is a planned capability for automated quality benchmarking.</span>
+        </div>
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="testConstraintEngine()">Run Conflict Verification</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeAllModals()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SMART TIMETABLE ENGINE -->
+  <div id="engineModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="engineModalTitle">
+    <div class="feature-modal-box feature-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="engineModalTitle">How the Smart Timetable Engine Works</h3>
+        <span class="modal-badge-status">Algorithm Workflow</span>
+      </div>
+      <p class="modal-content-body">
+        SchedX constructs academic timetables by synthesizing configured teachers, subjects, sections, working days, periods, and institutional scheduling constraints into a unified, conflict-free schedule.
+      </p>
+
+      <!-- Horizontal Visual Pipeline -->
+      <div class="workflow-diagram-bar" aria-label="5-Step Generation Pipeline">
+        <div class="wf-stage"><span class="wf-stage-num">1</span><span>Configuration</span></div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-stage"><span class="wf-stage-num">2</span><span>Analysis</span></div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-stage"><span class="wf-stage-num">3</span><span>Generation</span></div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-stage"><span class="wf-stage-num">4</span><span>Validation</span></div>
+        <span class="wf-arrow">→</span>
+        <div class="wf-stage"><span class="wf-stage-num">5</span><span>Final Schedule</span></div>
+      </div>
+
+      <!-- Step-by-Step Process -->
+      <div class="engine-steps-list">
+        <div class="engine-step-item">
+          <div class="engine-step-header">
+            <span class="step-pill">Step 1</span>
+            <span class="step-title">Input Configuration</span>
+          </div>
+          <ul class="step-items">
+            <li><strong>Teachers:</strong> Faculty profiles with assigned subject qualifications and daily limits.</li>
+            <li><strong>Subjects:</strong> Course codes, assigned credit units, and weekly lecture hour requirements.</li>
+            <li><strong>Sections:</strong> Student cohorts and expected class sizes.</li>
+            <li><strong>Working days:</strong> Academic operating days (Monday through Sunday).</li>
+            <li><strong>Periods & time slots:</strong> Operating start/end times and day-specific period limits.</li>
+            <li><strong>Scheduling constraints:</strong> Laboratory room requirements and break reservations.</li>
+          </ul>
+        </div>
+
+        <div class="engine-step-item">
+          <div class="engine-step-header">
+            <span class="step-pill">Step 2</span>
+            <span class="step-title">Scheduling Analysis</span>
+          </div>
+          <ul class="step-items">
+            <li>Analyze teacher-subject assignments and eligibility mappings.</li>
+            <li>Identify available scheduling slots across active working days.</li>
+            <li>Check configured constraints (laboratory requirements, lunch & tea breaks).</li>
+            <li>Identify potential capacity bottlenecks and resource contention before placement.</li>
+          </ul>
+        </div>
+
+        <div class="engine-step-item">
+          <div class="engine-step-header">
+            <span class="step-pill">Step 3</span>
+            <span class="step-title">Timetable Generation</span>
+          </div>
+          <ul class="step-items">
+            <li>Assign eligible subjects and qualified teachers to suitable time slots.</li>
+            <li>Respect configured working days and day-specific period bounds (e.g. Mon: 5, Tue: 7, Wed: 4).</li>
+            <li>Attempt to avoid teacher, room, and student section scheduling conflicts.</li>
+          </ul>
+        </div>
+
+        <div class="engine-step-item">
+          <div class="engine-step-header">
+            <span class="step-pill">Step 4</span>
+            <span class="step-title">Validation</span>
+          </div>
+          <ul class="step-items">
+            <li>Check the generated period assignments against institutional rules.</li>
+            <li>Identify scheduling conflicts (double-booked faculty, occupied rooms, or student collisions).</li>
+            <li>Report classes that could not be scheduled with clear actionable diagnostic feedback.</li>
+          </ul>
+        </div>
+
+        <div class="engine-step-item">
+          <div class="engine-step-header">
+            <span class="step-pill">Step 5</span>
+            <span class="step-title">Final Timetable</span>
+          </div>
+          <ul class="step-items">
+            <li>Display the generated timetable in an interactive weekly grid view.</li>
+            <li>Allow users to review, filter by section/faculty/room, and edit cell assignments where supported.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-callout-box">
+        <strong>Implemented Capabilities:</strong> Multi-constraint heuristic generation, teacher eligibility filtering, laboratory room enforcement, day-specific period capacities, break intervals, and 3-way collision prevention are active in SchedX. Automated multi-semester global genetic re-optimization is on the planned development roadmap.
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Back to Features</button>
+        <a href="/generate" class="btn btn-primary btn-sm">Try It in Generate Page</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SECTION & CLASS ORGANIZATION -->
+  <div id="sectionOrgModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="sectionOrgModalTitle">
+    <div class="feature-modal-box feature-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="sectionOrgModalTitle">Section & Class Organization</h3>
+        <span class="modal-badge-status">Cohort Architecture</span>
+      </div>
+      <p class="modal-content-body">
+        SchedX organizes timetable assignments by department, section, day, and period to make class schedules easier to understand, distribute, and manage across distinct student cohorts.
+      </p>
+
+      <!-- Visual Demonstration: Two Separate Section Previews -->
+      <div class="sample-tt-grid-two-col">
+        <div class="sample-tt-card">
+          <div class="sample-tt-card-header">
+            <span class="sample-tt-card-title">SECTION CSE-A</span>
+            <span class="sample-tt-card-tag">MONDAY</span>
+          </div>
+          <table class="sample-tt-table">
+            <thead>
+              <tr>
+                <th class="time-col">Time Slot</th>
+                <th>Subject</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-col">09:00–10:00</td>
+                <td><strong>Data Structures</strong><span class="room-tag-small">R-101 • Sharma</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">10:00–11:00</td>
+                <td><strong>Mathematics</strong><span class="room-tag-small">R-101 • Rao</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">11:00–12:00</td>
+                <td><strong>Operating Systems</strong><span class="room-tag-small">R-101 • Mehta</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sample-tt-card">
+          <div class="sample-tt-card-header">
+            <span class="sample-tt-card-title">SECTION CSE-B</span>
+            <span class="sample-tt-card-tag">MONDAY</span>
+          </div>
+          <table class="sample-tt-table">
+            <thead>
+              <tr>
+                <th class="time-col">Time Slot</th>
+                <th>Subject</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="time-col">09:00–10:00</td>
+                <td><strong>Mathematics</strong><span class="room-tag-small">R-102 • Rao</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">10:00–11:00</td>
+                <td><strong>Data Structures</strong><span class="room-tag-small">R-102 • Sharma</span></td>
+              </tr>
+              <tr>
+                <td class="time-col">11:00–12:00</td>
+                <td><strong>Database Systems</strong><span class="room-tag-small">R-102 • Patel</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-callout-box">
+        <strong>How Section Scheduling Works:</strong>
+        <ul style="margin: 6px 0 0 18px; padding: 0;">
+          <li><strong>Independent Streams:</strong> Each section possesses its own dedicated timetable stream without cross-contamination.</li>
+          <li><strong>Chronological Layout:</strong> Classes are organized systematically by academic day and period.</li>
+          <li><strong>Collision Guard:</strong> Section scheduling strictly prevents overlapping classes for the same student cohort.</li>
+          <li><strong>Departmental Partitioning:</strong> Departments and sections can be configured and managed independently in the system.</li>
+        </ul>
+      </div>
+
+      <div class="limitation-callout-box">
+        <strong>Illustrative Sample:</strong> The timetables shown above are sample demonstrations created to explain section isolation and do not represent saved database records.
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Back to Features</button>
+        <a href="/generate#stepSectionsCard" class="btn btn-primary btn-sm">View in Generate Page</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: DAY-BY-DAY SCHEDULE LAYOUT -->
+  <div id="dayLayoutModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="dayLayoutModalTitle">
+    <div class="feature-modal-box feature-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="dayLayoutModalTitle">Day-by-Day Schedule Layout</h3>
+        <span class="modal-badge-status">Chronological Layout</span>
+      </div>
+      <p class="modal-content-body">
+        SchedX organizes classes cleanly across configured academic working days and displays the subjects assigned to each period with exact time boundaries.
+      </p>
+
+      <!-- Day Navigation Tabs -->
+      <div class="day-tabs-nav" role="tablist" aria-label="Sample Working Days">
+        <button type="button" class="day-tab-btn active" role="tab" aria-selected="true" onclick="switchDayLayoutTab('monday')">Monday</button>
+        <button type="button" class="day-tab-btn" role="tab" aria-selected="false" onclick="switchDayLayoutTab('tuesday')">Tuesday</button>
+        <button type="button" class="day-tab-btn" role="tab" aria-selected="false" onclick="switchDayLayoutTab('wednesday')">Wednesday</button>
+      </div>
+
+      <!-- Monday Pane -->
+      <div id="dayPaneMonday" class="day-schedule-pane active">
+        <div class="sample-tt-card">
+          <div class="sample-tt-card-header">
+            <span class="sample-tt-card-title">MONDAY SCHEDULE</span>
+            <span class="sample-tt-card-tag">3 Assigned Periods</span>
+          </div>
+          <table class="sample-tt-table">
+            <thead><tr><th class="time-col">Period Time</th><th>Subject Assignment</th></tr></thead>
+            <tbody>
+              <tr><td class="time-col">09:00–10:00</td><td><strong>Mathematics</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+              <tr><td class="time-col">10:00–11:00</td><td><strong>Data Structures</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+              <tr><td class="time-col">11:00–12:00</td><td><strong>Database Systems</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tuesday Pane -->
+      <div id="dayPaneTuesday" class="day-schedule-pane">
+        <div class="sample-tt-card">
+          <div class="sample-tt-card-header">
+            <span class="sample-tt-card-title">TUESDAY SCHEDULE</span>
+            <span class="sample-tt-card-tag">3 Assigned Periods</span>
+          </div>
+          <table class="sample-tt-table">
+            <thead><tr><th class="time-col">Period Time</th><th>Subject Assignment</th></tr></thead>
+            <tbody>
+              <tr><td class="time-col">09:00–10:00</td><td><strong>Operating Systems</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+              <tr><td class="time-col">10:00–11:00</td><td><strong>Mathematics</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+              <tr><td class="time-col">11:00–12:00</td><td><strong>Java Programming</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Wednesday Pane -->
+      <div id="dayPaneWednesday" class="day-schedule-pane">
+        <div class="sample-tt-card">
+          <div class="sample-tt-card-header">
+            <span class="sample-tt-card-title">WEDNESDAY SCHEDULE</span>
+            <span class="sample-tt-card-tag">3 Assigned Periods</span>
+          </div>
+          <table class="sample-tt-table">
+            <thead><tr><th class="time-col">Period Time</th><th>Subject Assignment</th></tr></thead>
+            <tbody>
+              <tr><td class="time-col">09:00–10:00</td><td><strong>Database Systems</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+              <tr><td class="time-col">10:00–11:00</td><td><strong>Java Programming</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+              <tr><td class="time-col">11:00–12:00</td><td><strong>Data Structures</strong><span class="room-tag-small">Classroom 101</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-callout-box">
+        <strong>Key Scheduling Rules:</strong>
+        <ul style="margin: 6px 0 0 18px; padding: 0;">
+          <li><strong>Individual Day Grids:</strong> Each academic working day maintains its own isolated chronological schedule.</li>
+          <li><strong>Variable Period Capacities:</strong> Different days support custom period counts (e.g., Monday 5 periods, Wednesday 4 periods).</li>
+          <li><strong>Strict Timing:</strong> Periods reflect exact institutional start and end times.</li>
+          <li><strong>Break Windows:</strong> Reserved lunch and tea breaks are automatically protected from class collisions.</li>
+        </ul>
+      </div>
+
+      <div class="limitation-callout-box">
+        <strong>Illustrative Demonstration:</strong> This interactive preview illustrates day-partitioned layout behavior and is not generated from active user data.
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Back to Features</button>
+        <a href="/generate" class="btn btn-primary btn-sm">Create My Timetable</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SMART SUBJECT DISTRIBUTION -->
+  <div id="subjectDistModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="subjectDistModalTitle">
+    <div class="feature-modal-box feature-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="subjectDistModalTitle">Smart Subject Distribution</h3>
+        <span class="modal-badge-status">Curriculum Pacing</span>
+      </div>
+      <p class="modal-content-body">
+        SchedX assigns eligible subjects across available academic periods while considering faculty qualifications, configured operating days, and timetable constraints.
+      </p>
+
+      <!-- Subject Color Legend -->
+      <div class="subject-legend-wrap">
+        <span class="legend-item"><span class="legend-dot" style="background: #2563eb;"></span> Data Structures</span>
+        <span class="legend-item"><span class="legend-dot" style="background: #059669;"></span> Mathematics</span>
+        <span class="legend-item"><span class="legend-dot" style="background: #d97706;"></span> Database Systems</span>
+        <span class="legend-item"><span class="legend-dot" style="background: #7c3aed;"></span> Operating Systems</span>
+        <span class="legend-item"><span class="legend-dot" style="background: #e11d48;"></span> Java Programming</span>
+      </div>
+
+      <!-- 3-Day Sample Distribution Grid -->
+      <div class="sample-tt-card">
+        <table class="sample-tt-table">
+          <thead>
+            <tr>
+              <th class="time-col">Time</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">09:00–10:00</td>
+              <td><span class="chip-subject sub-ds">Data Structures</span></td>
+              <td><span class="chip-subject sub-os">Operating Systems</span></td>
+              <td><span class="chip-subject sub-dbms">Database Systems</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">10:00–11:00</td>
+              <td><span class="chip-subject sub-math">Mathematics</span></td>
+              <td><span class="chip-subject sub-java">Java Programming</span></td>
+              <td><span class="chip-subject sub-ds">Data Structures</span></td>
+            </tr>
+            <tr>
+              <td class="time-col">11:00–12:00</td>
+              <td><span class="chip-subject sub-dbms">Database Systems</span></td>
+              <td><span class="chip-subject sub-math">Mathematics</span></td>
+              <td><span class="chip-subject sub-os">Operating Systems</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-callout-box">
+        <strong>How Subject Allocation Works:</strong>
+        <ul style="margin: 6px 0 0 18px; padding: 0;">
+          <li>Subjects are placed into valid time slots based on weekly lecture hour quotas.</li>
+          <li>Teacher-subject eligibility is strictly enforced; only qualified faculty teach assigned subjects.</li>
+          <li>Assignments avoid duplicate room or faculty commitments across concurrent sections.</li>
+          <li>Subject distribution depends directly on user-configured subject hours, periods, and constraints.</li>
+        </ul>
+      </div>
+
+      <div class="limitation-callout-box">
+        <strong>Technical Scope & Limitations:</strong> SchedX allocates subjects across operating days based on required weekly hours and teacher eligibility. Automatic multi-objective mathematical frequency optimization is conceptual and planned for future algorithmic releases.
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Back to Features</button>
+        <a href="/generate#stepSubjectsCard" class="btn btn-primary btn-sm">Configure Subjects in Generate Page</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: FREE PERIOD OPTIMIZATION -->
+  <div id="freePeriodsModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="freePeriodsModalTitle">
+    <div class="feature-modal-box feature-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="freePeriodsModalTitle">Free Period Optimization</h3>
+        <span class="modal-badge-status">Schedule Density</span>
+      </div>
+      <p class="modal-content-body">
+        Available periods are identified across a schedule to assist institutions in minimizing disruptive gaps between classes while respecting faculty availability and institutional constraints.
+      </p>
+
+      <!-- Before / After Grid -->
+      <div class="before-after-grid">
+        <div class="ba-col">
+          <div class="ba-header before">
+            <span>BEFORE (Fragmented Gaps)</span>
+            <span>MONDAY</span>
+          </div>
+          <table class="sample-tt-table">
+            <tbody>
+              <tr><td class="time-col">09:00–10:00</td><td><strong>Data Structures</strong></td></tr>
+              <tr><td class="time-col">10:00–11:00</td><td><span class="slot-free-period">Free Period</span></td></tr>
+              <tr><td class="time-col">11:00–12:00</td><td><strong>Mathematics</strong></td></tr>
+              <tr><td class="time-col">12:00–01:00</td><td><span class="slot-free-period">Free Period</span></td></tr>
+              <tr><td class="time-col">01:00–02:00</td><td><strong>Database Systems</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ba-col">
+          <div class="ba-header after">
+            <span>AFTER (Compact Sequence)</span>
+            <span>MONDAY</span>
+          </div>
+          <table class="sample-tt-table">
+            <tbody>
+              <tr><td class="time-col">09:00–10:00</td><td><strong>Data Structures</strong></td></tr>
+              <tr><td class="time-col">10:00–11:00</td><td><strong>Mathematics</strong></td></tr>
+              <tr><td class="time-col">11:00–12:00</td><td><strong>Database Systems</strong></td></tr>
+              <tr><td class="time-col">12:00–01:00</td><td><span class="slot-free-compact">Free Period (End)</span></td></tr>
+              <tr><td class="time-col">01:00–02:00</td><td><span class="slot-free-compact">Free Period (End)</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-callout-box">
+        <strong>Understanding Free Periods:</strong>
+        <ul style="margin: 6px 0 0 18px; padding: 0;">
+          <li><strong>Gap Identification:</strong> Free periods represent unscheduled time slots without assigned academic classes.</li>
+          <li><strong>Schedule Compaction:</strong> Grouping classes chronologically reduces idle waiting periods for student cohorts.</li>
+          <li><strong>Constraint Preservation:</strong> Teacher availability windows, room capacities, and lunch breaks must always be respected.</li>
+        </ul>
+      </div>
+
+      <div class="limitation-callout-box">
+        <strong>Conceptual Demonstration:</strong> The comparison above illustrates the objective of gap minimization. SchedX currently packs classes sequentially during generation, but automated multi-day global gap re-sequencing without user intervention is currently in active development.
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Back to Features</button>
+        <a href="/generate" class="btn btn-primary btn-sm">Try Timetable Generator</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SECTION WORKLOAD -->
+  <div id="sectionWorkloadModal" class="modal" onclick="closeAllModals(event)" role="dialog" aria-modal="true" aria-labelledby="sectionWorkloadModalTitle">
+    <div class="feature-modal-box feature-detail-modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header-row">
+        <h3 id="sectionWorkloadModalTitle">Section Workload</h3>
+        <span class="modal-badge-status">Cohort Analytics</span>
+      </div>
+      <p class="modal-content-body">
+        Review student section schedules to understand the distribution of academic sessions and occupied periods across the teaching week, preventing student fatigue.
+      </p>
+
+      <!-- Workload Cards Grid -->
+      <div class="workload-cards-grid">
+        <div class="section-wl-card">
+          <div class="section-wl-title">
+            <span>Section CSE-A</span>
+            <span class="wl-total-badge">6 Classes Total</span>
+          </div>
+          <div class="wl-days-breakdown">
+            <div class="wl-day-row"><span>Monday</span><strong>3 classes</strong></div>
+            <div class="wl-day-row"><span>Tuesday</span><strong>2 classes</strong></div>
+            <div class="wl-day-row"><span>Wednesday</span><strong>1 class</strong></div>
+          </div>
+          <div class="wl-bar-wrap" title="Workload Index: 60%">
+            <div class="wl-bar-fill" style="width: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="section-wl-card">
+          <div class="section-wl-title">
+            <span>Section CSE-B</span>
+            <span class="wl-total-badge">5 Classes Total</span>
+          </div>
+          <div class="wl-days-breakdown">
+            <div class="wl-day-row"><span>Monday</span><strong>2 classes</strong></div>
+            <div class="wl-day-row"><span>Tuesday</span><strong>2 classes</strong></div>
+            <div class="wl-day-row"><span>Wednesday</span><strong>1 class</strong></div>
+          </div>
+          <div class="wl-bar-wrap" title="Workload Index: 50%">
+            <div class="wl-bar-fill" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-callout-box">
+        <strong>Counting Method Standard:</strong>
+        <p style="margin: 4px 0 0 0;">
+          To ensure accurate academic tracking, SchedX distinguishes <strong>class sessions</strong> from <strong>occupied periods</strong>:
+        </p>
+        <ul style="margin: 6px 0 0 18px; padding: 0;">
+          <li>A standard <strong>1-hour theory lecture</strong> counts as <strong>1 class session</strong> and <strong>1 occupied period</strong>.</li>
+          <li>A <strong>2-hour laboratory session</strong> counts as <strong>1 class session</strong>, but occupies <strong>2 periods</strong> on the schedule.</li>
+        </ul>
+      </div>
+
+      <div class="limitation-callout-box">
+        <strong>Illustrative Demonstration:</strong> The figures shown above are sample reference values. When you generate a schedule in SchedX, real-time workload is tracked by day and faculty member in the Timetable Workload panel.
+      </div>
+
+      <div class="modal-actions-row">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeAllModals()">Back to Features</button>
+        <a href="/generate#timetableContainer" class="btn btn-primary btn-sm">View Section Workload</a>
       </div>
     </div>
   </div>
@@ -358,6 +2487,7 @@
           <li><a href="/rooms">Rooms</a></li>
           <li><a href="/teacher-availability">Teacher Availability</a></li>
           <li><a href="/#about">About Us</a></li>
+          <li><button type="button" class="footer-feedback-link" id="footerFeedbackTrigger" data-feedback-open>Feedback</button></li>
         </ul>
       </div>
 
@@ -386,40 +2516,488 @@
 
   <!-- SCRIPT FOR MODALS & FUNCTIONALITY -->
   <script>
+    function openEngineModal() {
+      openModalById('engineModal');
+    }
+
+    function openSectionOrgModal() {
+      openModalById('sectionOrgModal');
+    }
+
+    function openDayLayoutModal() {
+      openModalById('dayLayoutModal');
+    }
+
+    function openSubjectDistModal() {
+      openModalById('subjectDistModal');
+    }
+
+    function openFreePeriodsModal() {
+      openModalById('freePeriodsModal');
+    }
+
+    function openSectionWorkloadModal() {
+      openModalById('sectionWorkloadModal');
+    }
+
+    function switchDayLayoutTab(day) {
+      const tabs = document.querySelectorAll('.day-tab-btn');
+      tabs.forEach(t => {
+        const isSelected = t.textContent.toLowerCase() === day.toLowerCase();
+        t.classList.toggle('active', isSelected);
+        t.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      });
+
+      const panes = document.querySelectorAll('.day-schedule-pane');
+      panes.forEach(p => p.classList.remove('active'));
+
+      const targetPane = document.getElementById(`dayPane${day.charAt(0).toUpperCase() + day.slice(1).toLowerCase()}`);
+      if (targetPane) targetPane.classList.add('active');
+    }
+
+    function openModalById(id, updateHash = true) {
+      closeAllModals(null, false);
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.add('active');
+        if (updateHash) {
+          const hashMap = {
+            'engineModal': '#smart-engine',
+            'sectionOrgModal': '#section-org',
+            'dayLayoutModal': '#day-layout',
+            'subjectDistModal': '#subject-dist',
+            'freePeriodsModal': '#free-periods',
+            'sectionWorkloadModal': '#section-workload'
+          };
+          if (hashMap[id]) {
+            history.pushState({ modalId: id }, '', hashMap[id]);
+          }
+        }
+      }
+    }
+
     function openRulesModal() {
-      closeAllModals();
+      closeAllModals(null, false);
       const m = document.getElementById('rulesModal');
       if (m) m.classList.add('active');
     }
 
     function openCurrentClassModal() {
-      closeAllModals();
+      closeAllModals(null, false);
       const m = document.getElementById('currentClassModal');
       if (m) m.classList.add('active');
       fetchCurrentClassStatus();
     }
 
-    function openStorageModal() {
-      closeAllModals();
+    function openPersistenceModal() {
+      closeAllModals(null, false);
       const m = document.getElementById('storageModal');
       if (m) m.classList.add('active');
-      fetch('/api/health')
-        .then(r => r.json())
-        .then(data => {
-          const el = document.getElementById('storageStatusVal');
-          if (el) el.textContent = `HTTP 200 (Active, DB: ${data.status || 'OK'})`;
-        })
-        .catch(() => {
-          const el = document.getElementById('storageStatusVal');
-          if (el) el.textContent = 'Active (Local Cache Resilient)';
-        });
     }
 
-    function closeAllModals(event) {
+    function openStorageModal() {
+      openPersistenceModal();
+    }
+
+    function openStorageViewerModal() {
+      closeAllModals(null, false);
+      const m = document.getElementById('storageViewerModal');
+      if (m) m.classList.add('active');
+      fetchStorageData();
+    }
+
+    function openLockedClassesModal() {
+      closeAllModals(null, false);
+      const m = document.getElementById('lockedClassesModal');
+      if (m) m.classList.add('active');
+    }
+
+    function openWorkloadModal() {
+      closeAllModals(null, false);
+      const m = document.getElementById('workloadModal');
+      if (m) m.classList.add('active');
+    }
+
+    function openViewsModal() {
+      closeAllModals(null, false);
+      const m = document.getElementById('viewsModal');
+      if (m) m.classList.add('active');
+    }
+
+    function openQualityModal() {
+      closeAllModals(null, false);
+      const m = document.getElementById('qualityModal');
+      if (m) m.classList.add('active');
+    }
+
+    function closeAllModals(event, clearHash = true) {
       if (event && event.target && event.target.closest('.feature-modal-box')) {
         return;
       }
       document.querySelectorAll('.modal').forEach(m => m.classList.remove('active', 'show'));
+      if (clearHash && window.location.hash) {
+        history.pushState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    // Handle browser Back / Forward buttons
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash;
+      if (!hash) {
+        document.querySelectorAll('.modal').forEach(m => m.classList.remove('active', 'show'));
+      } else {
+        handleHashNavigation();
+      }
+    });
+
+    function handleHashNavigation() {
+      const hash = window.location.hash;
+      const hashToModal = {
+        '#smart-engine': 'engineModal',
+        '#section-org': 'sectionOrgModal',
+        '#day-layout': 'dayLayoutModal',
+        '#subject-dist': 'subjectDistModal',
+        '#free-periods': 'freePeriodsModal',
+        '#section-workload': 'sectionWorkloadModal'
+      };
+      if (hashToModal[hash]) {
+        openModalById(hashToModal[hash], false);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      handleHashNavigation();
+    });
+
+    // Storage Dashboard Controller (Box 9 & Modal 4)
+    let cachedStorageData = null;
+
+    function formatTimestamp(isoString) {
+      if (!isoString) return 'Never';
+      try {
+        const d = new Date(isoString);
+        if (isNaN(d.getTime())) return 'Recently';
+        return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) + 
+               ' at ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+      } catch {
+        return 'Recently';
+      }
+    }
+
+    async function fetchStorageData(forceRefresh = false) {
+      const loadingEl = document.getElementById('storageCardLoading');
+      const metricsEl = document.getElementById('storageCardMetrics');
+      const emptyEl = document.getElementById('storageCardEmpty');
+      const errorEl = document.getElementById('storageCardError');
+
+      if (!forceRefresh && !cachedStorageData && loadingEl && metricsEl) {
+        loadingEl.style.display = 'flex';
+        metricsEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'none';
+        if (errorEl) errorEl.style.display = 'none';
+      }
+
+      try {
+        const response = await fetch('/api/storage');
+        if (!response.ok) throw new Error('Storage request failed');
+        const data = await response.json();
+        cachedStorageData = data;
+
+        const counts = data.counts || {};
+        const details = data.details || {};
+
+        // Update Box 9 Dashboard Cards
+        if (loadingEl) loadingEl.style.display = 'none';
+        if (errorEl) errorEl.style.display = 'none';
+
+        const totalItems = (counts.teachers || 0) + (counts.rooms || 0) + (counts.generatedTimetables || 0);
+        if (totalItems === 0 && (!counts.activeEntriesCount || counts.activeEntriesCount === 0)) {
+          if (emptyEl) emptyEl.style.display = 'block';
+          if (metricsEl) metricsEl.style.display = 'none';
+        } else {
+          if (emptyEl) emptyEl.style.display = 'none';
+          if (metricsEl) metricsEl.style.display = 'flex';
+
+          const tEl = document.getElementById('statTeachers');
+          const sEl = document.getElementById('statSubjects');
+          const secEl = document.getElementById('statSections');
+          const rEl = document.getElementById('statRooms');
+          const ttEl = document.getElementById('statTimetables');
+          const lgEl = document.getElementById('statLastGen');
+
+          if (tEl) tEl.textContent = String(counts.teachers || 0);
+          if (sEl) sEl.textContent = String(counts.subjects || 0);
+          if (secEl) secEl.textContent = String(counts.sections || 0);
+          if (rEl) rEl.textContent = String(counts.rooms || 0);
+          if (ttEl) ttEl.textContent = String(counts.generatedTimetables || 0);
+          if (lgEl) lgEl.textContent = formatTimestamp(data.lastGenerated);
+
+          // Update Visual 09 Live Mock Badges
+          const vT = document.getElementById('visualStatTeachers');
+          const vS = document.getElementById('visualStatSubjects');
+          const vSec = document.getElementById('visualStatSections');
+          const vR = document.getElementById('visualStatRooms');
+          const vTT = document.getElementById('visualStatTimetables');
+          if (vT && counts.teachers !== undefined) vT.textContent = `${counts.teachers} Records`;
+          if (vS && counts.subjects !== undefined) vS.textContent = `${counts.subjects} Subjects`;
+          if (vSec && counts.sections !== undefined) vSec.textContent = `${counts.sections} Sections`;
+          if (vR && counts.rooms !== undefined) vR.textContent = `${counts.rooms} Spaces`;
+          if (vTT && counts.generatedTimetables !== undefined) vTT.textContent = `${counts.generatedTimetables} Saved Generations`;
+        }
+
+        // Update Storage Details Modal (#storageViewerModal)
+        const modalCountT = document.getElementById('modalCountTeachers');
+        const modalCountR = document.getElementById('modalCountRooms');
+        const modalCountSec = document.getElementById('modalCountSections');
+        const modalCountSub = document.getElementById('modalCountSubjects');
+
+        if (modalCountT) modalCountT.textContent = String(counts.teachers || 0);
+        if (modalCountR) modalCountR.textContent = String(counts.rooms || 0);
+        if (modalCountSec) modalCountSec.textContent = String(counts.sections || 0);
+        if (modalCountSub) modalCountSub.textContent = String(counts.subjects || 0);
+
+        // Populate Timetable Versions List
+        const ttListEl = document.getElementById('modalTimetableList');
+        if (ttListEl) {
+          const timetables = details.timetables || [];
+          if (timetables.length === 0) {
+            ttListEl.innerHTML = '<div class="empty-day-notice" style="padding: 12px;">No timetable versions generated yet.</div>';
+          } else {
+            ttListEl.innerHTML = timetables.map((v, i) => `
+              <div class="version-card ${v.is_active ? 'is-active' : ''}">
+                <div class="version-meta">
+                  <div class="version-title">
+                    <span>${v.title || (v.is_active ? 'Current Active Schedule' : 'Previous Generation')}</span>
+                    <span class="${v.is_active ? 'version-badge-active' : 'version-badge-history'}">
+                      ${v.is_active ? '● Current Active' : '○ Retained History'}
+                    </span>
+                  </div>
+                  <div class="version-details">
+                    Department: <strong>${v.department || 'General'}</strong> • Generated on ${formatTimestamp(v.timestamp)} • ${v.entry_count} scheduled periods • Sections: ${(v.sections || []).join(', ') || 'General'}
+                  </div>
+                </div>
+                <div class="version-action" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <button type="button" class="btn btn-primary btn-sm view-saved-tt-btn" onclick="openStorageTimetableDetail('${v.version_id}')" style="font-size: 0.78rem; padding: 5px 12px; display: inline-flex; align-items: center; gap: 4px;">
+                    👁️ View Timetable
+                  </button>
+                  <a href="/api/storage/timetable/${v.version_id}/pdf" class="btn btn-secondary btn-sm" download style="font-size: 0.78rem; padding: 5px 12px; display: inline-flex; align-items: center; gap: 4px;">
+                    📥 Download PDF
+                  </a>
+                </div>
+              </div>
+            `).join('');
+          }
+        }
+
+        // Populate Master Lists
+        const tListEl = document.getElementById('modalTeachersList');
+        if (tListEl) {
+          const teachers = details.teachers || [];
+          tListEl.innerHTML = teachers.length ? 
+            teachers.map(t => `<li title="${t.name}">• ${t.name} (${t.department || 'General'})</li>`).join('') :
+            '<li>No teachers recorded</li>';
+        }
+
+        const rListEl = document.getElementById('modalRoomsList');
+        if (rListEl) {
+          const rooms = details.rooms || [];
+          rListEl.innerHTML = rooms.length ?
+            rooms.map(r => `<li title="${r.room_name}">• ${r.room_name} (${r.room_type}, ${r.capacity} seats)</li>`).join('') :
+            '<li>No rooms recorded</li>';
+        }
+
+        const sListEl = document.getElementById('modalSubjectsList');
+        if (sListEl) {
+          const subjects = details.subjects || [];
+          sListEl.innerHTML = subjects.length ?
+            subjects.map(s => `<li title="${s}">• ${s}</li>`).join('') :
+            '<li>No subjects recorded</li>';
+        }
+
+        const secListEl = document.getElementById('modalSectionsList');
+        if (secListEl) {
+          const sections = details.sections || [];
+          secListEl.innerHTML = sections.length ?
+            sections.map(sec => `<li title="${sec}">• ${sec}</li>`).join('') :
+            '<li>No sections recorded</li>';
+        }
+
+      } catch (err) {
+        if (loadingEl) loadingEl.style.display = 'none';
+        if (metricsEl) metricsEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'none';
+        if (errorEl) errorEl.style.display = 'block';
+      }
+    }
+
+    // Initialize storage data on load
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchStorageData();
+    });
+
+    let currentDetailTimetable = null;
+    let currentDetailSection = 'all';
+
+    async function openStorageTimetableDetail(versionId) {
+      closeAllModals(null, false);
+      const modal = document.getElementById('storageTimetableDetailModal');
+      if (modal) modal.classList.add('active');
+
+      const loadingEl = document.getElementById('storageDetailLoading');
+      const errorEl = document.getElementById('storageDetailError');
+      const contentEl = document.getElementById('storageDetailContent');
+
+      if (loadingEl) loadingEl.style.display = 'block';
+      if (errorEl) errorEl.style.display = 'none';
+      if (contentEl) contentEl.style.display = 'none';
+
+      try {
+        const res = await fetch(`/api/storage/timetable/${encodeURIComponent(versionId)}`);
+        if (!res.ok) throw new Error('Failed to load saved timetable');
+        const data = await res.json();
+        if (!data.success || !data.timetable) throw new Error('Invalid timetable data');
+
+        currentDetailTimetable = data.timetable;
+        currentDetailSection = 'all';
+
+        const pdfUrl = `/api/storage/timetable/${encodeURIComponent(versionId)}/pdf`;
+        const topPdfBtn = document.getElementById('detailDownloadPdfBtn');
+        const bottomPdfBtn = document.getElementById('detailDownloadPdfBottomBtn');
+        const safeName = `SchedX_${(currentDetailTimetable.department || 'Saved').replace(/[^a-zA-Z0-9]/g, '_')}_Timetable.pdf`;
+        if (topPdfBtn) {
+          topPdfBtn.href = pdfUrl;
+          topPdfBtn.setAttribute('download', safeName);
+        }
+        if (bottomPdfBtn) {
+          bottomPdfBtn.href = pdfUrl;
+          bottomPdfBtn.setAttribute('download', safeName);
+        }
+
+        renderStorageTimetableDetail(currentDetailTimetable, currentDetailSection);
+
+        if (loadingEl) loadingEl.style.display = 'none';
+        if (contentEl) contentEl.style.display = 'block';
+      } catch (err) {
+        if (loadingEl) loadingEl.style.display = 'none';
+        if (errorEl) {
+          errorEl.style.display = 'block';
+          errorEl.textContent = `Unable to load timetable: ${err.message}`;
+        }
+      }
+    }
+
+    function renderStorageTimetableDetail(tt, activeSection = 'all') {
+      const titleEl = document.getElementById('savedTimetableDetailTitle');
+      const metaEl = document.getElementById('savedTimetableDetailMeta');
+      const summaryEl = document.getElementById('storageDetailSummaryInfo');
+      const sectionTabsEl = document.getElementById('storageDetailSectionTabs');
+      const tableEl = document.getElementById('storageTimetableGridTable');
+
+      if (titleEl) {
+        titleEl.textContent = `${tt.title || (tt.department + ' Timetable')}`;
+      }
+      if (metaEl) {
+        metaEl.textContent = `Department: ${tt.department || 'General'} • Status: ${tt.status || 'VALID'} • Generated: ${formatTimestamp(tt.timestamp)}`;
+      }
+      if (summaryEl) {
+        summaryEl.innerHTML = `<strong>${tt.entry_count || (tt.entries ? tt.entries.length : 0)}</strong> scheduled periods • <strong>${tt.working_days?.length || 5}</strong> working days`;
+      }
+
+      const entries = Array.isArray(tt.entries) ? tt.entries : [];
+      const distinctSections = [...new Set(entries.map(e => e.section || e.class_name).filter(Boolean))];
+      if (distinctSections.length === 0 && tt.sections && tt.sections.length > 0) {
+        distinctSections.push(...tt.sections.map(s => typeof s === 'object' ? s.name : s).filter(Boolean));
+      }
+
+      if (sectionTabsEl) {
+        if (distinctSections.length > 1) {
+          sectionTabsEl.innerHTML = `
+            <span style="font-size: 0.82rem; color: var(--text-muted); margin-right: 4px;">Cohort Section:</span>
+            <button type="button" class="btn btn-sm ${activeSection === 'all' ? 'btn-primary' : 'btn-secondary'}" onclick="setDetailSection('all')" style="font-size: 0.78rem; padding: 3px 8px;">All</button>
+            ${distinctSections.map(s => `
+              <button type="button" class="btn btn-sm ${activeSection === s ? 'btn-primary' : 'btn-secondary'}" onclick="setDetailSection('${s}')" style="font-size: 0.78rem; padding: 3px 8px;">${s}</button>
+            `).join('')}
+          `;
+        } else {
+          sectionTabsEl.innerHTML = distinctSections.length === 1 ? `<span style="font-size: 0.82rem; color: var(--text-muted);">Cohort: <strong>${distinctSections[0]}</strong></span>` : '';
+        }
+      }
+
+      const filteredEntries = activeSection === 'all'
+        ? entries
+        : entries.filter(e => (e.section || e.class_name || '').toLowerCase() === activeSection.toLowerCase());
+
+      const days = tt.working_days && tt.working_days.length > 0
+        ? tt.working_days
+        : ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+      let maxPeriod = 0;
+      for (const e of entries) {
+        if (e.period_number) maxPeriod = Math.max(maxPeriod, Number(e.period_number));
+      }
+      if (maxPeriod === 0) maxPeriod = 5;
+
+      const slotTimes = {};
+      for (let p = 1; p <= maxPeriod; p++) {
+        const ent = entries.find(e => Number(e.period_number) === p);
+        if (ent && ent.start_time && ent.end_time) {
+          slotTimes[p] = `${ent.start_time.slice(0, 5)} - ${ent.end_time.slice(0, 5)}`;
+        } else {
+          const s = String(9 + p - 1).padStart(2, '0') + ':00';
+          const end = String(10 + p - 1).padStart(2, '0') + ':00';
+          slotTimes[p] = `${s} - ${end}`;
+        }
+      }
+
+      let tableHtml = `
+        <thead>
+          <tr>
+            <th style="width: 100px;">Day</th>
+            ${Array.from({ length: maxPeriod }, (_, idx) => {
+              const p = idx + 1;
+              return `<th>Period ${p}<br><span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">${slotTimes[p] || ''}</span></th>`;
+            }).join('')}
+          </tr>
+        </thead>
+        <tbody>
+      `;
+
+      days.forEach(day => {
+        tableHtml += `<tr><td style="font-weight: 600; background: var(--bg-card-header, rgba(255,255,255,0.02));">${day}</td>`;
+        for (let p = 1; p <= maxPeriod; p++) {
+          const dayEntries = filteredEntries.filter(e => (e.day || e.day_name) === day && Number(e.period_number) === p);
+          if (dayEntries.length > 0) {
+            tableHtml += `<td class="storage-cell-lecture" style="vertical-align: top;">`;
+            dayEntries.forEach(item => {
+              const subj = item.course_name || item.subject || 'Lecture';
+              const teach = item.teacher_name || item.teacher || '';
+              const rm = item.room_name || item.room || '';
+              const sec = item.section || item.class_name || '';
+              tableHtml += `
+                <div style="margin-bottom: 4px; padding: 4px; border-radius: 4px; background: rgba(59, 130, 246, 0.08); border-left: 3px solid #3b82f6;">
+                  <div style="font-weight: 600; color: var(--text-heading);">${subj}</div>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">${teach}</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">${rm ? '📍 ' + rm : ''} ${sec ? '• ' + sec : ''}</div>
+                </div>
+              `;
+            });
+            tableHtml += `</td>`;
+          } else {
+            tableHtml += `<td class="storage-cell-free" style="vertical-align: middle; color: var(--text-muted); font-size: 0.78rem;">Free</td>`;
+          }
+        }
+        tableHtml += `</tr>`;
+      });
+
+      tableHtml += `</tbody>`;
+      if (tableEl) tableEl.innerHTML = tableHtml;
+    }
+
+    function setDetailSection(sec) {
+      currentDetailSection = sec;
+      if (currentDetailTimetable) {
+        renderStorageTimetableDetail(currentDetailTimetable, currentDetailSection);
+      }
     }
 
     function fetchCurrentClassStatus() {
@@ -434,7 +3012,7 @@
         badge.className = 'modal-badge-status idle';
         badge.textContent = 'Querying...';
       }
-      if (statusEl) statusEl.textContent = 'Checking server timetable...';
+      if (statusEl) statusEl.textContent = 'Checking active schedule...';
 
       fetch('/api/current-class')
         .then(r => r.json())
@@ -461,19 +3039,19 @@
             if (sectionRoomEl) sectionRoomEl.textContent = 'All rooms available';
           }
         })
-        .catch(err => {
+        .catch(() => {
           if (badge) {
             badge.className = 'modal-badge-status idle';
             badge.textContent = 'Notice';
           }
-          if (statusEl) statusEl.textContent = 'Server response: Schedule idle';
+          if (statusEl) statusEl.textContent = 'Schedule idle (No ongoing lecture)';
         });
     }
 
     function testConstraintEngine() {
       const toast = document.getElementById('featureToast');
       if (!toast) return;
-      toast.textContent = '✓ Constraint Engine Verified: 0 teacher, section, or room collisions detected!';
+      toast.textContent = '✓ Conflict rules verified: zero teacher, section, or room collisions detected.';
       toast.classList.add('show');
       setTimeout(() => {
         toast.classList.remove('show');

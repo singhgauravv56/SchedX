@@ -1,208 +1,129 @@
-# 🚀 Smart Timetable Generator - Quick Start
+# 🚀 SchedX — Quick Start & Instant Website Access
 
-## ⚡ 30-Second Setup
+> [!IMPORTANT]
+> ### 🔗 Open Website Directly (Clickable Links)
+> As long as your SchedX server is running, click any of the links below to open the application immediately:
+> - 🌐 **Main Application (Home)**: [http://localhost:3000](http://localhost:3000)
+> - ⚡ **Timetable Generator**: [http://localhost:3/000/generate](http://localhost:3000/generate)
+> - 🧩 **Features & Settings**: [http://localhost:3000/features](http://localhost:3000/features)
+> - 🏫 **Rooms Management**: [http://localhost:3000/rooms.html](http://localhost:3000/rooms.html)
+> - 👩‍🏫 **Teacher Availability**: [http://localhost:3000/teacher-availability.html](http://localhost:3000/teacher-availability.html)
+> - ℹ️ **About SchedX**: [http://localhost:3000/about](http://localhost:3000/about)
+> - 🩺 **Backend Health API**: [http://localhost:3000/api/health](http://localhost:3000/api/health)
 
+---
+
+## ❓ Why Did `localhost:3000` Not Work?
+
+If clicking `http://localhost:3000` resulted in **"This site can’t be reached"** or **`ERR_CONNECTION_REFUSED`**, here is why:
+
+1. **`localhost` is NOT a live internet website**:  
+   `localhost` refers to your own computer (`127.0.0.1`). It is not an online web address hosted in the cloud. It only works when a local web server program (`node server.js`) is **actively running** on your computer.
+
+2. **The local Node.js server was not started or was stopped**:  
+   If you close the terminal window or haven't run `npm start`, no process is listening on port 3000. Your browser knocks on port 3000, finds nothing answering, and shows connection refused.
+
+3. **Directly opening `index.html` as a file (`file:///...`) breaks styling & APIs**:  
+   If you double-click `public/index.html` from Windows Explorer, your browser opens it as a local file (`file:///C:/Users/...`). Because modern web applications use root paths (`/style.css`, `/script.js`, and `/api/*`), the browser cannot locate the CSS or backend API without the HTTP web server running.
+
+4. **Previous outdated folder path**:  
+   The previous setup instructions referred to an older directory name (`SIH25091_Smart_Timetable_WORKING`). Your active project is located in `C:\Users\acer\Downloads\SchedX`.
+
+---
+
+## ⚡ Fastest Ways to Open the Website (Zero Friction)
+
+### 🥇 Option 1: 1-Click Instant Launcher (Fastest — 2 Seconds!)
+A pre-configured Windows launcher script has been created in your project root:
+1. In your project folder, simply **double-click [`start-schedx.bat`](file:///c:/Users/acer/Downloads/SchedX/start-schedx.bat)**.
+2. It automatically verifies if the server is running, starts it in the background if needed, and **immediately opens [http://localhost:3000](http://localhost:3000) in your default browser**.
+
+---
+
+### 🥈 Option 2: Run via Terminal / VS Code
+Open PowerShell or Command Prompt and run:
 ```bash
-# 1. Navigate to project
-cd C:\Users\acer\Downloads\SIH25091_Smart_Timetable_WORKING
+# 1. Go to project directory
+cd C:\Users\acer\Downloads\SchedX
 
-# 2. Configure (edit .env if MySQL has password)
-# cp .env.example .env
-
-# 3. Install (skip if already done)
-npm install
-
-# 4. Start
+# 2. Start the server
 npm start
-
-# 5. Open browser
-# http://localhost:3000
 ```
+Once you see `✓ SchedX running at http://local
+host:3000`, click:  
+👉 **[http://localhost:3000](http://localhost:3000)**
+
+*(Or open a second terminal tab and type `npm run open` to launch the browser automatically).*
 
 ---
 
-## 🎯 What to Expect
+## 🎯 What to Expect When You Open SchedX
 
-✅ Empty database (no demo data)  
-✅ Single form to fill out  
-✅ Automatic time slot generation  
-✅ Conflict-free timetable creation  
-✅ Data saved to MySQL  
-✅ Timetable persists after refresh  
-
----
-
-## 📝 Sample Test Data
-
-### To Generate Your First Timetable:
-
-**Teacher**
-- Name: `Dr. Rahul Kumar`
-- Specialization: `Database Systems`
-
-**Department**: `CSE`  
-**Course**: `DBMS`  
-**Class**: `BCA`, Section: `A`  
-**Students**: `40`  
-**Room Type**: `Classroom`  
-**Working Days**: `5`  
-**Hours**: `09:00` to `16:00`
-
-→ Click **Generate Timetable**  
-→ Should create 5 scheduled periods  
-→ Refresh page → timetable still there ✅
+✅ **Modern Glassmorphic UI**: Fast, responsive timetable generator interface.  
+✅ **Zero Database Hassle**: Uses Supabase PostgreSQL with built-in resilient local file fallback storage (`data/timetable_store.json`).  
+✅ **Multi-Subject Scheduling**: Teachers can be assigned multiple subjects or marked as `NA` for automatic workload assignment.  
+✅ **Strict Conflict Prevention**: Prevents faculty double-booking, class room clashes, and room capacity violations.  
+✅ **Persistent Schedules**: Timetables persist across page refreshes and browser restarts.  
 
 ---
 
-## 🔗 API Base URL
+## 📝 Sample Quick Test
 
-```
-http://localhost:3000/api
-```
+To verify timetable generation in under 1 minute:
 
-### Endpoints to Test:
-
-```
-GET  /api/health                    # Check database
-POST /api/generate-timetable        # Generate timetable
-GET  /api/timetable                 # Get timetable
-DELETE /api/timetable               # Clear timetable
-```
-
----
-
-## 📊 Database
-
-Name: `smartschedule`  
-Status: **EMPTY** (start fresh each time)  
-Tables: 9 (departments, teachers, courses, classes, rooms, time_slots, working_days, teacher_courses, timetable)
+1. Open **[http://localhost:3000/generate](http://localhost:3000/generate)**
+2. Enter the following sample inputs:
+   - **Department**: `Computer Science & Engineering`
+   - **Teacher**: `Dr. Rahul Kumar` (Subject: `DBMS`, Specialization: `Database Systems`)
+   - **Course/Subject**: `DBMS`
+   - **Class**: `BCA` | **Section**: `A` | **Students**: `40`
+   - **Room Type**: `Classroom`
+   - **Working Days**: `5`
+   - **Working Hours**: `09:00` to `16:00`
+3. Click **Generate Timetable**.
+4. The system will build a conflict-free weekly schedule and display it in the interactive timetable matrix.
 
 ---
 
-## 🎨 UI Features
+## 🔗 Key API Endpoints
 
-- Single-page form
-- Real-time database status
-- Success/error messages
-- Timetable display table
-- Refresh & Clear buttons
-- Toast notifications
-- Mobile responsive
-
----
-
-## 🐛 Quick Troubleshoot
-
-| Problem | Solution |
-|---------|----------|
-| "Server not running" | Run `npm start` |
-| "MySQL not reachable" | Start MySQL service |
-| "Port 3000 in use" | Edit PORT in .env |
-| Form validation error | Fill all required fields (*) |
-| "No suitable room" | System creates one automatically |
-| Timetable not persisting | Check MySQL connection |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | [`/api/health`](http://localhost:3000/api/health) | Check server and database health |
+| `POST` | `/api/generate-timetable` | Generate conflict-free schedule |
+| `GET` | `/api/timetable` | Fetch current active timetable |
+| `DELETE` | `/api/timetable` | Clear generated timetable |
+| `GET` | `/api/rooms` | Retrieve institutional room list |
+| `GET` | `/api/departments` | Retrieve configured departments |
 
 ---
 
-## 📚 Documentation
+## 🐛 Troubleshooting Guide
 
-- `README.md` - Full setup guide
-- `IMPLEMENTATION.md` - Detailed feature list
-- `CHECKLIST.md` - Verification checklist
-- `QUICK_START.md` - This file
+| Problem | Cause | Quick Fix |
+|---------|-------|-----------|
+| **"This site can't be reached" (ERR_CONNECTION_REFUSED)** | Node.js server is not running on port 3000 | Double-click [`start-schedx.bat`](file:///c:/Users/acer/Downloads/SchedX/start-schedx.bat) or run `npm start` in `C:\Users\acer\Downloads\SchedX`. |
+| **"Port 3000 in use" / EADDRINUSE** | Another process is holding port 3000 | In PowerShell, run: `Get-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess | Stop-Process -Force`, then run `npm start`. |
+| **Broken CSS styling or blank screen** | Opened `index.html` via `file:///` instead of HTTP server | Access the app via [http://localhost:3000](http://localhost:3000) through the Express server. |
+| **Database notice in /api/health** | Supabase network access is unavailable | SchedX automatically falls back to local JSON storage in `data/`, allowing offline timetable generation. |
 
 ---
 
-## ✨ Key Files
+## 📁 Key Project Files
 
 | File | Purpose |
 |------|---------|
-| `server.js` | Backend API |
-| `public/index.html` | User interface |
-| `public/script.js` | Frontend logic |
-| `public/style.css` | Styling |
-| `database/smartschedule.sql` | Database schema |
-| `.env` | Database config |
+| [`start-schedx.bat`](file:///c:/Users/acer/Downloads/SchedX/start-schedx.bat) | 1-Click batch launcher (boots server & opens browser) |
+| [`server.js`](file:///c:/Users/acer/Downloads/SchedX/server.js) | Express backend server, routing & generation engine |
+| [`public/index.html`](file:///c:/Users/acer/Downloads/SchedX/public/index.html) | Home page & navigation |
+| [`public/generate.html`](file:///c:/Users/acer/Downloads/SchedX/public/generate.html) | Timetable generation studio |
+| [`public/features.html`](file:///c:/Users/acer/Downloads/SchedX/public/features.html) | Feature showcase and institutional modules |
+| [`public/script.js`](file:///c:/Users/acer/Downloads/SchedX/public/script.js) | Frontend interactive scheduling logic |
+| [`public/style.css`](file:///c:/Users/acer/Downloads/SchedX/public/style.css) | Custom styling system |
+| [`.env`](file:///c:/Users/acer/Downloads/SchedX/.env) | Port and Supabase configuration |
 
 ---
 
-## 🎓 Learning Resources
-
-This project demonstrates:
-- ✅ Full-stack web development
-- ✅ RESTful API design
-- ✅ Database normalization
-- ✅ Conflict resolution algorithms
-- ✅ Form validation
-- ✅ Error handling
-- ✅ Responsive UI design
-- ✅ Async JavaScript (fetch)
-- ✅ MySQL with constraints
-- ✅ Node.js/Express.js
-
----
-
-## 💡 How It Works (High Level)
-
-```
-1. User fills form
-   ↓
-2. Frontend validates
-   ↓
-3. Sends to API
-   ↓
-4. Backend creates resources
-   ↓
-5. Generates time slots (1-hour each)
-   ↓
-6. Checks 11 conflict conditions
-   ↓
-7. Assigns slots to timetable
-   ↓
-8. Saves to MySQL
-   ↓
-9. Returns result to frontend
-   ↓
-10. Displays timetable
-    ↓
-11. Persists in database
-```
-
----
-
-## ✅ Success Indicators
-
-You'll know it's working when:
-
-1. ✅ Server starts without errors
-2. ✅ Page loads at http://localhost:3000
-3. ✅ Database status shows "Connected"
-4. ✅ Form allows you to enter data
-5. ✅ Generate button creates timetable
-6. ✅ Timetable displays with 5+ entries
-7. ✅ Refresh page → timetable still there
-8. ✅ No errors in browser console
-
----
-
-## 🎉 You're Ready!
-
-Everything is set up and ready to use.
-
-**Start with**:
-```bash
-npm start
-```
-
-**Then open**:
-```
-http://localhost:3000
-```
-
-Enjoy your Smart Timetable Generator! 🎓
-
----
-
-**Version**: 2.0.0  
-**Last Updated**: August 31, 2026  
-**Status**: ✅ Production Ready
+**Version**: 2.0.0 (SchedX)  
+**Status**: Ready to use  
+**Direct Link**: 👉 [http://localhost:3000](http://localhost:3000)
